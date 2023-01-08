@@ -1,3 +1,2 @@
 
-
-export const hello = () => console.log("Hello World - Persistence")
+export const persistence = () => "Persistence Module"

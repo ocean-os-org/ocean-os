@@ -2,12 +2,19 @@
   "name": "@ocean-os/persistence",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "lib/persistence.js",
+  "types": "lib/index.d.ts",
+  "type" : "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build" : "tsc"
+    "build": "vite build"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.9.4",
+    "vite": "^4.0.4",
+    "vite-plugin-dts": "^1.7.1"
+  }
 }

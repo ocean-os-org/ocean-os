@@ -1,21 +1,18 @@
 {
-  "name": "@ocean-os/webui",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "@ocean-os/local-webui",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "start": "tsc && vite build && vite preview"
+    "build": "vite build",
+    "start": "vite"
   },
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
     "@mui/material": "latest",
+    "@ocean-os/persistence": "^1.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "@ocean-os/persistence" : "*",
-    "@ocean-os/remote-sync" : "*"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

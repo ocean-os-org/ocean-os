@@ -1,4 +1,3 @@
-import * as fs from 'fs/promises';
 
 
-export const hello = () => console.log("Hello World - RemoteSync")
+export const remoteSync = () => "Remote Sync Module"

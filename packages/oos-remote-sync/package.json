@@ -1,13 +1,23 @@
 {
-  "name": "@oos/remote-sync",
+  "name": "@ocean-os/remote-sync",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "lib/remote-sync.mjs",
+  "types": "lib/index.d.ts",
+  "type" : "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "compile": "tsc",
+    "build" : "vite build"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "vite-plugin-dts": "^1.7.1"
+  },  
+  "devDependencies": {
+    "typescript": "^4.9.4",
+    "vite": "^4.0.4"
+  }
 }
