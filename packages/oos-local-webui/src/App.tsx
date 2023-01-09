@@ -6,6 +6,7 @@ import ProTip  from './ProTip';
 import { Copyright } from './Copyright';
 import { Button } from '@mui/material';
 import { persistence } from '@ocean-os/persistence';
+import { remoteSync } from '@ocean-os/remote-sync';
 
 export default function App() {
   return (
@@ -13,6 +14,9 @@ export default function App() {
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom>
           {persistence()}
+        </Typography>
+        <Typography variant="h4" component="h1" gutterBottom>
+          {remoteSync()}
         </Typography>
         <Button variant="contained">Hello World</Button>
         <ProTip />

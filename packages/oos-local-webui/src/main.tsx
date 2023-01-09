@@ -5,6 +5,10 @@ import { ThemeProvider } from '@mui/material/styles';
 import App  from './App.js';
 import './main.css';
 import { theme } from './theme.js';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement!);
