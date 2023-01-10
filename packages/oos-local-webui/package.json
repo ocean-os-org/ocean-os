@@ -10,10 +10,10 @@
   },
   "dependencies": {
     "@emotion/react": "11.10.5",
+    "@emotion/styled": "latest",
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "5.11.3",
-    "@mui/styled-engine": "5.11.0",
     "@ocean-os/persistence": "^1.0.0",
     "@ocean-os/remote-sync": "^1.0.0",
     "react": "^18.2.0",
