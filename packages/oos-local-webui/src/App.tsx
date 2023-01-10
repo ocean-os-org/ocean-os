@@ -18,7 +18,7 @@ export default function App() {
         <Typography variant="h4" component="h1" gutterBottom>
           {remoteSync()}
         </Typography>
-        <Button variant="contained">Hello World</Button>
+        <Button variant="contained">Hello World YEAH YEAH</Button>
         <ProTip />
         <Copyright />
       </Box>
