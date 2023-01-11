@@ -7,21 +7,10 @@ import { Copyright } from './Copyright';
 import { Button } from '@mui/material';
 import { persistence } from '@ocean-os/persistence';
 import { remoteSync } from '@ocean-os/remote-sync';
+import Dashboard  from './dashboard/Dashboard';
 
 export default function App() {
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          {persistence()}
-        </Typography>
-        <Typography variant="h4" component="h1" gutterBottom>
-          {remoteSync()}
-        </Typography>
-        <Button variant="contained">Hello World YEAH YEAH</Button>
-        <ProTip />
-        <Copyright />
-      </Box>
-    </Container>
+      <Dashboard />
   );
 }
