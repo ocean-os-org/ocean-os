@@ -7,6 +7,18 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig({
   build: {
     rollupOptions: {
+      output: {
+        assetFileNames: (assetInfo) => {
+          let extType = assetInfo!.name!.split('.').at(1) || 'files';
+
+          extType = (/woff|woff2/i.test(extType)) ? 'fonts' : extType;
+          extType = (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) ? 'imgs' : extType;
+
+          return `assets/${extType}/[name]-[hash][extname]`;
+        },
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js'
+      },
       input: {
         app: './index.html', // default
       },

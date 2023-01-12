@@ -1,11 +1,8 @@
 import * as React from "react";
-import SvgIcon from "@mui/material/SvgIcon";
-// @ts-ignore
-import oosUrl from '../../public/assets/icons/ocean-os.svg';
 
 export default function OOSIcon(props: any) {
   return (    
-    <img width="24" height="24" src={ oosUrl } />
+    <img width="24" height="24" src="/assets/icons/ocean-os.svg" />
   );
 }
 /**
