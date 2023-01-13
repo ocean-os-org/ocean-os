@@ -20,6 +20,7 @@ import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
 import OOSIcon from './OOSIcon';
+import SwipeableDrawer  from '@mui/material/SwipeableDrawer';
 
 function Copyright(props: any) {
   return (
@@ -58,7 +59,7 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+const Drawer = styled(SwipeableDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     '& .MuiDrawer-paper': {
       position: 'relative',
@@ -126,7 +127,12 @@ function DashboardContent() {
         </IconButton>
         </Toolbar>
     </AppBar>
-    <Drawer variant="permanent" open={open}>
+    <Drawer 
+      variant="permanent" 
+      onOpen={(ev) => {}}
+      onClose={(ev) => {}}
+      open={open} 
+    >
         <Toolbar 
         sx={{
             display: 'flex',
