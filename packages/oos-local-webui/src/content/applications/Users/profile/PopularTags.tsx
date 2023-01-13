@@ -124,7 +124,7 @@ function PopularTags() {
           <ListItemAvatar>
             <Avatar
               sx={{ width: 38, height: 38 }}
-              src="/static/images/logo/google.svg"
+              src="/assets/images/logo/google.svg"
             />
           </ListItemAvatar>
           <ListItemText

@@ -1,16 +1,22 @@
-import * as React from 'react';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import ProTip  from './ProTip';
-import { Copyright } from './Copyright';
-import { Button } from '@mui/material';
-import { persistence } from '@ocean-os/persistence';
-import { remoteSync } from '@ocean-os/remote-sync';
-import Dashboard  from './dashboard/Dashboard';
+import { useRoutes } from 'react-router-dom';
+import router from './router';
 
-export default function App() {
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+
+import { CssBaseline } from '@mui/material';
+import ThemeProvider from './theme/ThemeProvider';
+
+function App() {
+  const content = useRoutes(router);
+
   return (
-      <Dashboard />
+    <ThemeProvider>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <CssBaseline />
+        {content}
+      </LocalizationProvider>
+    </ThemeProvider>
   );
 }
+export default App;

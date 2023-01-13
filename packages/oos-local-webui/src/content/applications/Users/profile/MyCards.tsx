@@ -105,7 +105,7 @@ function MyCards() {
             <CardCc sx={{ px: 2, pt: 2, pb: 1 }}>
               <Box display="flex" alignItems="center">
                 <CardLogo
-                  src="/static/images/placeholders/logo/visa.png"
+                  src="/assets/images/placeholders/logo/visa.png"
                   alt="Visa"
                 />
                 <Box>
@@ -151,7 +151,7 @@ function MyCards() {
             <CardCc sx={{ px: 2, pt: 2, pb: 1 }}>
               <Box display="flex" alignItems="center">
                 <CardLogo
-                  src="/static/images/placeholders/logo/mastercard.png"
+                  src="/assets/images/placeholders/logo/mastercard.png"
                   alt="Visa"
                 />
                 <Box>

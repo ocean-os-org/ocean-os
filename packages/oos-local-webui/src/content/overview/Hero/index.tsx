@@ -117,7 +117,7 @@ function Hero() {
             <Grid item md={6}>
               <MuiAvatar>
                 <img
-                  src="/static/images/logo/material-ui.svg"
+                  src="/assets/images/logo/material-ui.svg"
                   alt="Material-UI"
                 />
               </MuiAvatar>
@@ -134,7 +134,7 @@ function Hero() {
             <Grid item md={6}>
               <TsAvatar>
                 <img
-                  src="/static/images/logo/typescript.svg"
+                  src="/assets/images/logo/typescript.svg"
                   alt="Typescript"
                 />
               </TsAvatar>

@@ -7,7 +7,7 @@ import {
   Tooltip
 } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
-import Logo from 'src/components/LogoSign';
+import Logo from '../../../../components/LogoSign';
 
 import { styled } from '@mui/material/styles';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -52,7 +52,7 @@ function StatusMaintenance() {
             <img
               alt="Maintenance"
               height={250}
-              src="/static/images/status/maintenance.svg"
+              src="/assets/images/status/maintenance.svg"
             />
           </Box>
           <Divider sx={{ my: 4 }} />

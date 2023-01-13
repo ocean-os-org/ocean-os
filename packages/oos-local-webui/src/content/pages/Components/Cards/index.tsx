@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 
-import PageTitle from 'src/components/PageTitle';
-import PageTitleWrapper from 'src/components/PageTitleWrapper';
+import PageTitle from '../../../../components/PageTitle';
+import PageTitleWrapper from '../../../../components/PageTitleWrapper';
 import {
   Container,
   Grid,
@@ -11,7 +11,7 @@ import {
   CardContent,
   Divider
 } from '@mui/material';
-import Footer from 'src/components/Footer';
+import Footer from '../../../../components/Footer';
 import CardActions from '@mui/material/CardActions';
 import { styled } from '@mui/material/styles';
 
@@ -137,7 +137,7 @@ function Cards() {
                       height: 0,
                       paddingTop: '56.25%' // 16:9
                     }}
-                    image="/static/images/placeholders/covers/1.jpg"
+                    image="/assets/images/placeholders/covers/1.jpg"
                     title="Paella dish"
                   />
                   <CardContent>
@@ -210,7 +210,7 @@ function Cards() {
                 <Card sx={{ maxWidth: 345 }}>
                   <CardMedia
                     sx={{ height: 140 }}
-                    image="/static/images/placeholders/covers/6.jpg"
+                    image="/assets/images/placeholders/covers/6.jpg"
                     title="Contemplative Reptile"
                   />
                   <CardContent>

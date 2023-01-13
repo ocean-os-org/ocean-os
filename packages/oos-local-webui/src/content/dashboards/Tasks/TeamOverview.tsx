@@ -10,7 +10,7 @@ import {
   styled
 } from '@mui/material';
 import { formatDistance, subDays, subMinutes, subHours } from 'date-fns';
-import Text from 'src/components/Text';
+import Text from '../../../components/Text';
 
 const DotLegend = styled('span')(
   ({ theme }) => `
@@ -78,7 +78,7 @@ function TeamOverview() {
             >
               <AvatarWrapper
                 alt="Remy Sharp"
-                src="/static/images/avatars/4.jpg"
+                src="/assets/images/avatars/4.jpg"
               />
             </Badge>
             <Box
@@ -134,7 +134,7 @@ function TeamOverview() {
             >
               <AvatarWrapper
                 alt="Ann Saris"
-                src="/static/images/avatars/3.jpg"
+                src="/assets/images/avatars/3.jpg"
               />
             </Badge>
             <Box
@@ -190,7 +190,7 @@ function TeamOverview() {
             >
               <AvatarWrapper
                 alt="James Stanton"
-                src="/static/images/avatars/5.jpg"
+                src="/assets/images/avatars/5.jpg"
               />
             </Badge>
             <Box

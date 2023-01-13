@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import PageHeader from './PageHeader';
-import Footer from 'src/components/Footer';
+import Footer from '../../../components/Footer';
 import {
   Grid,
   Tab,
@@ -14,7 +14,7 @@ import {
   Avatar,
   styled
 } from '@mui/material';
-import PageTitleWrapper from 'src/components/PageTitleWrapper';
+import PageTitleWrapper from '../../../components/PageTitleWrapper';
 
 import TeamOverview from './TeamOverview';
 import TasksAnalytics from './TasksAnalytics';

@@ -13,7 +13,7 @@ import {
   FormHelperText
 } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
-import Logo from 'src/components/LogoSign';
+import Logo from '../../../../components/LogoSign';
 
 import { styled } from '@mui/material/styles';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -123,7 +123,7 @@ function StatusComingSoon() {
             <img
               alt="Coming Soon"
               height={200}
-              src="/static/images/status/coming-soon.svg"
+              src="/assets/images/status/coming-soon.svg"
             />
           </Box>
 

@@ -17,7 +17,7 @@ import MoreHorizTwoToneIcon from '@mui/icons-material/MoreHorizTwoTone';
 import ThumbUpAltTwoToneIcon from '@mui/icons-material/ThumbUpAltTwoTone';
 import CommentTwoToneIcon from '@mui/icons-material/CommentTwoTone';
 import ShareTwoToneIcon from '@mui/icons-material/ShareTwoTone';
-import Text from 'src/components/Text';
+import Text from '../../../../components/Text';
 
 const CardActionsWrapper = styled(CardActions)(
   ({ theme }) => `
@@ -30,7 +30,7 @@ function ActivityTab() {
   return (
     <Card>
       <CardHeader
-        avatar={<Avatar src="/static/images/avatars/5.jpg" />}
+        avatar={<Avatar src="/assets/images/avatars/5.jpg" />}
         action={
           <IconButton color="primary">
             <MoreHorizTwoToneIcon fontSize="medium" />
@@ -60,7 +60,7 @@ function ActivityTab() {
       </Box>
       <CardMedia
         sx={{ minHeight: 280 }}
-        image="/static/images/placeholders/covers/6.jpg"
+        image="/assets/images/placeholders/covers/6.jpg"
         title="Card Cover"
       />
       <Box p={3}>
