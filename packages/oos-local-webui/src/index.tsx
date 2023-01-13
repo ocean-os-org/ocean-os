@@ -1,5 +1,3 @@
-import ReactDOM from 'react-dom';
-import { StrictMode } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
@@ -11,22 +9,16 @@ import './index.css';
 //import '@fontsource/roboto/500.css';
 //import '@fontsource/roboto/700.css';
 
-import App from './App';
 import { SidebarProvider } from './contexts/SidebarContext';
+import App from './App';
 
-const rootElement = document.getElementById('root');
-const root = createRoot(rootElement!);
-
-root.render(
-  <StrictMode>
-    <HelmetProvider>
-      <SidebarProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </SidebarProvider>
-    </HelmetProvider>  
-  </StrictMode>
-);
-
-
+createRoot(document.getElementById('root')!)
+.render(
+  <HelmetProvider>
+    <SidebarProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </SidebarProvider>
+  </HelmetProvider>  
+)

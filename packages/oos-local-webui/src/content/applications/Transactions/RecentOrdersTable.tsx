@@ -22,7 +22,8 @@ import {
   MenuItem,
   Typography,
   useTheme,
-  CardHeader
+  CardHeader,
+  SelectChangeEvent
 } from '@mui/material';
 
 import Label from '../../../components/Label';
@@ -56,7 +57,7 @@ const getStatusLabel = (cryptoOrderStatus: CryptoOrderStatus): JSX.Element => {
     }
   };
 
-  const { text, color }: any = map[cryptoOrderStatus];
+  const { text, color }: any = map[cryptoOrderStatus as keyof typeof map];
 
   return <Label color={color}>{text}</Label>;
 };
@@ -92,7 +93,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
   const [page, setPage] = useState<number>(0);
   const [limit, setLimit] = useState<number>(5);
   const [filters, setFilters] = useState<Filters>({
-    status: null
+    status: 'created'
   });
 
   const statusOptions = [
@@ -114,11 +115,11 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
     }
   ];
 
-  const handleStatusChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    let value = null;
+  const handleStatusChange = (e: SelectChangeEvent<HTMLInputElement>): void => {
+    let value:CryptoOrderStatus = 'created';
 
     if (e.target.value !== 'all') {
-      value = e.target.value;
+      value = e.target.value as CryptoOrderStatus;
     }
 
     setFilters((prevFilters) => ({
@@ -188,7 +189,6 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
               <FormControl fullWidth variant="outlined">
                 <InputLabel>Status</InputLabel>
                 <Select
-                  value={filters.status || 'all'}
                   onChange={handleStatusChange}
                   label="Status"
                   autoWidth

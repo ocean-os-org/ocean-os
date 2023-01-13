@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc --noEmit && vite build",
     "start": "vite preview --port 8080"
   },
   "dependencies": {
@@ -38,6 +38,8 @@
     "stylis-plugin-rtl": "^2.1.1"
   },
   "devDependencies": {
+    "@types/nprogress": "^0.2.0",
+    "@types/numeral": "^2.0.2",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "@vitejs/plugin-react": "^3.0.0",

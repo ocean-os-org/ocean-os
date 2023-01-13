@@ -25,17 +25,24 @@ import AddIcon from '@mui/icons-material/Add';
 import Typography from '@mui/material/Typography';
 import { blue } from '@mui/material/colors';
 import Footer from '../../../../components/Footer';
+import { ListItemButton } from '@mui/material';
 
 const emails = ['username@gmail.com', 'user02@gmail.com'];
 
-function SimpleDialog(props) {
+type SimpleDialogProps = {
+  onClose: (value:string) => void,
+  selectedValue: string,
+  open: boolean
+}
+
+function SimpleDialog(props:SimpleDialogProps) {
   const { onClose, selectedValue, open } = props;
 
   const handleClose = () => {
     onClose(selectedValue);
   };
 
-  const handleListItemClick = (value) => {
+  const handleListItemClick = (value:string) => {
     onClose(value);
   };
 
@@ -44,8 +51,7 @@ function SimpleDialog(props) {
       <DialogTitle>Set backup account</DialogTitle>
       <List sx={{ pt: 0 }}>
         {emails.map((email) => (
-          <ListItem
-            button
+          <ListItemButton
             onClick={() => handleListItemClick(email)}
             key={email}
           >
@@ -55,12 +61,11 @@ function SimpleDialog(props) {
               </Avatar>
             </ListItemAvatar>
             <ListItemText primary={email} />
-          </ListItem>
+          </ListItemButton>
         ))}
 
-        <ListItem
+        <ListItemButton
           autoFocus
-          button
           onClick={() => handleListItemClick('addAccount')}
         >
           <ListItemAvatar>
@@ -69,7 +74,7 @@ function SimpleDialog(props) {
             </Avatar>
           </ListItemAvatar>
           <ListItemText primary="Add account" />
-        </ListItem>
+        </ListItemButton>
       </List>
     </Dialog>
   );
@@ -89,7 +94,7 @@ function Modals() {
     setOpen(true);
   };
 
-  const handleClose = (value) => {
+  const handleClose = (value:string) => {
     setOpen(false);
     setSelectedValue(value);
   };

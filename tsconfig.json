@@ -5,8 +5,7 @@
     "moduleResolution": "Node",
     "declaration": true,
     "sourceMap": true,
-    "composite": true,
-    "strict": false,
+    "strict": true,
     "esModuleInterop": true,
     "isolatedModules": true
   }

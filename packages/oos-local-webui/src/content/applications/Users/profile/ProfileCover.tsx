@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {
   Box,
   Typography,
@@ -78,7 +77,19 @@ const CardCoverAction = styled(Box)(
 `
 );
 
-const ProfileCover = ({ user }) => {
+type ProfileCoverProps = {
+  user: {
+    name: string,
+    coverImg: string,
+    avatar: string,
+    description: string,
+    jobtitle: string,
+    location: string,
+    followers: string
+  }
+}
+
+const ProfileCover = ({ user }:ProfileCoverProps) => {
   return (
     <>
       <Box display="flex" mb={3}>
@@ -163,11 +174,6 @@ const ProfileCover = ({ user }) => {
       </Box>
     </>
   );
-};
-
-ProfileCover.propTypes = {
-  // @ts-ignore
-  user: PropTypes.object.isRequired
 };
 
 export default ProfileCover;

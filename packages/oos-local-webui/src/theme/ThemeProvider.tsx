@@ -7,7 +7,7 @@ export const ThemeContext = React.createContext(
   (themeName: string): void => {}
 );
 
-const ThemeProviderWrapper: React.FC = (props:PropsWithChildren<{ name:string}>) => {
+const ThemeProviderWrapper: React.FC = (props:PropsWithChildren<{}>) => {
   const curThemeName = localStorage.getItem('appTheme') || 'NebulaFighterTheme';
   const [themeName, _setThemeName] = useState(curThemeName);
   const theme = themeCreator(themeName);
@@ -18,7 +18,7 @@ const ThemeProviderWrapper: React.FC = (props:PropsWithChildren<{ name:string}>)
 
   return (
     <StylesProvider injectFirst>
-      <ThemeContext.Provider value={setThemeName}>
+      <ThemeContext.Provider value={setThemeName}>        
         <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
       </ThemeContext.Provider>
     </StylesProvider>

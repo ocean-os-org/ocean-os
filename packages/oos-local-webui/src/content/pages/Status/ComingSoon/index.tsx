@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import {
   Box,
   Typography,
@@ -20,6 +20,8 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import MailTwoToneIcon from '@mui/icons-material/MailTwoTone';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { BoxTypeMap } from '@mui/system';
 
 const MainContent = styled(Box)(
   () => `
@@ -56,19 +58,18 @@ const ButtonNotify = styled(Button)(
     margin-right: -${theme.spacing(1)};
 `
 );
+type TimeLeft = { days: number, hours:number, minutes: number, seconds: number} ;
 
 function StatusComingSoon() {
   const calculateTimeLeft = () => {
     const difference = +new Date(`2023`) - +new Date();
-    let timeLeft = {};
+    const timeLeft:TimeLeft = { days: 0, hours: 0, minutes: 0, seconds:0 };
 
     if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60)
-      };
+        timeLeft.days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        timeLeft.hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        timeLeft.minutes = Math.floor((difference / 1000 / 60) % 60);
+        timeLeft.seconds = Math.floor((difference / 1000) % 60);
     }
 
     return timeLeft;
@@ -82,20 +83,16 @@ function StatusComingSoon() {
     }, 1000);
   });
 
-  const timerComponents = [];
+  const timerComponents:Array<ReactElement> = [];
 
-  Object.keys(timeLeft).forEach((interval) => {
-    if (!timeLeft[interval]) {
-      return;
-    }
-
+  Object.entries(timeLeft).forEach( ([key,value]) => {
     timerComponents.push(
       <Box textAlign="center" px={3}>
-        <TypographyH1 variant="h1">{timeLeft[interval]}</TypographyH1>
-        <TypographyH3 variant="h3">{interval}</TypographyH3>
+        <TypographyH1 variant="h1">{value}</TypographyH1>
+        <TypographyH3 variant="h3">{key}</TypographyH3>
       </Box>
     );
-  });
+  })
 
   return (
     <>
