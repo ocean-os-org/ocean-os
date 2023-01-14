@@ -2,7 +2,6 @@ import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 
-import 'nprogress/nprogress.css';
 import './index.css';
 //import '@fontsource/roboto/300.css';
 //import '@fontsource/roboto/400.css';

@@ -1,14 +1,9 @@
-import { FC, ReactNode } from 'react';
-import PropTypes from 'prop-types';
+import { PropsWithChildren } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { Box } from '@mui/material';
 
-interface BaseLayoutProps {
-  children?: ReactNode;
-}
-
-const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
+const BaseLayout = ({ children }: PropsWithChildren<{}>) => {
   return (
     <Box
       sx={{
@@ -19,10 +14,6 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
       {children || <Outlet />}
     </Box>
   );
-};
-
-BaseLayout.propTypes = {
-  children: PropTypes.node
 };
 
 export default BaseLayout;

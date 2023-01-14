@@ -1,7 +1,6 @@
-import { FC, ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { format } from 'date-fns';
-import numeral from 'numeral';
-import PropTypes from 'prop-types';
+
 import {
   Tooltip,
   Divider,
@@ -85,7 +84,7 @@ const applyPagination = (
   return cryptoOrders.slice(page * limit, page * limit + limit);
 };
 
-const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
+const RecentOrdersTable = ({ cryptoOrders }: RecentOrdersTableProps) => {
   const [selectedCryptoOrders, setSelectedCryptoOrders] = useState<string[]>(
     []
   );
@@ -298,9 +297,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
                       {cryptoOrder.cryptoCurrency}
                     </Typography>
                     <Typography variant="body2" color="text.secondary" noWrap>
-                      {numeral(cryptoOrder.amount).format(
-                        `${cryptoOrder.currency}0,0.00`
-                      )}
+                      {(cryptoOrder.amount).toFixed(2)}
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
@@ -353,14 +350,6 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders }) => {
       </Box>
     </Card>
   );
-};
-
-RecentOrdersTable.propTypes = {
-  cryptoOrders: PropTypes.array.isRequired
-};
-
-RecentOrdersTable.defaultProps = {
-  cryptoOrders: []
 };
 
 export default RecentOrdersTable;

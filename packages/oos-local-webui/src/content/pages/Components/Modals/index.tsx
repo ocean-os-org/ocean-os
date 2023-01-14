@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet-async';
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import PageTitle from '../../../../components/PageTitle';
@@ -35,7 +34,7 @@ type SimpleDialogProps = {
   open: boolean
 }
 
-function SimpleDialog(props:SimpleDialogProps) {
+const SimpleDialog = (props:SimpleDialogProps) => {
   const { onClose, selectedValue, open } = props;
 
   const handleClose = () => {
@@ -79,12 +78,6 @@ function SimpleDialog(props:SimpleDialogProps) {
     </Dialog>
   );
 }
-
-SimpleDialog.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-  selectedValue: PropTypes.string.isRequired
-};
 
 function Modals() {
   const [open, setOpen] = useState(false);

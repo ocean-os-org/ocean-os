@@ -1,5 +1,4 @@
-import { FC, ReactNode } from 'react';
-import PropTypes from 'prop-types';
+import { ReactNode } from 'react';
 import { Box, Container, styled } from '@mui/material';
 
 const PageTitle = styled(Box)(
@@ -12,16 +11,12 @@ interface PageTitleWrapperProps {
   children?: ReactNode;
 }
 
-const PageTitleWrapper: FC<PageTitleWrapperProps> = ({ children }) => {
+const PageTitleWrapper = ({ children }:PageTitleWrapperProps ) => {
   return (
     <PageTitle className="MuiPageTitle-wrapper">
       <Container maxWidth="lg">{children}</Container>
     </PageTitle>
   );
-};
-
-PageTitleWrapper.propTypes = {
-  children: PropTypes.node.isRequired
 };
 
 export default PageTitleWrapper;
