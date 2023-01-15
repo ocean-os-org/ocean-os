@@ -13,6 +13,7 @@
     "webui": "npm run dev -w packages/oos-local-webui"
   },
   "devDependencies": {
+    "rimraf": "^4.0.7",
     "typescript": "^4.9.4"
   },
   "homepage": "https://github.com/oos-org/ocean-os#readme",
