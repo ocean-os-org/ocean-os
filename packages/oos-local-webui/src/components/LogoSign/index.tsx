@@ -116,7 +116,7 @@ function Logo() {
           color="success"
           badgeContent="2.0"
         >
-            <img src="/assets/icons/ocean-os.svg"/>
+            <img src="/assets/images/logo/ocean-os.svg"/>
         </Badge>
       </LogoWrapper>
     </TooltipWrapper>
