@@ -8,8 +8,9 @@
     "packages/oos-local-webui"
   ],
   "scripts": {
-    "clean": "rimraf node_modules **/node_modules **/lib **/dist **/*.tsbuildinfo",
-    "build": "npm run build -ws"
+    "clean": "rimraf node_modules **/node_modules **/lib **/dist",
+    "build": "npm run build -ws",
+    "webui": "npm run dev -w packages/oos-local-webui"
   },
   "devDependencies": {
     "typescript": "^4.9.4"

@@ -18,13 +18,13 @@ function Overview() {
   return (
     <OverviewWrapper>
       <Helmet>
-        <title>Tokyo Free Black React Typescript Admin Dashboard</title>
+        <title>OceanOS</title>
       </Helmet>
-      <Container maxWidth="lg">
-        <Box display="flex" justifyContent="center" py={5} alignItems="center">
-          <Logo />
-        </Box>
-        <Card sx={{ p: 10, mb: 10, borderRadius: 12 }}>
+      <Container maxWidth="md">
+        <Card sx={{ p: 5, m: 5, borderRadius: 2 }}>
+          <Box display="flex" justifyContent="center" pb={5} alignItems="center">
+            <Logo />
+          </Box>
           <Hero />
         </Card>
       </Container>

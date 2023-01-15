@@ -80,9 +80,8 @@ function Hero() {
         container
       >
         <Grid item md={10} lg={8} mx="auto">
-          <LabelWrapper color="success">Version 2.0.0</LabelWrapper>
           <TypographyH1 sx={{ mb: 2 }} variant="h1">
-            Tokyo Free Black React Typescript Admin Dashboard
+            OceanOS
           </TypographyH1>
           <TypographyH2
             sx={{ lineHeight: 1.5, pb: 4 }}
@@ -90,9 +89,7 @@ function Hero() {
             color="text.secondary"
             fontWeight="normal"
           >
-            High performance React template built with lots of powerful
-            Material-UI components across multiple product niches for fast &
-            perfect apps development processes
+            OceanOS is your new personal operating system. 
           </TypographyH2>
           <Button
             component={RouterLink}
@@ -100,51 +97,38 @@ function Hero() {
             size="large"
             variant="contained"
           >
-            Browse Live Preview
-          </Button>
-          <Button
-            sx={{ ml: 2 }}
-            component="a"
-            target="_blank"
-            rel="noopener"
-            href="https://bloomui.com/product/tokyo-free-black-react-typescript-material-ui-admin-dashboard"
-            size="large"
-            variant="text"
-          >
-            Key Features
+            Connect
           </Button>
           <Grid container spacing={3} mt={5}>
             <Grid item md={6}>
               <MuiAvatar>
                 <img
-                  src="/assets/images/logo/material-ui.svg"
-                  alt="Material-UI"
+                  src="/assets/images/logo/MetaMask_Fox.png"
+                  alt="Metamask"
                 />
               </MuiAvatar>
               <Typography variant="h4">
                 <Box sx={{ pb: 2 }}>
-                  <b>Powered by MUI (Material-UI)</b>
+                  <b>MetaMask</b>
                 </Box>
                 <Typography component="span" variant="subtitle2">
-                  A simple and customizable component library to build faster,
-                  beautiful, and accessible React apps.
+                  A simple and customizable wallet
                 </Typography>
               </Typography>
             </Grid>
             <Grid item md={6}>
               <TsAvatar>
                 <img
-                  src="/assets/images/logo/typescript.svg"
-                  alt="Typescript"
+                  src="/assets/images/logo/walletconnect.png"
+                  alt="Wallet Connect"
                 />
               </TsAvatar>
               <Typography variant="h4">
                 <Box sx={{ pb: 2 }}>
-                  <b>Built with Typescript</b>
+                  <b>Wallet Connect</b>
                 </Box>
                 <Typography component="span" variant="subtitle2">
-                  Tokyo Free Black features a modern technology stack and is
-                  built with React + Typescript.
+                  A web3 login.
                 </Typography>
               </Typography>
             </Grid>

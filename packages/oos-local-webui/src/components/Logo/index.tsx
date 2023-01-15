@@ -101,7 +101,8 @@ function Logo() {
     <LogoWrapper to="/overview">
       <LogoSignWrapper>
         <LogoSign>
-          <LogoSignInner />
+            <LogoSignInner>
+            </LogoSignInner>
         </LogoSign>
       </LogoSignWrapper>
       <Box
@@ -111,10 +112,10 @@ function Logo() {
         }}
       >
         <LogoTextWrapper>
-          <Tooltip title="Version 2.0" arrow placement="right">
-            <VersionBadge>2.0</VersionBadge>
+          <Tooltip title="Version 1.0" arrow placement="right">
+            <VersionBadge>1.0</VersionBadge>
           </Tooltip>
-          <LogoText>Tokyo Free Black</LogoText>
+          <LogoText>OceanOS</LogoText>
         </LogoTextWrapper>
       </Box>
     </LogoWrapper>

@@ -14,7 +14,8 @@ const LogoWrapper = styled(Link)(
         color: ${theme.palette.text.primary};
         display: flex;
         text-decoration: none;
-        width: 53px;
+        width: 153px;
+        height: 153px;
         margin: 0 auto;
         font-weight: ${theme.typography.fontWeightBold};
 `
@@ -22,8 +23,8 @@ const LogoWrapper = styled(Link)(
 
 const LogoSignWrapper = styled(Box)(
   () => `
-        width: 52px;
-        height: 38px;
+        width: 152px;
+        height: 138px;
 `
 );
 
@@ -99,7 +100,7 @@ function Logo() {
 
   return (
     <TooltipWrapper
-      title="Tokyo Free Black React Typescript Admin Dashboard"
+      title="OceanOS"
       arrow
     >
       <LogoWrapper to="/overview">
@@ -115,11 +116,7 @@ function Logo() {
           color="success"
           badgeContent="2.0"
         >
-          <LogoSignWrapper>
-            <LogoSign>
-              <LogoSignInner />
-            </LogoSign>
-          </LogoSignWrapper>
+            <img src="/assets/icons/ocean-os.svg"/>
         </Badge>
       </LogoWrapper>
     </TooltipWrapper>
