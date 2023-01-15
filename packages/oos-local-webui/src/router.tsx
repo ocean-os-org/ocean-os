@@ -1,4 +1,4 @@
-import { Suspense, lazy, ReactElement } from 'react';
+import { Suspense, lazy, LazyExoticComponent } from 'react';
 import { Navigate } from 'react-router-dom';
 import { RouteObject } from 'react-router';
 
@@ -8,7 +8,7 @@ import BaseLayout from './layouts/BaseLayout';
 import SuspenseLoader from './components/SuspenseLoader';
 
 // TODO: Change for the proper types
-const Loader = (Component:any) => (props:any) =>
+const Loader = (Component:LazyExoticComponent<() => JSX.Element>) => (props:any) =>
   (
     <Suspense fallback={<SuspenseLoader />}>
       <Component {...props} />

@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { styled } from '@mui/material/styles';
-import clsx from 'clsx';
 
 interface TextProps {
   className?: string;
@@ -67,7 +66,7 @@ const Text = ({
 }: TextProps) => {
   return (
     <TextWrapper
-      className={clsx('MuiText-' + color, { flexItem: flex })}
+      className={`MuiText-${color} ${ flex ? 'flexItem' : ''}`}
       {...rest}
     >
       {children}
@@ -75,4 +74,8 @@ const Text = ({
   );
 };
 
+/*
+      className={clsx('MuiText-' + color, { flexItem: flex })}
+
+*/
 export default Text;

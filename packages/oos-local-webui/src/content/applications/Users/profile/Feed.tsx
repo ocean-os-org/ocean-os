@@ -47,7 +47,7 @@ function Feed() {
       name: 'Michel Greatbanks',
       jobtitle: 'Research Assistant III',
       company: 'Aimbu',
-      avatar: '/assets/images/avatars/6.jpg'
+      avatar: '/assets/images/avatars/5.jpg'
     }
   ];
 
