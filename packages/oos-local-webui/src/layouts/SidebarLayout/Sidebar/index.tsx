@@ -16,7 +16,7 @@ import {
 } from '@mui/material';
 
 import SidebarMenu from './SidebarMenu';
-import Logo from '../../../components/LogoSign';
+import Logo from '../../../components/Logo';
 
 const SidebarWrapper = styled(Box)(
   ({ theme }) => `
@@ -26,7 +26,7 @@ const SidebarWrapper = styled(Box)(
         position: relative;
         z-index: 7;
         height: 100%;
-        padding-bottom: 68px;
+        padding-bottom: 5px;
 `
 );
 
@@ -54,16 +54,15 @@ function Sidebar() {
             theme.palette.mode === 'dark' ? theme.sidebar.boxShadow : 'none'
         }}
       >
-        <Scrollbar>
-          <Box mt={3}>
-            <Box
-              mx={2}
-              sx={{
-                width: 52
-              }}
-            >
-              <Logo />
-            </Box>
+          <Box
+            mt={1}
+            mx={2}
+            sx={{
+              display: 'flex',
+              flexDirection: 'row'
+            }}
+          >
+            <Logo />
           </Box>
           <Divider
             sx={{
@@ -72,26 +71,9 @@ function Sidebar() {
               background: theme.colors.alpha.trueWhite[10]
             }}
           />
+        <Scrollbar>
           <SidebarMenu />
         </Scrollbar>
-        <Divider
-          sx={{
-            background: theme.colors.alpha.trueWhite[10]
-          }}
-        />
-        <Box p={2}>
-          <Button
-            href="https://bloomui.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="contained"
-            color="success"
-            size="small"
-            fullWidth
-          >
-            Upgrade to PRO
-          </Button>
-        </Box>
       </SidebarWrapper>
       <Drawer
         sx={{

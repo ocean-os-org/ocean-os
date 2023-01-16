@@ -2,6 +2,7 @@ import {
   Box,
   List,
   ListItem,
+  ListItemButton,
   ListItemText,
   Menu,
   MenuItem
@@ -85,9 +86,9 @@ function HeaderMenu() {
         }}
       >
         <List disablePadding component={Box} display="flex">
-          <ListItem
+          <ListItemButton
             classes={{ root: 'MuiListItem-indicators' }}
-            button
+
             component={NavLink}
             to="/components/buttons"
           >
@@ -95,10 +96,9 @@ function HeaderMenu() {
               primaryTypographyProps={{ noWrap: true }}
               primary="Buttons"
             />
-          </ListItem>
-          <ListItem
+          </ListItemButton>
+          <ListItemButton
             classes={{ root: 'MuiListItem-indicators' }}
-            button
             component={NavLink}
             to="/components/forms"
           >
@@ -106,10 +106,9 @@ function HeaderMenu() {
               primaryTypographyProps={{ noWrap: true }}
               primary="Forms"
             />
-          </ListItem>
-          <ListItem
+          </ListItemButton>
+          <ListItemButton
             classes={{ root: 'MuiListItem-indicators' }}
-            button
             ref={ref}
             onClick={handleOpen}
           >
@@ -124,7 +123,7 @@ function HeaderMenu() {
                 </Box>
               }
             />
-          </ListItem>
+          </ListItemButton>
         </List>
       </ListWrapper>
       <Menu anchorEl={ref.current} onClose={handleClose} open={isOpen}>

@@ -68,7 +68,7 @@ const applyFilters = (
   return cryptoOrders.filter((cryptoOrder) => {
     let matches = true;
 
-    if (filters.status && cryptoOrder.status !== filters.status) {
+    if ((filters.status !='all') && (filters.status && cryptoOrder.status !== filters.status)) {
       matches = false;
     }
 
@@ -92,7 +92,7 @@ const RecentOrdersTable = ({ cryptoOrders }: RecentOrdersTableProps) => {
   const [page, setPage] = useState<number>(0);
   const [limit, setLimit] = useState<number>(5);
   const [filters, setFilters] = useState<Filters>({
-    status: 'created'
+    status: 'all'
   });
 
   const statusOptions = [
@@ -115,7 +115,7 @@ const RecentOrdersTable = ({ cryptoOrders }: RecentOrdersTableProps) => {
   ];
 
   const handleStatusChange = (e: SelectChangeEvent<HTMLInputElement>): void => {
-    let value:CryptoOrderStatus = 'created';
+    let value:CryptoOrderStatus = 'all';
 
     if (e.target.value !== 'all') {
       value = e.target.value as CryptoOrderStatus;
@@ -188,6 +188,7 @@ const RecentOrdersTable = ({ cryptoOrders }: RecentOrdersTableProps) => {
               <FormControl fullWidth variant="outlined">
                 <InputLabel>Status</InputLabel>
                 <Select
+                  value={filters.status as any}
                   onChange={handleStatusChange}
                   label="Status"
                   autoWidth

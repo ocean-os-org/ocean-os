@@ -14,8 +14,8 @@ const LogoWrapper = styled(Link)(
         color: ${theme.palette.text.primary};
         display: flex;
         text-decoration: none;
-        width: 153px;
-        height: 153px;
+        width: 32px;
+        height: 32px;
         margin: 0 auto;
         font-weight: ${theme.typography.fontWeightBold};
 `
@@ -23,8 +23,8 @@ const LogoWrapper = styled(Link)(
 
 const LogoSignWrapper = styled(Box)(
   () => `
-        width: 152px;
-        height: 138px;
+        width: 52px;
+        height: 38px;
 `
 );
 

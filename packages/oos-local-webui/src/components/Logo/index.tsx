@@ -1,11 +1,13 @@
 import { Box, styled, Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const LogoWrapper = styled(Link)(
+const LogoWrapper = styled(Box)(
   ({ theme }) => `
         color: ${theme.palette.text.primary};
         padding: ${theme.spacing(0, 1, 0, 0)};
         display: flex;
+        width: 100%;
+        flex-direction: 'row';        
         text-decoration: none;
         font-weight: ${theme.typography.fontWeightBold};
 `
@@ -13,7 +15,7 @@ const LogoWrapper = styled(Link)(
 
 const LogoSignWrapper = styled(Box)(
   () => `
-        width: 52px;
+
         height: 38px;
         margin-top: 4px;
         transform: scale(.8);
@@ -89,6 +91,13 @@ const VersionBadge = styled(Box)(
 `
 );
 
+const Icon = styled(Box)(
+  ({ theme }) => `
+    width: 44px;
+    height:44px;
+    padding: 5px;
+  `
+);
 const LogoText = styled(Box)(
   ({ theme }) => `
         font-size: ${theme.typography.pxToRem(15)};
@@ -98,18 +107,12 @@ const LogoText = styled(Box)(
 
 function Logo() {
   return (
-    <LogoWrapper to="/overview">
-      <LogoSignWrapper>
-        <LogoSign>
-            <LogoSignInner>
-            </LogoSignInner>
-        </LogoSign>
-      </LogoSignWrapper>
+    <LogoWrapper>
+      <Icon>
+        <img src="/assets/images/logo/ocean-os.svg"/>
+      </Icon>
       <Box
         component="span"
-        sx={{
-          display: { xs: 'none', sm: 'inline-block' }
-        }}
       >
         <LogoTextWrapper>
           <Tooltip title="Version 1.0" arrow placement="right">
@@ -118,7 +121,7 @@ function Logo() {
           <LogoText>OceanOS</LogoText>
         </LogoTextWrapper>
       </Box>
-    </LogoWrapper>
+      </LogoWrapper>
   );
 }
 

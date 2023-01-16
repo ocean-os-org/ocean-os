@@ -10,7 +10,7 @@
   "scripts": {
     "clean": "rimraf node_modules **/node_modules **/lib **/dist",
     "build": "npm run build -ws",
-    "webui": "npm run dev -w packages/oos-local-webui"
+    "webui": "npm run start -w packages/oos-local-webui"
   },
   "devDependencies": {
     "rimraf": "^4.0.7",
