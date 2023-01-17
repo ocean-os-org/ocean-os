@@ -100,7 +100,7 @@ const Icon = styled(Box)(
 );
 const LogoText = styled(Box)(
   ({ theme }) => `
-        font-size: ${theme.typography.pxToRem(15)};
+        font-size: ${theme.typography.pxToRem(30)};
         font-weight: ${theme.typography.fontWeightBold};
 `
 );
@@ -115,13 +115,10 @@ function Logo() {
         component="span"
       >
         <LogoTextWrapper>
-          <Tooltip title="Version 1.0" arrow placement="right">
-            <VersionBadge>1.0</VersionBadge>
-          </Tooltip>
           <LogoText>OceanOS</LogoText>
         </LogoTextWrapper>
       </Box>
-      </LogoWrapper>
+    </LogoWrapper>
   );
 }
 

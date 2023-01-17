@@ -2,7 +2,7 @@ import { Suspense, lazy, LazyExoticComponent } from 'react';
 import { Navigate } from 'react-router-dom';
 import { RouteObject } from 'react-router';
 
-import SidebarLayout from './layouts/SidebarLayout';
+import SidebarLayout, {ResponsiveDrawer} from './layouts/SidebarLayout';
 import BaseLayout from './layouts/BaseLayout';
 
 import SuspenseLoader from './components/SuspenseLoader';
@@ -123,7 +123,7 @@ const routes: RouteObject[] = [
   },
   {
     path: 'dashboards',
-    element: <SidebarLayout />,
+    element: <ResponsiveDrawer />,
     children: [
       {
         path: '',

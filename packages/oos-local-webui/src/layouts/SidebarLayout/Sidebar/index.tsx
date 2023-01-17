@@ -30,6 +30,9 @@ const SidebarWrapper = styled(Box)(
 `
 );
 
+
+
+
 function Sidebar() {
   const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
   const closeSidebar = () => toggleSidebar();
@@ -93,24 +96,24 @@ function Sidebar() {
                 : darken(theme.colors.alpha.black[100], 0.5)
           }}
         >
+          <Box
+            mt={1}
+            mx={2}
+            sx={{
+              display: 'flex',
+              flexDirection: 'row'
+            }}
+          >
+            <Logo />
+          </Box>
+          <Divider
+            sx={{
+              mt: theme.spacing(3),
+              mx: theme.spacing(2),
+              background: theme.colors.alpha.trueWhite[10]
+            }}
+          />
           <Scrollbar>
-            <Box mt={3}>
-              <Box
-                mx={2}
-                sx={{
-                  width: 52
-                }}
-              >
-                <Logo />
-              </Box>
-            </Box>
-            <Divider
-              sx={{
-                mt: theme.spacing(3),
-                mx: theme.spacing(2),
-                background: theme.colors.alpha.trueWhite[10]
-              }}
-            />
             <SidebarMenu />
           </Scrollbar>
         </SidebarWrapper>
