@@ -123,7 +123,7 @@ const routes: RouteObject[] = [
   },
   {
     path: 'dashboards',
-    element: <ResponsiveDrawer />,
+    element: <SidebarLayout />,
     children: [
       {
         path: '',

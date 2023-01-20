@@ -934,8 +934,8 @@ export const NebulaFighterTheme = createTheme({
     MuiToolbar: {
       styleOverrides: {
         root: {
-          minHeight: '0 !important',
-          padding: '0 !important'
+          minHeight: '40 !important',
+          padding: '10 !important'
         }
       }
     },
