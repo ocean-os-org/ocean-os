@@ -17,6 +17,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { SidebarProvider } from '../../contexts/SidebarContext';
 
 import Sidebar from './Sidebar';
 import Header from './Header';
@@ -208,6 +209,7 @@ permanent drawer styles
 */
 
   return (
+
     <Box sx={{ display: 'flex' }}>
       <AppBar
         position="fixed"
@@ -278,6 +280,8 @@ const SidebarLayout = ( {children}:PropsWithChildren<{}> ) => {
 
   return (
     <>
+      <SidebarProvider>
+
       <Box
         sx={{
           flex: 1,
@@ -322,6 +326,8 @@ const SidebarLayout = ( {children}:PropsWithChildren<{}> ) => {
           <Outlet />
         </Box>
       </Box>
+      </SidebarProvider>
+
     </>
   );
 };

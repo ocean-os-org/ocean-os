@@ -1,5 +1,4 @@
 import { ChangeEvent, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import PageHeader from './PageHeader';
 import Footer from '../../../components/Footer';
 import {
@@ -122,9 +121,6 @@ function DashboardTasks() {
 
   return (
     <>
-      <Helmet>
-        <title>Tasks Dashboard</title>
-      </Helmet>
       <PageTitleWrapper>
         <PageHeader />
       </PageTitleWrapper>

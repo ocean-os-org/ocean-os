@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-import { Helmet } from 'react-helmet-async';
-
 import TopBarContent from './TopBarContent';
 import BottomBarContent from './BottomBarContent';
 import SidebarContent from './SidebarContent';
@@ -83,9 +81,6 @@ function ApplicationsMessenger() {
 
   return (
     <>
-      <Helmet>
-        <title>Messenger - Applications</title>
-      </Helmet>
       <RootWrapper className="Mui-FixedWrapper">
         <DrawerWrapperMobile
           sx={{

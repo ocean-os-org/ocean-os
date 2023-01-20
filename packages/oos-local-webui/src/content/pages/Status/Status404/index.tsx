@@ -10,7 +10,6 @@ import {
   InputAdornment,
   styled
 } from '@mui/material';
-import { Helmet } from 'react-helmet-async';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 
 const MainContent = styled(Box)(
@@ -40,9 +39,6 @@ const ButtonSearch = styled(Button)(
 function Status404() {
   return (
     <>
-      <Helmet>
-        <title>Status - 404</title>
-      </Helmet>
       <MainContent>
         <Container maxWidth="md">
           <Box textAlign="center">

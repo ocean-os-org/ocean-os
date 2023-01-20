@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 
 import PageTitle from '../../../../components/PageTitle';
@@ -61,9 +60,6 @@ function Cards() {
 
   return (
     <>
-      <Helmet>
-        <title>Cards - Components</title>
-      </Helmet>
       <PageTitleWrapper>
         <PageTitle
           heading="Cards"

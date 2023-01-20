@@ -6,7 +6,6 @@ import {
   IconButton,
   Tooltip
 } from '@mui/material';
-import { Helmet } from 'react-helmet-async';
 import Logo from '../../../../components/LogoSign';
 
 import { styled } from '@mui/material/styles';
@@ -29,9 +28,6 @@ const MainContent = styled(Box)(
 function StatusMaintenance() {
   return (
     <>
-      <Helmet>
-        <title>Status - Maintenance</title>
-      </Helmet>
       <MainContent>
         <Container maxWidth="md">
           <Logo />

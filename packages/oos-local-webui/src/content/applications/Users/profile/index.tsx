@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import Footer from '../../../../components/Footer';
 
 import { Grid, Container } from '@mui/material';
@@ -25,9 +24,6 @@ function ManagementUserProfile() {
 
   return (
     <>
-      <Helmet>
-        <title>User Details - Management</title>
-      </Helmet>
       <Container sx={{ mt: 3 }} maxWidth="lg">
         <Grid
           container

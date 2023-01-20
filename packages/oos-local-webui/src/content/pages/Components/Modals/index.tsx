@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 
 import PageTitle from '../../../../components/PageTitle';
@@ -14,7 +13,6 @@ import {
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -94,9 +92,6 @@ function Modals() {
 
   return (
     <>
-      <Helmet>
-        <title>Modals - Components</title>
-      </Helmet>
       <PageTitleWrapper>
         <PageTitle
           heading="Modals"

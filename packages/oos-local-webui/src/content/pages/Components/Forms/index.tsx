@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import PageTitle from '../../../../components/PageTitle';
 import { ChangeEvent, useState } from 'react';
 
@@ -69,9 +68,6 @@ function Forms() {
 
   return (
     <>
-      <Helmet>
-        <title>Forms - Components</title>
-      </Helmet>
       <PageTitleWrapper>
         <PageTitle
           heading="Forms"

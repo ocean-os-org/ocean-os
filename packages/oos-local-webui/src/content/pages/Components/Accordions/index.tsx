@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 
 import PageTitle from '../../../../components/PageTitle';
 import PageTitleWrapper from '../../../../components/PageTitleWrapper';
@@ -20,9 +19,6 @@ import Footer from '../../../../components/Footer';
 function Accordions() {
   return (
     <>
-      <Helmet>
-        <title>Accordions - Components</title>
-      </Helmet>
       <PageTitleWrapper>
         <PageTitle
           heading="Accordions"

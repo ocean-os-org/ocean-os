@@ -31,8 +31,6 @@ const SidebarWrapper = styled(Box)(
 );
 
 
-
-
 function Sidebar() {
   const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
   const closeSidebar = () => toggleSidebar();
@@ -80,7 +78,8 @@ function Sidebar() {
       </SidebarWrapper>
       <Drawer
         sx={{
-          boxShadow: `${theme.sidebar.boxShadow}`
+          boxShadow: `${theme.sidebar.boxShadow}`,
+          overflow: 'hidden'
         }}
         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
         open={sidebarToggle}
@@ -90,6 +89,9 @@ function Sidebar() {
       >
         <SidebarWrapper
           sx={{
+            position: 'fixed',
+            left: 0,
+            top: 0,
             background:
               theme.palette.mode === 'dark'
                 ? theme.colors.alpha.white[100]
