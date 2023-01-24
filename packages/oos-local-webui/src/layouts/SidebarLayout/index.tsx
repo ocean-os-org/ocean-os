@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, ReactNode, useState } from 'react';
+import { FC, PropsWithChildren, ReactNode, useContext, useState } from 'react';
 import { Box, alpha, lighten } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
@@ -17,7 +17,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { SidebarProvider } from '../../contexts/SidebarContext';
+import { SidebarContext, SidebarProvider } from '../../contexts/SidebarContext';
 
 import Sidebar from './Sidebar';
 import Header from './Header';
@@ -264,7 +264,7 @@ permanent drawer styles
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{ flexGrow: 1, p: 3, width: { md: `calc(100% - ${drawerWidth}px)` } }}
       >
           <Outlet />
         </Box>
@@ -277,10 +277,11 @@ permanent drawer styles
 
 const SidebarLayout = ( {children}:PropsWithChildren<{}> ) => {
   const theme = useTheme();
+  const { sidebarOpen } = useContext(SidebarContext);
 
   return (
-    <>
-      <SidebarProvider>
+
+    <SidebarProvider>
 
       <Box
         sx={{
@@ -313,23 +314,21 @@ const SidebarLayout = ( {children}:PropsWithChildren<{}> ) => {
         <Sidebar />
         <Box
           sx={{
-            position: 'relative',
-            zIndex: 5,
-            display: 'block',
-            flex: 1,
+            flexGrow: 1,
             pt: `${theme.header.height}`,
-            [theme.breakpoints.up('lg')]: {
-              ml: `${theme.sidebar.width}`
-            }
+            ...( sidebarOpen && {ml: { md: theme.sidebar.width }}),
           }}
         >
           <Outlet />
         </Box>
       </Box>
-      </SidebarProvider>
-
-    </>
+    </SidebarProvider>
   );
 };
+/*
+            [theme.breakpoints.up('lg')]: {
+              ml: `${theme.sidebar.width}`
+            }
 
+*/
 export default SidebarLayout;
