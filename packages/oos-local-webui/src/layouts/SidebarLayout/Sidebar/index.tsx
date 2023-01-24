@@ -14,11 +14,16 @@ import {
   darken,
   Tooltip,
   Theme,
-  CSSObject
+  CSSObject,
+  IconButton,
+  Typography
 } from '@mui/material';
 
 import SidebarMenu from './SidebarMenu';
 import Logo from '../../../components/Logo';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: theme.sidebar.width,
@@ -37,7 +42,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
   overflowX: 'hidden',
   width: `calc(${theme.spacing(7)} + 1px)`,
   [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
+    width: `calc(${theme.spacing(7)} + 1px)`,
   },
 });
 
@@ -83,28 +88,45 @@ const SidebarWrapper = styled(Box)(
  */
 
 function Sidebar() {
-  const { sidebarOpen, sidebarMobileOpen, closeMobileSidebar } = useContext(SidebarContext);
+  const { sidebarOpen, sidebarMobileOpen, closeMobileSidebar, toggleSidebar } = useContext(SidebarContext);
   const theme = useTheme();
+
 
   const side = (
     <SidebarWrapper>
       <Box
         sx={{
-          mt: theme.spacing(1),
-          mx: theme.spacing(2),
+          p: theme.spacing(1),
           display: 'flex',
           flexDirection: 'row'
         }}
       >
-        <Logo />
-      </Box>
-      <Divider
-        sx={{
-          mt: theme.spacing(3),
-          mx: theme.spacing(2),
-          background: theme.colors.alpha.trueWhite[10]
-        }}
-      />
+      <IconButton 
+        aria-label="open sidebar"
+        sx={{ display: { xs: 'none ', sm: 'flex'}}}
+        onClick={toggleSidebar}
+      >
+        <img width="32" src="/assets/images/logo/ocean-os.svg"></img>
+      </IconButton>
+      <IconButton 
+        aria-label="open sidebar"
+        sx={{ display: { xs: 'flex', sm: 'none'}}}
+      >
+        <img width="32" src="/assets/images/logo/ocean-os.svg"></img>
+      </IconButton>
+      <Typography
+            variant="h4"
+            component="div"
+            sx={{ ...((sidebarOpen || sidebarMobileOpen) ? {display: 'flex'} : {display: 'none'}), flexGrow: 1, justifyContent: 'start', alignItems: 'center' }}
+          >
+            OceanOS
+      </Typography>
+      <IconButton onClick={toggleSidebar} aria-label="close sidebar" sx={{ ...(!sidebarOpen ? {display: 'none'} : {display: { xs: 'none', md: 'flex'}} )}}>
+        <ChevronLeftIcon />
+      </IconButton>
+      
+    </Box>
+    <Divider />
     <Box
       sx={{
         height: `calc(100% - ${theme.header.height})`,

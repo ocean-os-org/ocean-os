@@ -43,7 +43,7 @@ const Search = styled('div')(({ theme }) => ({
   marginLeft: 0,
   width: '100%',
   [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(3),
+    marginLeft: theme.spacing(1),
     width: 'auto',
   },
 }));
@@ -82,7 +82,6 @@ const AppBar = styled(MuiAppBar, {
   backgroundColor: alpha(theme.header.background?.toString() || '', 0.85),
   backdropFilter: 'blur(3px)',
   position: 'fixed',
-  zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -99,7 +98,7 @@ const AppBar = styled(MuiAppBar, {
   }),
   ...(!open && {
     [theme.breakpoints.up('md')]: {
-      width: `calc(100% - ${theme.spacing(8)} - 2px)` ,
+      width: `calc(100% - ${theme.spacing(7)} - 2px)` ,
     },
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -212,35 +211,20 @@ export function Header() {
   return (
     <Box sx={{ display: 'flex' }}>
       <AppBar open={sidebarOpen}>
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
+        <Toolbar
+          sx={{ 
+            ml: 0,
+            paddingLeft: { xs: theme.spacing(1) }
+          }}
+        >
+          <IconButton 
+            aria-label="open sidebar"
+            sx={{  display: { sm: 'flex', md: 'none'}  }}
             onClick={openMobileSidebar}
-            sx={{ mr: 2 }}
           >
-            <MenuIcon />
-          </IconButton>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={toggleSidebar}
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            MUI
-          </Typography>
+            <img width="32" src="/assets/images/logo/ocean-os.svg"></img>
+        </IconButton>
+
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
