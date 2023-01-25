@@ -1,29 +1,25 @@
 import { useContext } from 'react';
-import Scrollbar from '../../../components/Scrollbar';
-import { SidebarContext } from '../../../contexts/SidebarContext';
 
 import {
   Box,
   Drawer,
-  alpha,
   styled,
   Divider,
   useTheme,
-  Button,
-  lighten,
-  darken,
-  Tooltip,
   Theme,
   CSSObject,
   IconButton,
-  Typography
+  Typography,
+  useMediaQuery
 } from '@mui/material';
 
-import SidebarMenu from './SidebarMenu';
-import Logo from '../../../components/Logo';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+
+import Scrollbar from '../../../components/Scrollbar';
+
+import { SidebarContext } from '../../../contexts/SidebarContext';
+import SidebarMenu from './SidebarMenu';
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: theme.sidebar.width,
@@ -42,7 +38,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
   overflowX: 'hidden',
   width: `calc(${theme.spacing(7)} + 1px)`,
   [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(7)} + 1px)`,
+    width: `calc(${theme.spacing(8)} + 1px)`,
   },
 });
 
@@ -64,7 +60,7 @@ const MiniDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'open'
 );
 
 
-const SidebarWrapper = styled(Box)(
+const SidebarStyled = styled(Box)(
   ({ theme }) => `
         width: ${theme.sidebar.width};
         min-width: ${theme.sidebar.width};
@@ -75,73 +71,60 @@ const SidebarWrapper = styled(Box)(
 `
 );
 
-/**
- * 
- 
-      sx={{
-        background:
-          theme.palette.mode === 'dark'
-            ? alpha(lighten(theme.header.background?.toString() || '', 0.1), 0.5)
-            : darken(theme.colors.alpha.black[100], 0.5),
-      }}
-
- */
-
 function Sidebar() {
   const { sidebarOpen, sidebarMobileOpen, closeMobileSidebar, toggleSidebar } = useContext(SidebarContext);
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-
-  const side = (
-    <SidebarWrapper>
+  const sideMenu = (
+    <SidebarStyled>
       <Box
         sx={{
+
           p: theme.spacing(1),
           display: 'flex',
           flexDirection: 'row'
         }}
       >
-      <IconButton 
-        aria-label="open sidebar"
-        sx={{ display: { xs: 'none ', sm: 'flex'}}}
-        onClick={toggleSidebar}
+        <IconButton 
+          aria-label="open sidebar"
+          sx={{ padding: '8px 12px', display: { xs: 'none ', md: 'flex'}}}
+          onClick={toggleSidebar}
+        >
+          <img width="32" src="/assets/images/logo/ocean-os.svg"></img>
+        </IconButton>
+        <Box 
+          sx={{ display: { xs: 'flex', md: 'none'}, padding: '8px 12px' }}
+        >
+          <img width="32" src="/assets/images/logo/ocean-os.svg"></img>
+        </Box>
+        <Typography
+              variant="h4"
+              component="div"
+              sx={{ ...((sidebarOpen || sidebarMobileOpen) ? {display: 'flex'} : {display: 'none'}), pl:1, flexGrow: 1, justifyContent: 'start', alignItems: 'center' }}
+            >
+              OceanOS
+        </Typography>
+        <IconButton onClick={toggleSidebar} aria-label="close sidebar" sx={{ ...(!sidebarOpen ? {display: 'none'} : {display: { xs: 'none', md: 'flex'}} )}}>
+          {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+        </IconButton>
+      </Box>
+      <Box
+        sx={{
+          height: `calc(100% - ${theme.header.height})`,
+          overflow: 'hidden'
+        }}
       >
-        <img width="32" src="/assets/images/logo/ocean-os.svg"></img>
-      </IconButton>
-      <IconButton 
-        aria-label="open sidebar"
-        sx={{ display: { xs: 'flex', sm: 'none'}}}
-      >
-        <img width="32" src="/assets/images/logo/ocean-os.svg"></img>
-      </IconButton>
-      <Typography
-            variant="h4"
-            component="div"
-            sx={{ ...((sidebarOpen || sidebarMobileOpen) ? {display: 'flex'} : {display: 'none'}), flexGrow: 1, justifyContent: 'start', alignItems: 'center' }}
-          >
-            OceanOS
-      </Typography>
-      <IconButton onClick={toggleSidebar} aria-label="close sidebar" sx={{ ...(!sidebarOpen ? {display: 'none'} : {display: { xs: 'none', md: 'flex'}} )}}>
-        <ChevronLeftIcon />
-      </IconButton>
-      
-    </Box>
-    <Divider />
-    <Box
-      sx={{
-        height: `calc(100% - ${theme.header.height})`,
-        overflow: 'hidden'
-      }}
-    >
-      <Scrollbar>
-        <SidebarMenu />
-      </Scrollbar>
-    </Box>
-  </SidebarWrapper>
-); 
+        <Scrollbar>
+          <SidebarMenu />
+        </Scrollbar>
+      </Box>
+    </SidebarStyled>
+  ); 
 
   return (
     <>
+    {isMobile ?
       <Drawer
         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
         variant="temporary"
@@ -156,8 +139,9 @@ function Sidebar() {
           display: { xs: 'block', md: 'none' },
         }}
       >
-        {side}
+        {sideMenu}
       </Drawer>
+      :
       <MiniDrawer 
         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
         variant="permanent"
@@ -167,14 +151,11 @@ function Sidebar() {
           display: { xs: 'none', md: 'block' },
         }}
       >
-        {side}
+        {sideMenu}
       </MiniDrawer>
+    }
     </>
   );
 }
 
 export default Sidebar;
-
-/*
-
-*/

@@ -6,7 +6,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 import ThemeProviderWrapper from './theme/ThemeProvider';
 import router from './router';
-import { SidebarProvider } from './contexts/SidebarContext';
 
 function App() {
   const content = useRoutes(router);
@@ -15,9 +14,7 @@ function App() {
     <ThemeProviderWrapper>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <CssBaseline />
-
-          {content}
-
+        {content}
       </LocalizationProvider>
     </ThemeProviderWrapper>
   );

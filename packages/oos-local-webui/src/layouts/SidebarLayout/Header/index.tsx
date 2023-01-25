@@ -98,7 +98,7 @@ const AppBar = styled(MuiAppBar, {
   }),
   ...(!open && {
     [theme.breakpoints.up('md')]: {
-      width: `calc(100% - ${theme.spacing(7)} - 2px)` ,
+      width: `calc(100% - ${theme.spacing(7)} - 1px)` ,
     },
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -110,230 +110,38 @@ const AppBar = styled(MuiAppBar, {
 
 export function Header() {
   const { sidebarOpen, toggleSidebar, openMobileSidebar } = useContext(SidebarContext);
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState<null | HTMLElement>(null);
-  const theme = useTheme();
-
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
-  const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const menuId = 'primary-search-account-menu';
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
-
-  const mobileMenuId = 'primary-search-account-menu-mobile';
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
-  );
-
-  return (
-    <Box sx={{ display: 'flex' }}>
-      <AppBar open={sidebarOpen}>
-        <Toolbar
-          sx={{ 
-            ml: 0,
-            paddingLeft: { xs: theme.spacing(1) }
-          }}
-        >
-          <IconButton 
-            aria-label="open sidebar"
-            sx={{  display: { sm: 'flex', md: 'none'}  }}
-            onClick={openMobileSidebar}
-          >
-            <img width="32" src="/assets/images/logo/ocean-os.svg"></img>
-        </IconButton>
-
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <HeaderButtons />
-            <HeaderUserbox />
-          </Box>
-
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </Box>
-  );
-}
-
-
-const HeaderWrapper = styled(Box)(
-  ({ theme }) => `
-        height: ${theme.header.height};
-        color: ${theme.header.textColor};
-        padding: ${theme.spacing(0, 2)};
-        right: 0;
-        z-index: 6;
-        background-color: ${alpha(theme.header.background?.toString() || '', 0.95)};
-        backdrop-filter: blur(3px);
-        position: fixed;
-        justify-content: space-between;
-        width: 100%;
-        @media (min-width: ${theme.breakpoints.values.lg}px) {
-            left: ${theme.sidebar.width};
-            width: auto;
-        }
-`
-);
-
-function Header1() {
-  const { sidebarOpen, toggleSidebar } = useContext(SidebarContext);
   const theme = useTheme();
 
   return (
-    <HeaderWrapper
-      display="flex"
-      alignItems="center"
-      sx={{
-        boxShadow:
-          theme.palette.mode === 'dark'
-            ? `0 1px 0 ${alpha(
-                lighten(theme.colors.primary.main, 0.7),
-                0.15
-              )}, 0px 2px 8px -3px rgba(0, 0, 0, 0.2), 0px 5px 22px -4px rgba(0, 0, 0, .1)`
-            : `0px 2px 8px -3px ${alpha(
-                theme.colors.alpha.black[100],
-                0.2
-              )}, 0px 5px 22px -4px ${alpha(
-                theme.colors.alpha.black[100],
-                0.1
-              )}`
-      }}
-    >
-      <Stack
-        direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        alignItems="center"
-        spacing={2}
+    <AppBar open={sidebarOpen}>
+      <Toolbar
+        sx={{ 
+          ml: 0,
+          paddingLeft: { xs: theme.spacing(1) }
+        }}
       >
-        <HeaderMenu />
-      </Stack>
-      <Box display="flex" alignItems="center">
+        <IconButton 
+          aria-label="open sidebar"
+          sx={{  display: { sm: 'flex', md: 'none'}  }}
+          onClick={openMobileSidebar}
+        >
+          <img width="32" src="/assets/images/logo/ocean-os.svg"></img>
+      </IconButton>
+
+        <Search>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="Search…"
+            inputProps={{ 'aria-label': 'search' }}
+          />
+        </Search>
+        <Box sx={{ flexGrow: 1 }} />
         <HeaderButtons />
         <HeaderUserbox />
-        <Box
-          component="span"
-          sx={{
-            ml: 2,
-            display: { lg: 'none', xs: 'inline-block' }
-          }}
-        >
-          <Tooltip arrow title="Toggle Menu">
-            <IconButton color="primary" onClick={toggleSidebar}>
-              {!sidebarOpen ? (
-                <MenuTwoToneIcon fontSize="small" />
-              ) : (
-                <CloseTwoToneIcon fontSize="small" />
-              )}
-            </IconButton>
-          </Tooltip>
-        </Box>
-      </Box>
-    </HeaderWrapper>
+      </Toolbar>
+    </AppBar>
   );
 }
 
