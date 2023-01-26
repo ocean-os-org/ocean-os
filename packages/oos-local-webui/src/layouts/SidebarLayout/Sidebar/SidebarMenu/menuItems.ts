@@ -7,7 +7,7 @@ export const menuItems = [
     },
     {
         name: "Drafts",
-        url: "/dashboard/tasks",
+        url: "/dashboards/tasks",
         icon: "drafts",
     },
     {

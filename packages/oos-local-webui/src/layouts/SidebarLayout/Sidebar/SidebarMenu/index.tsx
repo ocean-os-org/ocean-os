@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { Fragment, useContext, useState } from 'react';
 import { menuItems } from './menuItems';
 import {
   ListSubheader,
@@ -206,7 +206,7 @@ function SidebarMenu() {
   const buildMenu = ( items: any[]) => 
     items.map( item => (
       item.items ? 
-        <div key={item.name}>
+        <Fragment key={item.name}>
           <ListItemButton
             key={item.name}
             onClick={handleClick}
@@ -222,7 +222,7 @@ function SidebarMenu() {
               { buildMenu(item.items) }
             </List>
           </Collapse>
-        </div>
+        </Fragment>
       : 
         <ListItemButton
           key={item.name}
@@ -251,7 +251,7 @@ function SidebarMenu() {
     </List>
   );
 }
-
+/*
 function SidebarMenu1() {
   const { closeMobileSidebar } = useContext(SidebarContext);
   const theme = useTheme();
@@ -541,5 +541,5 @@ function SidebarMenu1() {
     </MenuWrapper>
   );
 }
-
+*/
 export default SidebarMenu;
