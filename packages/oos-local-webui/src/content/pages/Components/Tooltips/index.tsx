@@ -1,5 +1,5 @@
+import ComponentDocumentation from '../../../../components/ComponentDoc';
 import PageTitle from '../../../../components/PageTitle';
-import PageTitleWrapper from '../../../../components/PageTitleWrapper';
 import {
   Container,
   Grid,
@@ -16,13 +16,13 @@ import Footer from '../../../../components/Footer';
 function Tooltips() {
   return (
     <>
-      <PageTitleWrapper>
-        <PageTitle
+      <PageTitle>
+        <ComponentDocumentation
           heading="Tooltips"
           subHeading="Tooltips display informative text when users hover over, focus on, or tap an element."
           docs="https://material-ui.com/components/tooltips/"
         />
-      </PageTitleWrapper>
+      </PageTitle>
       <Container maxWidth="lg">
         <Grid
           container

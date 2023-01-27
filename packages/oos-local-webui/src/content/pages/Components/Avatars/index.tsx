@@ -1,5 +1,5 @@
+import ComponentDocumentation from '../../../../components/ComponentDoc';
 import PageTitle from '../../../../components/PageTitle';
-import PageTitleWrapper from '../../../../components/PageTitleWrapper';
 import {
   Container,
   Grid,
@@ -48,13 +48,13 @@ function stringAvatar(name: string) {
 function Avatars() {
   return (
     <>
-      <PageTitleWrapper>
-        <PageTitle
+      <PageTitle>
+        <ComponentDocumentation
           heading="Avatars"
           subHeading="Avatars are found throughout material design with uses in everything from tables to dialog menus."
           docs="https://material-ui.com/components/avatars/"
         />
-      </PageTitleWrapper>
+      </PageTitle>
       <Container maxWidth="lg">
         <Grid
           container

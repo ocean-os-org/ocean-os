@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
+import ComponentDocumentation from '../../../../components/ComponentDoc';
 import PageTitle from '../../../../components/PageTitle';
-import PageTitleWrapper from '../../../../components/PageTitleWrapper';
 import {
   Container,
   Grid,
@@ -60,13 +60,13 @@ function Cards() {
 
   return (
     <>
-      <PageTitleWrapper>
-        <PageTitle
+      <PageTitle>
+        <ComponentDocumentation
           heading="Cards"
           subHeading="Cards contain content and actions about a single subject."
           docs="https://material-ui.com/components/cards/"
         />
-      </PageTitleWrapper>
+      </PageTitle>
       <Container maxWidth="lg">
         <Grid
           container

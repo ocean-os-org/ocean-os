@@ -1,6 +1,6 @@
 
+import ComponentDocumentation from '../../../../components/ComponentDoc';
 import PageTitle from '../../../../components/PageTitle';
-import PageTitleWrapper from '../../../../components/PageTitleWrapper';
 import {
   Container,
   Grid,
@@ -19,13 +19,13 @@ import Footer from '../../../../components/Footer';
 function Accordions() {
   return (
     <>
-      <PageTitleWrapper>
-        <PageTitle
+      <PageTitle>
+        <ComponentDocumentation
           heading="Accordions"
           subHeading="Accordions contain creation flows and allow lightweight editing of an element."
           docs="https://material-ui.com/components/accordion/"
         />
-      </PageTitleWrapper>
+      </PageTitle>
       <Container maxWidth="lg">
         <Grid
           container

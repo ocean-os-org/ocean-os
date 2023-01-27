@@ -1,5 +1,5 @@
 import PageHeader from './PageHeader';
-import PageTitleWrapper from '../../../components/PageTitleWrapper';
+import PageTitle from '../../../components/PageTitle';
 import { Grid, Container } from '@mui/material';
 import Footer from '../../../components/Footer';
 
@@ -8,9 +8,9 @@ import RecentOrders from './RecentOrders';
 function ApplicationsTransactions() {
   return (
     <>
-      <PageTitleWrapper>
+      <PageTitle>
         <PageHeader />
-      </PageTitleWrapper>
+      </PageTitle>
       <Container maxWidth="lg">
         <Grid
           container

@@ -1,5 +1,5 @@
+import ComponentDocumentation from '../../../../components/ComponentDoc';
 import PageTitle from '../../../../components/PageTitle';
-import PageTitleWrapper from '../../../../components/PageTitleWrapper';
 import {
   Container,
   Grid,
@@ -40,13 +40,13 @@ function Badges() {
 
   return (
     <>
-      <PageTitleWrapper>
-        <PageTitle
+      <PageTitle>
+        <ComponentDocumentation
           heading="Badges"
           subHeading="Badge generates a small badge to the top-right of its child(ren)."
           docs="https://material-ui.com/components/badges/"
         />
-      </PageTitleWrapper>
+      </PageTitle>
       <Container maxWidth="lg">
         <Grid
           container

@@ -1,5 +1,5 @@
+import ComponentDocumentation from '../../../../components/ComponentDoc';
 import PageTitle from '../../../../components/PageTitle';
-import PageTitleWrapper from '../../../../components/PageTitleWrapper';
 import {
   Button,
   Container,
@@ -17,13 +17,13 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 function Buttons() {
   return (
     <>
-      <PageTitleWrapper>
-        <PageTitle
+      <PageTitle>
+        <ComponentDocumentation
           heading="Buttons"
           subHeading="Buttons allow users to take actions, and make choices, with a single tap."
           docs="https://material-ui.com/components/buttons/"
         />
-      </PageTitleWrapper>
+      </PageTitle>
       <Container maxWidth="lg">
         <Grid
           container

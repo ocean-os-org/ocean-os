@@ -1,7 +1,7 @@
-import PageTitle from '../../../../components/PageTitle';
+import ComponentDocumentation from '../../../../components/ComponentDoc';
 import { ChangeEvent, useState } from 'react';
 
-import PageTitleWrapper from '../../../../components/PageTitleWrapper';
+import PageTitle from '../../../../components/PageTitle';
 import {
   Container,
   Grid,
@@ -68,13 +68,13 @@ function Forms() {
 
   return (
     <>
-      <PageTitleWrapper>
-        <PageTitle
+      <PageTitle>
+        <ComponentDocumentation
           heading="Forms"
           subHeading="Components that are used to build interactive placeholders used for data collection from users."
           docs="https://material-ui.com/components/text-fields/"
         />
-      </PageTitleWrapper>
+      </PageTitle>
       <Container maxWidth="lg">
         <Grid
           container

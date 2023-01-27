@@ -1,44 +1,19 @@
-import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
-import { Typography, Button, Grid } from '@mui/material';
+import { PropsWithChildren } from 'react';
+import { Box, Container, styled } from '@mui/material';
 
-interface PageTitleProps {
-  heading?: string;
-  subHeading?: string;
-  docs?: string;
-}
+const PageTitleStyled = styled(Box)(
+  ({ theme }) => `
+        padding: ${theme.spacing(4)};
+        background-color: ${theme.palette.background.paper};
+        margin-bottom: ${theme.spacing(4)};
+`
+);
 
-const PageTitle = ({
-  heading = '',
-  subHeading = '',
-  docs = '',
-  ...rest
-}: PageTitleProps) => {
+const PageTitle = ({ children }:PropsWithChildren<{}> ) => {
   return (
-    <Grid
-      container
-      justifyContent="space-between"
-      alignItems="center"
-      {...rest}
-    >
-      <Grid item>
-        <Typography variant="h3" component="h3" gutterBottom>
-          {heading}
-        </Typography>
-        <Typography variant="subtitle2">{subHeading}</Typography>
-      </Grid>
-      <Grid item>
-        <Button
-          href={docs}
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{ mt: { xs: 2, md: 0 } }}
-          variant="contained"
-          startIcon={<AddTwoToneIcon fontSize="small" />}
-        >
-          {heading} Documentation
-        </Button>
-      </Grid>
-    </Grid>
+    <PageTitleStyled>
+      <Container maxWidth="lg">{children}</Container>
+    </PageTitleStyled>
   );
 };
 

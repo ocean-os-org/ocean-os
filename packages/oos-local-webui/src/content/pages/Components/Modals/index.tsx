@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
+import ComponentDocumentation from '../../../../components/ComponentDoc';
 import PageTitle from '../../../../components/PageTitle';
-import PageTitleWrapper from '../../../../components/PageTitleWrapper';
 import {
   Container,
   Grid,
@@ -92,13 +92,13 @@ function Modals() {
 
   return (
     <>
-      <PageTitleWrapper>
-        <PageTitle
+      <PageTitle>
+        <ComponentDocumentation
           heading="Modals"
           subHeading="Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks."
           docs="https://material-ui.com/components/dialogs/"
         />
-      </PageTitleWrapper>
+      </PageTitle>
       <Container maxWidth="lg">
         <Grid
           container

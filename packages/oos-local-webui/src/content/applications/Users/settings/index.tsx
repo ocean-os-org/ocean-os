@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 import PageHeader from './PageHeader';
-import PageTitleWrapper from '../../../../components/PageTitleWrapper';
+import PageTitle from '../../../../components/PageTitle';
 import { Container, Tabs, Tab, Grid } from '@mui/material';
 import Footer from '../../../../components/Footer';
 import { styled } from '@mui/material/styles';
@@ -34,9 +34,9 @@ function ManagementUserSettings() {
 
   return (
     <>
-      <PageTitleWrapper>
+      <PageTitle>
         <PageHeader />
-      </PageTitleWrapper>
+      </PageTitle>
       <Container maxWidth="lg">
         <Grid
           container

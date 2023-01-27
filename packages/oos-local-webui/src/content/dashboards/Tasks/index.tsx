@@ -13,7 +13,7 @@ import {
   Avatar,
   styled
 } from '@mui/material';
-import PageTitleWrapper from '../../../components/PageTitleWrapper';
+import PageTitle from '../../../components/PageTitle';
 
 import TeamOverview from './TeamOverview';
 import TasksAnalytics from './TasksAnalytics';
@@ -121,9 +121,9 @@ function DashboardTasks() {
 
   return (
     <>
-      <PageTitleWrapper>
+      <PageTitle>
         <PageHeader />
-      </PageTitleWrapper>
+      </PageTitle>
       <Container maxWidth="lg">
         <TabsContainerWrapper>
           <Tabs
