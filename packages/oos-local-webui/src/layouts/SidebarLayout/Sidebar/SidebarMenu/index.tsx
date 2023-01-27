@@ -1,5 +1,5 @@
 import { Fragment, useContext, useState } from 'react';
-import { menuItems } from './menuItems';
+import { menuItems, menuOpen } from './menuItems';
 import {
   ListSubheader,
   alpha,
@@ -195,31 +195,35 @@ const ListItemText = styled(MuiListItemText)(
 )
 
 function SidebarMenu() {
-  const [open, setOpen] = useState(true);
+  const [menu, setOpen] = useState(menuItems);
   const { sidebarOpen } = useContext(SidebarContext);
   const theme = useTheme();
 
-  const handleClick = () => {
-    setOpen(!open);
+  const handleClick = (s:string,e:any) => {
+    setOpen((m) => { 
+      let idx = m.findIndex( i => i.id === s)
+      if (idx) m[idx].open = !m[idx].open
+      return [...m];
+    });
   };
 
-  const buildMenu = ( items: any[]) => 
+  const buildMenu = ( items: any[], depth: number = 0) => 
     items.map( item => (
       item.items ? 
         <Fragment key={item.name}>
           <ListItemButton
             key={item.name}
-            onClick={handleClick}
+            onClick={(event) => handleClick(item.id,event)}
           >
             <ListItemIcon>
               <Icon>{item.icon}</Icon>
             </ListItemIcon>
             <ListItemText primary={item.name} />
-            {open ? <ExpandLess /> : <ExpandMore />}
+            {item.open ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
-          <Collapse in={open} timeout="auto" unmountOnExit>
+          <Collapse in={item.open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              { buildMenu(item.items) }
+              { buildMenu(item.items, depth + 2) }
             </List>
           </Collapse>
         </Fragment>
@@ -228,6 +232,7 @@ function SidebarMenu() {
           key={item.name}
           component={Link}
           to={item.url}
+          sx={{ pl: 2 + depth }}
         >
           <ListItemIcon>
             <Icon>{item.icon}</Icon>
@@ -238,14 +243,9 @@ function SidebarMenu() {
 
   return (
     <List
-      sx={{ width: sidebarOpen ? '100%' : '72px' , padding: 1}}
+      sx={{ width: sidebarOpen ? '100%' : '72px'}}
       component="nav"
       aria-labelledby="menu options"
-      subheader={
-        <ListSubheader component="div" id="options" sx={{ display: sidebarOpen ? 'block' : 'none'}}>
-          Options
-        </ListSubheader>
-      }
     >
       { buildMenu(menuItems) }
     </List>

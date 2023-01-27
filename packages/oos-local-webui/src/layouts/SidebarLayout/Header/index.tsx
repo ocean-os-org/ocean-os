@@ -79,8 +79,8 @@ interface AppBarProps extends MuiAppBarProps {
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })<AppBarProps>(({ theme, open }) => ({
-  backgroundColor: alpha(theme.header.background?.toString() || '', 0.85),
   backdropFilter: 'blur(3px)',
+  backgroundColor: theme.palette.background.paper ,
   position: 'fixed',
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
@@ -117,16 +117,17 @@ export function Header() {
       <Toolbar
         sx={{ 
           ml: 0,
-          paddingLeft: { xs: theme.spacing(1) }
+          paddingLeft: { xs: theme.spacing(1) },
+          backgroundColor: theme.palette.primary.main
         }}
       >
         <IconButton 
-          aria-label="open sidebar"
-          sx={{  display: { sm: 'flex', md: 'none'}  }}
-          onClick={openMobileSidebar}
-        >
-          <img width="32" src="/assets/images/logo/ocean-os.svg"></img>
-      </IconButton>
+            aria-label="open sidebar"
+            sx={{  display: { sm: 'flex', md: 'none'}  }}
+            onClick={openMobileSidebar}
+          >
+            <img width="32" src="/assets/images/logo/ocean-os.svg"></img>
+        </IconButton>
 
         <Search>
           <SearchIconWrapper>
@@ -134,7 +135,6 @@ export function Header() {
           </SearchIconWrapper>
           <StyledInputBase
             placeholder="Search…"
-            inputProps={{ 'aria-label': 'search' }}
           />
         </Search>
         <Box sx={{ flexGrow: 1 }} />
