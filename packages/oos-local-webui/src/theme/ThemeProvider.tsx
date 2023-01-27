@@ -7,7 +7,7 @@ export const ThemeContext = React.createContext(
 );
 
 const ThemeProviderWrapper = (props:PropsWithChildren<{}>) => {
-  const curThemeName = localStorage.getItem('appTheme') || 'NebulaFighterTheme';
+  const curThemeName = localStorage.getItem('appTheme') || 'OceanOSTheme';
   const [themeName, _setThemeName] = useState(curThemeName);
   const theme = themeCreator(themeName);
   const setThemeName = (themeName: string): void => {
