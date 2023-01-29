@@ -1,5 +1,5 @@
 import { Fragment, useContext, useState } from 'react';
-import { menuItems, menuOpen } from './menuItems';
+import { menuItems } from './menuItems';
 import {
   ListSubheader,
   alpha,
@@ -13,9 +13,10 @@ import {
   ListItemIcon,
   Collapse,
   Icon,
-  useMediaQuery
+  useMediaQuery,
+  Tooltip
 } from '@mui/material';
-import MuiListItemText from '@mui/material/ListItemText'
+import ListItemText from '@mui/material/ListItemText'
 import { Link, NavLink as RouterLink } from 'react-router-dom';
 import { SidebarContext } from '../../../../contexts/SidebarContext';
 
@@ -188,62 +189,66 @@ const SubMenuWrapper = styled(Box)(
 `
 );
 
-const ListItemText = styled(MuiListItemText)(
-  ({theme}) => ({
-  })
-    
-)
 
 function SidebarMenu() {
   const [menu, setOpen] = useState(menuItems);
-  const { sidebarOpen } = useContext(SidebarContext);
+  const { sidebarOpen, sidebarMobileOpen } = useContext(SidebarContext);
   const theme = useTheme();
 
-  const handleClick = (s:string,e:any) => {
-    setOpen((m) => { 
-      let idx = m.findIndex( i => i.id === s)
-      if (idx) m[idx].open = !m[idx].open
+  const handleClick = (s:string) => {
+    setOpen((m) => {
+      const select = (m:any[]):any => 
+        m.forEach( i => i.name === s ? (i.items ? i.selected = !i.selected : i.selected = true) : (i.items ? select(i.items) : i.selected = false) )
+
+      select(m);
       return [...m];
     });
   };
+
+  const open = sidebarMobileOpen || sidebarOpen;
 
   const buildMenu = ( items: any[], depth: number = 0) => 
     items.map( item => (
       item.items ? 
         <Fragment key={item.name}>
-          <ListItemButton
-            key={item.name}
-            onClick={(event) => handleClick(item.id,event)}
-          >
-            <ListItemIcon>
-              <Icon>{item.icon}</Icon>
-            </ListItemIcon>
-            <ListItemText primary={item.name} />
-            {item.open ? <ExpandLess /> : <ExpandMore />}
-          </ListItemButton>
-          <Collapse in={item.open} timeout="auto" unmountOnExit>
+          <Tooltip arrow title={item.name} placement="right" enterDelay={1500}>
+            <ListItemButton
+              key={item.name}
+              
+              onClick={(event) => handleClick(item.name)}
+              sx={{ pl: 2 + depth }}
+            >
+              <ListItemIcon>
+                {item.selected ? <ExpandLess /> : <ExpandMore />}
+              </ListItemIcon>
+              {open && <ListItemText primary={item.name} />}
+            </ListItemButton>
+          </Tooltip>
+          <Collapse in={item.selected} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              { buildMenu(item.items, depth + 2) }
+              { buildMenu(item.items, depth + 2 ) }
             </List>
           </Collapse>
         </Fragment>
       : 
+      <Tooltip key={item.name} arrow title={item.name} placement="right" enterDelay={1500}>
         <ListItemButton
           key={item.name}
           component={Link}
+          onClick={(event) => handleClick(item.name)}
           to={item.url}
-          sx={{ pl: 2 + depth }}
+          sx={{ pl: open ? 2 + depth : 2}}
         >
-          <ListItemIcon>
+          <ListItemIcon sx={{ color: item.selected? theme.palette.secondary.main : theme.palette.common.white }}>
             <Icon>{item.icon}</Icon>
           </ListItemIcon>
-          <ListItemText primary={item.name} />
+          {open && <ListItemText primary={item.name} />}
         </ListItemButton>
+        </Tooltip>
     ))
 
   return (
     <List
-      sx={{ width: sidebarOpen ? '100%' : '72px'}}
       component="nav"
       aria-labelledby="menu options"
     >

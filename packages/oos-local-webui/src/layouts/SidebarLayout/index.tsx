@@ -13,6 +13,6 @@ const SidebarLayout = () => {
       <PageContent />
     </SidebarProvider>
   );
-};
+}; 
 
 export default SidebarLayout;

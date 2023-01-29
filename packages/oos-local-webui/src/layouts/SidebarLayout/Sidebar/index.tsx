@@ -23,6 +23,7 @@ import SidebarMenu from './SidebarMenu';
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: theme.sidebar.width,
+  border: 'none',
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
@@ -35,19 +36,17 @@ const closedMixin = (theme: Theme): CSSObject => ({
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
+  border: 'none',
   overflowX: 'hidden',
-  width: `calc(${theme.spacing(7)} + 1px)`,
+  width: `calc(${theme.spacing(7)}) + 1px`,
   [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
+    width: `calc(${theme.spacing(7)} + 1px)`,
   },
 });
 
 const MiniDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     width: theme.sidebar.width,
-    flexShrink: 0,
-    whiteSpace: 'nowrap',
-    boxSizing: 'border-box',
     ...(open && {
       ...openedMixin(theme),
       '& .MuiDrawer-paper': openedMixin(theme),
@@ -67,7 +66,10 @@ const SidebarStyled = styled(Box)(
         color: ${theme.colors.alpha.trueWhite[70]};
         position: relative;
         height: 100%;
+        box-shadow: '5px 0px 5px 0px rgb(0,0,0,0.2)';
         padding-bottom: 5px;
+
+
 `
 );
 
@@ -80,23 +82,21 @@ function Sidebar() {
     <SidebarStyled>
       <Box
         sx={{
-
           p: theme.spacing(1),
           display: 'flex',
-          flexDirection: 'row'
         }}
       >
         <IconButton 
           aria-label="open sidebar"
-          sx={{ padding: '8px 12px', display: { xs: 'none ', md: 'flex'}}}
+          sx={{ display: { xs: 'none ', md: 'flex', padding: 3}}}
           onClick={toggleSidebar}
         >
-          <img width="32" src="/assets/images/logo/ocean-os.svg"></img>
+          <img width="40" src="/assets/images/logo/ocean-os.svg"></img>
         </IconButton>
         <Box 
-          sx={{ display: { xs: 'flex', md: 'none'}, padding: '8px 12px' }}
+          sx={{ display: { xs: 'flex', md: 'none'} }}
         >
-          <img width="32" src="/assets/images/logo/ocean-os.svg"></img>
+          <img width="40" src="/assets/images/logo/ocean-os.svg"></img>
         </Box>
         <Typography
               variant="h4"
@@ -105,18 +105,20 @@ function Sidebar() {
             >
               OceanOS
         </Typography>
-        <IconButton onClick={toggleSidebar} aria-label="close sidebar" sx={{ ...(!sidebarOpen ? {display: 'none'} : {display: { xs: 'none', md: 'flex'}} )}}>
+        <IconButton onClick={toggleSidebar} aria-label="close sidebar" sx={{ width:'46px',...(!sidebarOpen ? {display: 'none'} : {display: { xs: 'none', md: 'flex'}} )}}>
           {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </IconButton>
       </Box>
       <Box
         sx={{
+          width: (sidebarOpen || sidebarMobileOpen) ? theme.sidebar.width: `calc(${theme.spacing(7)} + 1px)`,
           height: `calc(100% - ${theme.header.height})`,
-          overflow: 'hidden'
+          overflow: 'hidden',
+          boxShadow: 'inset -2px 4px 4px rgba(0, 0, 0, 0.4)',
         }}
       >
         <Scrollbar>
-          <SidebarMenu />
+          <SidebarMenu/>
         </Scrollbar>
       </Box>
     </SidebarStyled>
@@ -133,11 +135,6 @@ function Sidebar() {
         ModalProps={{
           keepMounted: true, // Better open performance on mobile.
         }}
-        sx={{
-          boxShadow: `${theme.sidebar.boxShadow}`,
-          overflow: 'hidden',
-          display: { xs: 'block', md: 'none' },
-        }}
       >
         {sideMenu}
       </Drawer>
@@ -146,10 +143,6 @@ function Sidebar() {
         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
         variant="permanent"
         open={sidebarOpen}
-        sx={{
-          overflow: 'hidden',
-          display: { xs: 'none', md: 'block' },
-        }}
       >
         {sideMenu}
       </MiniDrawer>
