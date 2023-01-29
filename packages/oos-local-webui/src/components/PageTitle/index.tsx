@@ -4,7 +4,7 @@ import { Box, Container, styled } from '@mui/material';
 const PageTitleStyled = styled(Box)(
   ({ theme }) => `
         padding: ${theme.spacing(4)};
-        background-color: ${theme.palette.background.paper};
+        background-color: ${'#15232D'};
         margin-bottom: ${theme.spacing(4)};
 `
 );

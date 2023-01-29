@@ -22,6 +22,7 @@ function Overview() {
             <Logo />
           </Box>
           <Hero />
+          
         </Card>
       </Container>
     </OverviewWrapper>

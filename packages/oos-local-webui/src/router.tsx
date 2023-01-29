@@ -2,7 +2,7 @@ import { Suspense, lazy, LazyExoticComponent } from 'react';
 import { Navigate } from 'react-router-dom';
 import { RouteObject } from 'react-router';
 
-import SidebarLayout, {ResponsiveDrawer} from './layouts/SidebarLayout';
+import SidebarLayout from './layouts/SidebarLayout';
 import BaseLayout from './layouts/BaseLayout';
 
 import SuspenseLoader from './components/SuspenseLoader';
@@ -18,6 +18,8 @@ const Loader = (Component:LazyExoticComponent<() => JSX.Element>) => (props:any)
 // Pages
 
 const Overview = Loader(lazy(() => import('./content/overview')));
+
+const Home = Loader(lazy(() => import('./content/home')));
 
 // Dashboards
 
@@ -84,11 +86,11 @@ const routes: RouteObject[] = [
     children: [
       {
         path: '/',
-        element: <Overview />
+        element: <Navigate to="overview" replace />
       },
       {
         path: 'overview',
-        element: <Navigate to="/" replace />
+        element: <Overview />
       },
       {
         path: 'status',
@@ -136,6 +138,16 @@ const routes: RouteObject[] = [
       {
         path: 'messenger',
         element: <Messenger />
+      }
+    ]
+  },
+  {
+    path: 'home',
+    element: <SidebarLayout />,
+    children: [
+      {
+        path: '',
+        element: <Home />
       }
     ]
   },
