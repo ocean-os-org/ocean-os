@@ -33,8 +33,9 @@ const UserBoxButton = styled(Button)(
 
 const MenuUserBox = styled(Box)(
   ({ theme }) => `
-        background: ${theme.colors.alpha.black[5]};
         padding: ${theme.spacing(2)};
+        display: flex;
+        min-width: 240px;
 `
 );
 
@@ -62,7 +63,7 @@ const UserBoxDescription = styled(Typography)(
 function HeaderUserbox() {
   const user = {
     name: 'Catherine Pike',
-    avatar: '/assets/images/avatars/1.jpg',
+    avatar: '/assets/images/avatars/4.jpg',
     jobtitle: 'Project Manager'
   };
 
@@ -81,14 +82,6 @@ function HeaderUserbox() {
     <>
       <UserBoxButton color="secondary" ref={ref} onClick={handleOpen}>
         <Avatar variant="rounded" alt={user.name} src={user.avatar} />
-        <Hidden mdDown>
-          <UserBoxText>
-            <UserBoxLabel variant="body1">{user.name}</UserBoxLabel>
-          </UserBoxText>
-        </Hidden>
-        <Hidden smDown>
-          <ExpandMoreTwoToneIcon sx={{ ml: 1 }} />
-        </Hidden>
       </UserBoxButton>
       <Popover
         anchorEl={ref.current}
@@ -103,7 +96,7 @@ function HeaderUserbox() {
           horizontal: 'right'
         }}
       >
-        <MenuUserBox sx={{ minWidth: 210 }} display="flex">
+        <MenuUserBox>
           <Avatar variant="rounded" alt={user.name} src={user.avatar} />
           <UserBoxText>
             <UserBoxLabel variant="body1">{user.name}</UserBoxLabel>
@@ -129,7 +122,7 @@ function HeaderUserbox() {
         </List>
         <Divider />
         <Box sx={{ m: 1 }}>
-          <Button color="primary" fullWidth>
+          <Button color="secondary" fullWidth>
             <LockOpenTwoToneIcon sx={{ mr: 1 }} />
             Sign out
           </Button>

@@ -34,13 +34,14 @@ import InputBase from '@mui/material/InputBase';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
+  display: 'block',
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
   marginRight: theme.spacing(2),
-  marginLeft: 0,
+  marginLeft: theme.spacing(2),
   width: '100%',
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(1),
@@ -67,7 +68,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '20ch',
+      width: '40ch',
     },
   },
 }));
@@ -76,11 +77,7 @@ interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
 }
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open }) => ({
-  backdropFilter: 'blur(3px)',
-  backgroundColor: theme.palette.background.paper ,
+const AppBar = styled(MuiAppBar, { shouldForwardProp: (prop) => prop !== 'open', })<AppBarProps>(({ theme, open }) => ({
   position: 'fixed',
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
@@ -123,10 +120,10 @@ export function Header() {
       >
         <IconButton 
             aria-label="open sidebar"
-            sx={{  display: { sm: 'flex', md: 'none'}  }}
+            sx={{  display: { sm: 'flex', md: 'none'}, padding: 0  }}
             onClick={openMobileSidebar}
           >
-            <img width="32" src="/assets/images/logo/ocean-os.svg"></img>
+            <img width="40" src="/assets/images/logo/ocean-os.svg"></img>
         </IconButton>
 
         <Search>

@@ -18,13 +18,12 @@ import { formatDistance, subDays } from 'date-fns';
 
 const NotificationsBadge = styled(Badge)(
   ({ theme }) => `
-    
     .MuiBadge-badge {
-        background-color: ${alpha(theme.palette.error.main, 0.1)};
-        color: ${theme.palette.error.main};
+        background-color: ${alpha(theme.palette.secondary.main, 0.9)};
+        color: ${theme.palette.common.black};
         min-width: 16px; 
         height: 16px;
-        padding: 0;
+        padding: 1;
 
         &::after {
             position: absolute;
@@ -55,9 +54,9 @@ function HeaderNotifications() {
   return (
     <>
       <Tooltip arrow title="Notifications">
-        <IconButton color="primary" ref={ref} onClick={handleOpen}>
+        <IconButton ref={ref} onClick={handleOpen} sx={{ display: { xs: 'none', md:'inline-block'}}}>
           <NotificationsBadge
-            badgeContent={1}
+            badgeContent={11}
             anchorOrigin={{
               vertical: 'top',
               horizontal: 'right'
