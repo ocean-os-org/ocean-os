@@ -3,7 +3,7 @@ import '@mui/lab/themeAugmentation';
 
 const themeColors = {
   primary: '#5893df',
-  secondary: '#2ec5d3',
+  secondary: '#01579b',
   success: '#57CA22',
   warning: '#FFA319',
   error: '#FF1943',
@@ -253,13 +253,12 @@ export const OceanOSTheme = createTheme({
       main: '#33708A',
     },
     secondary: {
-      main: '#5CBFAC',
+      main: '#ff6f00',
     },
     background: {
       default: '#122738',
       paper: '#193549',
     },
-    divider: '#607d8b',
   },  
   shape: {
     borderRadius: 10
@@ -321,6 +320,8 @@ export const OceanOSTheme = createTheme({
       textTransform: 'uppercase'
     }
   },
+  components: {
+  }
 });
 /*
 export const OceanOSTheme = createTheme({
