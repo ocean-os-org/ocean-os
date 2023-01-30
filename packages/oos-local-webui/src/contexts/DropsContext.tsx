@@ -1,65 +1,72 @@
 import { createContext, Dispatch, PropsWithChildren, useContext, useReducer } from 'react';
 
-const TasksContext = createContext<Drop[] | null>(null);
-const TasksDispatchContext = createContext<Dispatch<DropAction> | null>(null);
+type TDropContext = {
+  drops: TDrop[];
+  dispatch: Dispatch<DropAction>;
+}
+
+const DropsContext = createContext<TDropContext>({} as TDropContext);
 
 const DropsProvider = ({ children }:PropsWithChildren<{}>) => {
-  const [tasks, dispatch] = useReducer(
-    tasksReducer,
-    initialTasks
+  const [drops, dispatch] = useReducer(
+    dropsReducer,
+    initialDrops
   );
 
   return (
-    <TasksContext.Provider value={tasks}>
-      <TasksDispatchContext.Provider value={dispatch}>
-        {children}
-      </TasksDispatchContext.Provider>
-    </TasksContext.Provider>
+    <DropsContext.Provider value={ { drops, dispatch } }>
+      {children}
+    </DropsContext.Provider>
   );
 }
 export default DropsProvider;
 
-export function useTasks() {
-  return useContext(TasksContext);
+export function useDrops() {
+  return useContext(DropsContext);
 }
 
-export function useTasksDispatch() {
-  return useContext(TasksDispatchContext);
+export type TDrop = {
+  id: string;
+  content: any;
+  metas: TMeta[];
 }
 
-type Drop = {
-    id: number;
-    text: string;
-    done: boolean;
+export type TMeta = {
+  key:string;
+  value:string;
+}
+
+export type DropProps = {
+  drop: TDrop;
 }
 
 type DropAction = {
     type: string;
-    task: Drop;
-    id: number;
+    drop: TDrop;
+    id: string;
     text: string;
 }
 
-function tasksReducer(tasks:Drop[], action:DropAction) {
+function dropsReducer(drops:TDrop[], action:DropAction) {
   switch (action.type) {
     case 'added': {
-      return [...tasks, {
+      return [...drops, {
         id: action.id,
-        text: action.text,
-        done: false
+        content: action.text,
+        metas: []
       }];
     }
     case 'changed': {
-      return tasks.map(t => {
-        if (t.id === action.task.id) {
-          return action.task;
+      return drops.map(t => {
+        if (t.id === action.drop.id) {
+          return action.drop;
         } else {
           return t;
         }
       });
     }
     case 'deleted': {
-      return tasks.filter(t => t.id !== action.id);
+      return drops.filter(t => t.id !== action.id);
     }
     default: {
       throw Error('Unknown action: ' + action.type);
@@ -67,8 +74,9 @@ function tasksReducer(tasks:Drop[], action:DropAction) {
   }
 }
 
-const initialTasks = [
-  { id: 0, text: 'Philosopher’s Path', done: true },
-  { id: 1, text: 'Visit the temple', done: false },
-  { id: 2, text: 'Drink matcha', done: false }
+const initialDrops = [
+  { id:"111",content: "This is a note taken to remember", metas: [ { key: 'type', value:'text' }, { key:'extension', value:"Recurrent"}, { key:'label', value:"Personal Tag"}]},
+  { id:"222",content: [{ item: "Do Dishes", checked: false},{ item: "Make Bed", checked: false},{ item: "Clean Bathroom", checked: false},{ item: "Feed Dog", checked: false}], metas: [ { key: 'type', value:'checklist' }, { key:'person', value:"Christine Pike"}, { key:'group', value:"Project"}]},
+  { id:"333",content: { description:"This is a beautiful image...", src: '/assets/images/placeholders/covers/1.jpg'}, metas: [ {key: 'type', value: 'image' }, {key: 'public', value: 'OceanOS Blog' }]},
+  { id:"444",content: "This is a response from ChatGPT", metas: [ { key:'type', value:"text"}, { key:'dapp', value:"ChatGPT"}]}
 ];

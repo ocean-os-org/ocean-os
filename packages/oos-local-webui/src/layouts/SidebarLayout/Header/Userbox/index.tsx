@@ -7,7 +7,6 @@ import {
   Box,
   Button,
   Divider,
-  Hidden,
   lighten,
   List,
   ListItemButton,
@@ -62,9 +61,9 @@ const UserBoxDescription = styled(Typography)(
 
 function HeaderUserbox() {
   const user = {
-    name: 'Catherine Pike',
+    name: 'Rui Gil',
     avatar: '/assets/images/avatars/4.jpg',
-    jobtitle: 'Project Manager'
+    jobtitle: 'Architect'
   };
 
   const ref = useRef<any>(null);

@@ -20,22 +20,29 @@ import CommitIcon from '@mui/icons-material/Commit';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import ErrorIcon from '@mui/icons-material/Error';
 import { styled } from "@mui/material/styles";
-import { ComponentPropsWithoutRef, ElementType, PropsWithChildren, ReactNode, useState } from "react";
+import { ComponentPropsWithoutRef, ElementType, PropsWithChildren, useState } from "react";
 import Avatar from "@mui/material/Avatar";
+import FactCheckIcon from '@mui/icons-material/FactCheck';
+import CardMedia from "@mui/material/CardMedia";
+
+import DropText from './DropText';
+import DropCheckList from './DropCheckList';
+import DropImage from './DropImage';
+import {TDrop, DropProps } from '../../contexts/DropsContext';
 
 interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
-  }
+}
   
-  const ExpandMore = styled((props: ExpandMoreProps) => {
-    const { expand, ...other } = props;
-    return <IconButton {...other} />;
-  })(({ theme, expand }) => ({
-    transform: !expand ? 'rotate(0deg)' : 'rotate(-90deg)',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest
-    })
-  }));
+const ExpandMore = styled((props: ExpandMoreProps) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+  transform: !expand ? 'rotate(0deg)' : 'rotate(-90deg)',
+  transition: theme.transitions.create('transform', {
+    duration: theme.transitions.duration.shortest
+  })
+}));
 
 
 type AsProps<T extends ElementType> = {
@@ -44,119 +51,57 @@ type AsProps<T extends ElementType> = {
 type PropsToOmit<T extends ElementType, P> = keyof (AsProps<T> & P)
 type PolyProps<T extends ElementType, Props = {}> = PropsWithChildren<AsProps<T> & Props> & Omit<ComponentPropsWithoutRef<T>, PropsToOmit<T,Props>> 
 
-type DropProps = PropsWithChildren<{
-    value: TDrop;
-}>
 
-type TDrop = {
-    content: string;
-    metas: Meta[];
-}
-
-type Meta = {
-    key:string;
-    value:string;
-}
-
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Checkbox from '@mui/material/Checkbox';
-import CommentIcon from '@mui/icons-material/Comment';
-import FactCheckIcon from '@mui/icons-material/FactCheck';
-
-export function CheckboxList() {
-  const [checked, setChecked] = useState([0]);
-
-  const handleToggle = (value: number) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-  };
-
-  return (
-    <List sx={{ width: '100%' }}>
-      {[0, 1, 2, 3].map((value) => {
-        const labelId = `checkbox-list-label-${value}`;
-
-        return (
-          <ListItem
-            key={value}
-            secondaryAction={
-              <IconButton edge="end" aria-label="comments">
-                <CommentIcon />
-              </IconButton>
-            }
-            disablePadding
-          >
-            <ListItemButton role={undefined} onClick={handleToggle(value)} dense>
-              <ListItemIcon>
-                <Checkbox
-                  edge="start"
-                  checked={checked.indexOf(value) !== -1}
-                  tabIndex={-1}
-                  disableRipple
-                  inputProps={{ 'aria-labelledby': labelId }}
-                />
-              </ListItemIcon>
-              <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
-            </ListItemButton>
-          </ListItem>
-        );
-      })}
-    </List>
-  );
-}
-
-const Drop = ({ value, children, ...restProps }: DropProps ) => {
+const Drop = ({ drop, ...restProps }: DropProps ) => {
     const [expanded, setExpanded] = useState(false);
 
-    const dropType = (v:TDrop) => v.metas.find( i => i.key == 'type')?.value; 
+    const dropType = (v:TDrop) => v.metas.find( i => i.key == 'type')?.value || ''; 
+
+    const isImage = dropType(drop) === 'image';
 
     const handleExpandClick = () => {
       setExpanded(!expanded);
     };
 
     const DropType = () => {
-        switch(dropType(value)){
-            case 'text': return TextType; 
-            case 'checklist': return CheckListType; 
+        switch(dropType(drop)){
+            case 'text': return <DropText drop={drop}/>;
+            case 'image': return <DropImage drop={drop}/>; 
+            case 'checklist': return <DropCheckList drop={drop}/>; 
             default: return null;
         }        
     }
-    const MetaType = () => {
-        switch(dropType(value)){
+
+    const MetaType = ({ type }:{ type: string }) => {
+        switch(type){
             case 'text': return <Chip label="Text"  icon={<TextSnippetIcon />}/>; 
             case 'checklist': return <Chip label="Check List"  icon={<FactCheckIcon />}/>; 
+            case 'image': return <Chip label="Image"  icon={<ImageIcon />}/>; 
             default: return <Chip label="Unrecognized Type"  icon={<ErrorIcon />}/>;
-        }        
+        }
     }
 
+    const metas = () => {
 
-    const CheckListType = (
-        <CheckboxList/>
-    )
-    
-    const TextType = (
-        <Typography variant="body2" color="text.secondary">
-            A description of the text i sent.
-        </Typography>
-    )
-
+      return drop.metas.map( m => {
+        switch (m.key) {
+          case 'type': return <MetaType type={m.value}/>; 
+          case 'label' : return <Chip label={m.value} color="secondary" icon={<LocalOfferIcon />} />
+          case 'extension': return <Chip color="warning" label={m.value} icon={<ExtensionIcon />}/>; 
+          case 'person': return <Chip color="info" label={m.value} avatar={<Avatar  src="/assets/images/avatars/1.jpg" />} />
+          case 'public': return <Chip color="info" label={m.value} icon={<RssFeedIcon />} />
+          case 'group' : return <Chip label={m.value} color="primary" icon={<CollectionsBookmarkIcon />} />
+          case 'dapp' : return <Chip label={m.value} color="error" icon={<CommitIcon />} />
+          default: return <Chip label="Unrecognized Meta"  icon={<ErrorIcon />}/>;
+        }
+      })
+      
+    }
 
     return (
         <Card sx={{marginBottom: 1}}>
         <CardActions disableSpacing>
-          <MetaType/>
+          <MetaType type={dropType(drop)}/>
           <IconButton aria-label="settings">
                 <ScheduleIcon />
             </IconButton>
@@ -179,24 +124,20 @@ const Drop = ({ value, children, ...restProps }: DropProps ) => {
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent sx={{display: 'flex', gap: '5px', flexWrap: 'wrap'}}>
-                <Chip label="Image"  icon={<ImageIcon />}/>
-                <Chip color="warning" label="Recurrent"  icon={<ExtensionIcon />}/>
-                <Chip color="warning" label="Stats"  icon={<ExtensionIcon />}/>
-
-                <Chip color="info" label="Christine Pike" avatar={<Avatar  src="/assets/images/avatars/1.jpg" />} />
-
-                <Chip label="OceanOS Blog" color="success" icon={<RssFeedIcon />} />
-                <Chip label="Label Tag" color="secondary" icon={<LocalOfferIcon />} />
-                <Chip label="Label Tag" color="secondary" icon={<LocalOfferIcon />} />
-                <Chip label="Label Tag" color="secondary" icon={<LocalOfferIcon />} />
-                <Chip label="Label Tag" color="secondary" icon={<LocalOfferIcon />} />
-
-                <Chip label="Label Tag" color="secondary" icon={<LocalOfferIcon />} />
-                <Chip label="Assembly" color="primary" icon={<CollectionsBookmarkIcon />} />
-
-                <Chip label="Request/Response" color="error" icon={<CommitIcon />} />
+              {metas().map( m => m)}
             </CardContent>
           </Collapse>
+          { 
+            isImage &&  
+            <CardMedia
+              sx={{
+                height: 0,
+                paddingTop: '56.25%' // 16:9
+              }}
+              image={drop.content.src}
+              title="Travel Gear"
+            />
+          }
           <CardContent>
               <DropType {...restProps} />
           </CardContent>
@@ -208,55 +149,6 @@ export default Drop;
 
 /*
 
-
-
-
-                <Card sx={{marginBottom: 1}}>
-                <CardActions disableSpacing >
-                <Chip label="Checklist"  icon={<FactCheckIcon />}/>
-                  <IconButton aria-label="settings">
-                        <ScheduleIcon />
-                    </IconButton>
-                  <Typography variant="body2" color="text.secondary">
-                    22:35
-                    </Typography>
-                    <Box sx={{  display: 'flex', justifyContent: 'flex-end', alignItems: 'center', flexGrow: 1 }}>
-                    <IconButton aria-label="settings">
-                        <MoreVertIcon />
-                    </IconButton>
-                    <ExpandMore
-                      expand={expanded}
-                      onClick={handleExpandClick}
-                      aria-expanded={expanded}
-                      aria-label="show more"
-                    >
-                      <MoreIcon />
-                    </ExpandMore>
-                    </Box>
-                  </CardActions>
-                  <Collapse in={expanded} timeout="auto" unmountOnExit>
-                    <CardContent sx={{display: 'flex', gap: '5px', flexWrap: 'wrap'}}>
-                        <Chip color="warning" label="Recurrent"  icon={<ExtensionIcon />}/>
-                        <Chip color="warning" label="Stats"  icon={<ExtensionIcon />}/>
-
-                        <Chip color="info" label="Christine Pike" avatar={<Avatar  src="/assets/images/avatars/1.jpg" />} />
-
-                        <Chip label="OceanOS Blog" color="success" icon={<RssFeedIcon />} />
-                        <Chip label="Label Tag" color="secondary" icon={<LocalOfferIcon />} />
-                        <Chip label="Label Tag" color="secondary" icon={<LocalOfferIcon />} />
-                        <Chip label="Label Tag" color="secondary" icon={<LocalOfferIcon />} />
-                        <Chip label="Label Tag" color="secondary" icon={<LocalOfferIcon />} />
-
-                        <Chip label="Label Tag" color="secondary" icon={<LocalOfferIcon />} />
-                        <Chip label="Assembly" color="primary" icon={<CollectionsBookmarkIcon />} />
-
-                        <Chip label="Request/Response" color="error" icon={<CommitIcon />} />
-                    </CardContent>
-                  </Collapse>
-                  <CardContent>
-                    <CheckboxList/>
-                  </CardContent>
-                </Card>
 
       <Card sx={{marginBottom: 1}}>
                 <CardActions disableSpacing>
