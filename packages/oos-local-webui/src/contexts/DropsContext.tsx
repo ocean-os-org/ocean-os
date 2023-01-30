@@ -26,18 +26,19 @@ export function useDrops() {
 }
 
 export type TDrop = {
-  id: string;
-  content: any;
-  metas: TMeta[];
+    id: string;
+    content: any;
+    metas: TMeta[];
 }
 
 export type TMeta = {
-  key:string;
-  value:string;
+    id?: string;
+    key:string;
+    value:string;
 }
 
 export type DropProps = {
-  drop: TDrop;
+    drop: TDrop;
 }
 
 type DropAction = {
