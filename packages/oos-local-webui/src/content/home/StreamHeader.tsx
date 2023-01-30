@@ -4,11 +4,15 @@ import {
   Button,
   Box,
   useTheme,
+  styled,
+  alpha,
+  InputBase,
 } from '@mui/material';
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
+import SearchIcon from '@mui/icons-material/Search';
 
 interface Props {
   children: React.ReactElement;
@@ -30,6 +34,45 @@ const ElevationScroll = (props: Props) => {
   });
 }
 
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  display: 'block',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(1),
+    width: 'auto',
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '40ch',
+    },
+  },
+}));
 const StreamHeader = () => {
 
   const theme = useTheme();
@@ -51,24 +94,26 @@ const StreamHeader = () => {
       </ElevationScroll>    
       <Box
       display="flex"
-      alignItems={{ xs: 'stretch', md: 'center' }}
       flexDirection={{ xs: 'column', md: 'row' }}
-      justifyContent="space-between"
     > 
-      <Box display="flex" alignItems="center">
+      <Box display="flex" sx={{height: '128px', alignItems:'center', paddingTop: theme.spacing(2), paddingBottom: theme.spacing(2), flexGrow: 1 }}>
         <Box>
-          <Typography variant="h3" component="h3" gutterBottom>
-            Welcome, {user.name} !!
-          </Typography>
+        <Search>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="Search…"
+          />
+        </Search>
           <Typography variant="subtitle2">
-            Manage your day to day tasks with style! Enjoy a well built UI
-            system.
+            
           </Typography>
         </Box>
       </Box>
-      <Box mt={{ xs: 3, md: 0 }}>
+      <Box mt={{ display: 'flex', alignItems: 'center', xs: 3, md: 0 }}>
         <Button variant="contained" startIcon={<DocumentScannerTwoToneIcon />}>
-          Export
+          Jump
         </Button>
       </Box>
     </Box>
