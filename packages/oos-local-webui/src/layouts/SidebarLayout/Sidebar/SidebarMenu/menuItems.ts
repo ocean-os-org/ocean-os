@@ -8,9 +8,22 @@ export const menuItems = [
     },
     {
         name: "Subscriptions",
-        url: "/overview",
         icon: "subscriptions",
         selected: false,
+        items: [
+            {
+                name: "All",
+                url: "/dashboards/tasks",
+                icon: "brightness_low",
+                selected: false,
+            },        
+            {
+                name: "Christine Pike",
+                url: "/dashboards/messenger",
+                avatar: "/assets/images/avatars/1.jpg",
+                selected: false,
+            },        
+        ]
     },
     {
         name: "Dashboards",

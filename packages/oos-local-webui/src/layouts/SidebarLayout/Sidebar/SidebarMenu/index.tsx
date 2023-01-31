@@ -14,7 +14,8 @@ import {
   Collapse,
   Icon,
   useMediaQuery,
-  Tooltip
+  Tooltip,
+  Avatar
 } from '@mui/material';
 import ListItemText from '@mui/material/ListItemText'
 import { Link, NavLink as RouterLink } from 'react-router-dom';
@@ -240,7 +241,8 @@ function SidebarMenu() {
           sx={{ pl: open ? 2 + depth : 2}}
         >
           <ListItemIcon sx={{ color: item.selected? theme.palette.secondary.main : theme.palette.common.white }}>
-            <Icon>{item.icon}</Icon>
+            { item.icon && <Icon>{item.icon}</Icon> }
+            { item.avatar && <Avatar src={item.avatar}  sx={{ width: 24, height: 24 }}/> }
           </ListItemIcon>
           {open && <ListItemText primary={item.name} />}
         </ListItemButton>
