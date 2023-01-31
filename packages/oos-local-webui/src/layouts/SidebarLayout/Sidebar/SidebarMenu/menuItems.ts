@@ -7,9 +7,9 @@ export const menuItems = [
         selected: true,
     },
     {
-        name: "Send",
+        name: "Subscriptions",
         url: "/overview",
-        icon: "send",
+        icon: "subscriptions",
         selected: false,
     },
     {

@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "startc": "vite",
     "start": "vite --host --port 7070", 
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --port 8080 --open"
