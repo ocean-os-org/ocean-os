@@ -105,7 +105,7 @@ const Drop = ({ drop, ...restProps }: DropProps ) => {
     }
 
     return (
-        <Card sx={{marginBottom: 1}}>
+        <Card>
             {   isImage &&  
                 <CardMedia
                     sx={{

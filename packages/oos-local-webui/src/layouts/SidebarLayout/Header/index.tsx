@@ -14,7 +14,8 @@ import {
   Menu,
   Badge,
   Toolbar,
-  Typography
+  Typography,
+  Button
 } from '@mui/material';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
@@ -30,6 +31,8 @@ import HeaderButtons from './Buttons';
 import HeaderUserbox from './Userbox';
 import HeaderMenu from './Menu';
 import InputBase from '@mui/material/InputBase';
+import { Add } from '@mui/icons-material';
+import NewDrop from './NewDrop';
 
 
 
@@ -85,8 +88,7 @@ export function Header() {
           >
             <img width="40" src="/assets/images/logo/ocean-os.svg"></img>
         </IconButton>
-
-
+        <NewDrop/>
         <Box sx={{ flexGrow: 1 }} />
         <HeaderButtons />
         <HeaderUserbox />

@@ -11,6 +11,10 @@ import {
   TextField,
   Autocomplete,
   IconButton,
+  Divider,
+  Select,
+  MenuItem,
+  SelectChangeEvent,
 } from '@mui/material';
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
@@ -239,7 +243,11 @@ const StreamHeader = () => {
   const handleChange = (newValue: Date | null) => {
     setValue(newValue);
   };
+  const [age, setAge] = React.useState('10');
 
+  const handleChangeSelect = (event: SelectChangeEvent) => {
+    setAge(event.target.value);
+  };
   return (
     <>
       <ElevationScroll>
@@ -255,14 +263,14 @@ const StreamHeader = () => {
       display="flex"
       flexDirection={{ xs: 'column', md: 'row' }}
     > 
-      <Box display="flex" sx={{flexDirection: 'column', minHeight: '128px', justifyContent: 'stretch', alignItems:'flex-start', paddingTop: theme.spacing(2), paddingBottom: theme.spacing(2), flexGrow: 1 }}>
+      <Box display="flex" sx={{flexDirection: 'column', minHeight: '128px', justifyContent: 'center', alignItems:'flex-start', paddingTop: theme.spacing(2), paddingBottom: theme.spacing(2), flexGrow: 1 }}>
         <Box sx={{ display:'flex', flexDirection:'row', alignItems: 'center'}}>
+        <Typography variant="h4"  sx={{ marginRight: theme.spacing(1)}}>Home</Typography>
         <SaveDialog />
-        <Typography variant="h4">Home Stream</Typography>
-        </Box>
+        <Divider orientation="vertical" sx={{ margin: theme.spacing(0,1,0,1)}}/>
         <Autocomplete
       multiple
-      limitTags={3}
+      limitTags={6}
       size="small"
       id="multiple-limit-tags"
       options={top100Films}
@@ -271,12 +279,13 @@ const StreamHeader = () => {
       renderInput={(params) => (
         <TextField {...params} label="Metas" placeholder="Metas" />
       )}
-      sx={{ width: '90%' }}
+      sx={{ minWidth: '200px' }}
       
     />
+        </Box>
 
       </Box>
-      <Box mt={{ display: 'flex', flexDirection:'column', justifyContent: 'center', gap: 10,alignItems: 'end', xs: 3, md: 0 }}>
+      <Box mt={{ minWidth:'180px',display: 'flex', flexDirection:'column', justifyContent: 'center', gap: 10,alignItems: 'end', xs: 3, md: 0 }}>
       <DateTimePicker
           label="Date&Time picker"
           value={value}
@@ -291,27 +300,22 @@ const StreamHeader = () => {
       <Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
           <Typography variant="body2" sx={{ marginRight: 2}}>Preview </Typography>
     
-        <ToggleButtonGroup
-      value={alignment}
-      exclusive
-      size="small"
-      onChange={handleAlignment}
-      aria-label="text alignment"
-    >
-      <ToggleButton value="left" aria-label="left aligned">
-        Day
-      </ToggleButton>
-      <ToggleButton value="center" aria-label="centered">
-        Week
-      </ToggleButton>
-      <ToggleButton value="right" aria-label="right aligned">
-        Month
-      </ToggleButton>
-      <ToggleButton value="justify" aria-label="justified">
-        Year
-      </ToggleButton>
-      </ToggleButtonGroup>
-      </Box> 
+          <Select
+        labelId="demo-select-small"
+        id="demo-select-small"
+        value={age}
+        label="Age"
+        onChange={handleChangeSelect}
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={10}>Day</MenuItem>
+        <MenuItem value={20}>Week</MenuItem>
+        <MenuItem value={30}>Month</MenuItem>
+        <MenuItem value={30}>Year</MenuItem>
+      </Select>
+            </Box> 
 
       </Box>
     </Box>

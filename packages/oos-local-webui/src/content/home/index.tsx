@@ -1,14 +1,17 @@
-import { Box, Container, Fab, Fade, Toolbar, useScrollTrigger } from '@mui/material';
+import { Box, Chip, Container, Divider, Fab, Fade, Toolbar, useScrollTrigger, useTheme } from '@mui/material';
 import PageTitle from '../../components/PageTitle';
 import StreamHeader from './StreamHeader';
 import Drop from '../../components/Drop';
 import { useDrops } from '../../contexts/DropsContext';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import ScrollTop from './ScrollTop';
+import { themeCreator } from '../../theme/base';
+import { Fragment } from 'react';
 
 
 function Home() {
   const  {drops, dispatch} = useDrops();
+  const theme = useTheme();
 
   return (
     <>
@@ -17,7 +20,13 @@ function Home() {
       </PageTitle>
       <span id="back-to-top-anchor"/>
       <Container maxWidth="lg">
-        { drops?.map( d => <Drop key={d.id} drop={d} /> ) }
+        { drops?.map( (d,i) => 
+          <Fragment key={d.id}>
+            <Drop drop={d} />
+            { (i % 2 == 0) ? (<Box sx={{height: theme.spacing(1)}}></Box>) : (<Divider sx={{ margin: theme.spacing(1)}}> <Chip size="small" label="31, Janeiro, 2023" /></Divider>) }
+          </Fragment> 
+          ) 
+        }
       </Container>
       <ScrollTop >
         <Fab size="small" aria-label="scroll back to top">
