@@ -241,12 +241,12 @@ export const OceanOSTheme = createTheme({
     width: '290px'
   },
   header: {
-    height: '64px',
-    background: colors.layout.general.bodyBg,
+    height: '192px',
+    background: '#00203D',
     boxShadow: '0px 1px 0px #272C48',
     textColor: colors.secondary.main
   },
-  spacing: 9,
+  spacing: 8,
   palette: {
     mode: 'dark',
     primary: {
@@ -256,8 +256,8 @@ export const OceanOSTheme = createTheme({
       main: '#ff6f00',
     },
     background: {
-      default: '#122738',
-      paper: '#193549',
+      default: '#00112B',
+      paper: '#00203D',
     },
   },  
   shape: {
