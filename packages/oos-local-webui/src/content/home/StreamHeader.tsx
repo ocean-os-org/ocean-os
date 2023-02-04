@@ -1,37 +1,29 @@
-import DocumentScannerTwoToneIcon from '@mui/icons-material/DocumentScannerTwoTone';
 import {
   Typography,
-  Button,
   Box,
   useTheme,
   styled,
   alpha,
   InputBase,
-  ToggleButton,
   TextField,
   Autocomplete,
-  IconButton,
   Divider,
   Select,
   MenuItem,
   SelectChangeEvent,
 } from '@mui/material';
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-import SearchIcon from '@mui/icons-material/Search';
-import ScheduleIcon from '@mui/icons-material/Schedule';
-import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
-import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
-import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
-import FormatAlignJustifyIcon from '@mui/icons-material/FormatAlignJustify';
+
 import { toDate, format } from 'date-fns'
 
 
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import SaveDialog from './SaveDialog';
+import OOSAppBar from '../../components/AppBar';
+import { useContext } from 'react';
+import { SidebarContext } from '../../contexts/SidebarContext';
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
 const top100Films = [
   { title: 'The Shawshank Redemption', year: 1994 },
@@ -221,7 +213,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 const StreamHeader = () => {
-
+  const { sidebarOpen, toggleSidebar, openMobileSidebar } = useContext(SidebarContext);
   const theme = useTheme();
   const user = {
     name: 'Rui Gil',
@@ -250,73 +242,78 @@ const StreamHeader = () => {
   };
   return (
     <>
-      <ElevationScroll>
-        <AppBar >
-          <Toolbar sx={{ backgroundColor: '#15232D' }}>
-            <Typography variant="h6" component="div">
-              Scroll to elevate App bar
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </ElevationScroll>    
-      <Box
+    <ElevationScroll>
+      <OOSAppBar open={sidebarOpen} >
+        <Toolbar sx={{ backgroundColor: theme.header.background, minHeight: '96px', gap:1 }}>
+          <Autocomplete
+            multiple
+            limitTags={4}
+            id="multiple-limit-tags"
+            options={top100Films}
+            getOptionLabel={(option) => option.title}
+            defaultValue={[top100Films[13], top100Films[12], top100Films[11]]}
+            renderInput={(params) => (
+              <TextField {...params} label="Metas" placeholder="Metas" />
+            )}
+            sx={{ flexGrow: 1, margin: theme.spacing(1,0,1,0)}}
+          />
+            <DateTimePicker
+              label="From..."
+              value={value}
+              onChange={handleChange}
+              renderInput={(params) => <TextField {...params} />}
+            />     
+        </Toolbar>
+      </OOSAppBar>
+    </ElevationScroll>    
+    <Box
       display="flex"
-      flexDirection={{ xs: 'column', md: 'row' }}
+      sx={{ minHeight: '128px', gap: 1, flexDirection: 'column', paddingTop: theme.spacing(2), paddingBottom: theme.spacing(2) }}
     > 
-      <Box display="flex" sx={{flexDirection: 'column', minHeight: '128px', justifyContent: 'center', alignItems:'flex-start', paddingTop: theme.spacing(2), paddingBottom: theme.spacing(2), flexGrow: 1 }}>
-        <Box sx={{ display:'flex', flexDirection:'row', alignItems: 'center'}}>
-        <Typography variant="h4"  sx={{ marginRight: theme.spacing(1)}}>Home</Typography>
+      <Box sx={{ display:'flex', flexDirection:'row', alignItems: 'center', gap: 1}}>
         <SaveDialog />
-        <Divider orientation="vertical" sx={{ margin: theme.spacing(0,1,0,1)}}/>
+        <Typography variant="body2"  sx={{ marginRight: theme.spacing(1)}}>Home</Typography>
+        <Divider orientation="vertical" sx={{height: '20px'}}/>
         <Autocomplete
-      multiple
-      limitTags={6}
-      size="small"
-      id="multiple-limit-tags"
-      options={top100Films}
-      getOptionLabel={(option) => option.title}
-      defaultValue={[top100Films[13], top100Films[12], top100Films[11]]}
-      renderInput={(params) => (
-        <TextField {...params} label="Metas" placeholder="Metas" />
-      )}
-      sx={{ minWidth: '200px' }}
-      
-    />
-        </Box>
-
-      </Box>
-      <Box mt={{ minWidth:'180px',display: 'flex', flexDirection:'column', justifyContent: 'center', gap: 10,alignItems: 'end', xs: 3, md: 0 }}>
-      <DateTimePicker
-          label="Date&Time picker"
-          value={value}
-          onChange={handleChange}
-          renderInput={({ inputRef, inputProps, InputProps }) => (
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Typography ref={inputRef} variant="body2" >{ format(new Date(inputProps?.value),'yyyy-MM-dd HH:mm') }</Typography>
-            {InputProps?.endAdornment}
-          </Box>
+          multiple
+          limitTags={1}
+          id="multiple-limit-tags"
+          options={top100Films}
+          getOptionLabel={(option) => option.title}
+          defaultValue={[top100Films[13], top100Films[12], top100Films[11]]}
+          renderInput={(params) => (
+            <TextField {...params} label="Metas" placeholder="Metas" />
           )}
+          sx={{ flexGrow : 1}}
         />
-      <Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-          <Typography variant="body2" sx={{ marginRight: 2}}>Preview </Typography>
+      </Box>
+      <Box mt={{ display: 'flex', flexDirection:'row',  alignItems: 'center', gap: 10}}>
+          <Typography variant="body2" sx={{ marginRight: 2}}>Preview</Typography>
     
           <Select
-        labelId="demo-select-small"
-        id="demo-select-small"
-        value={age}
-        label="Age"
-        onChange={handleChangeSelect}
-      >
-        <MenuItem value="">
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value={10}>Day</MenuItem>
-        <MenuItem value={20}>Week</MenuItem>
-        <MenuItem value={30}>Month</MenuItem>
-        <MenuItem value={30}>Year</MenuItem>
-      </Select>
-            </Box> 
-
+            labelId="demo-select-small"
+            id="demo-select-small"
+            value={age}
+            label="Age"
+            size="small"
+            onChange={handleChangeSelect}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={10}>Day</MenuItem>
+            <MenuItem value={20}>Week</MenuItem>
+            <MenuItem value={30}>Month</MenuItem>
+            <MenuItem value={30}>Year</MenuItem>
+          </Select>
+          <Box sx={{display:'flex', flexGrow: 1, justifyContent: 'flex-end'}}>
+            <DateTimePicker
+              label="From..."
+              value={value}
+              onChange={handleChange}
+              renderInput={(params) => <TextField {...params} />}
+            />     
+          </Box>   
       </Box>
     </Box>
     </>

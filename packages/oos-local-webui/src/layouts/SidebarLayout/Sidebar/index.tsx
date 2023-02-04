@@ -1,18 +1,19 @@
 import { useContext } from 'react';
-
 import {
   Box,
   Drawer,
   styled,
-  Divider,
   useTheme,
   Theme,
   CSSObject,
   IconButton,
   Typography,
-  useMediaQuery
+  useMediaQuery,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText
 } from '@mui/material';
-
+import {  Link } from 'react-router-dom';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
@@ -20,14 +21,16 @@ import Scrollbar from '../../../components/Scrollbar';
 
 import { SidebarContext } from '../../../contexts/SidebarContext';
 import SidebarMenu from './SidebarMenu';
+import { Add } from '@mui/icons-material';
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: theme.sidebar.width,
-  border: 'none',
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
   }),
+  border: 'none',
+  boxShadow: 'inset -2px 0px 4px 0px rgb(0,0,0,0.4)',
   overflowX: 'hidden',
 });
 
@@ -36,8 +39,9 @@ const closedMixin = (theme: Theme): CSSObject => ({
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  border: 'none',
   overflowX: 'hidden',
+  border: 'none',
+  boxShadow: 'inset -2px 0px 4px 0px rgb(0,0,0,0.4)',
   width: `calc(${theme.spacing(7)}) + 1px`,
   [theme.breakpoints.up('sm')]: {
     width: `calc(${theme.spacing(7)} + 1px)`,
@@ -66,10 +70,6 @@ const SidebarStyled = styled(Box)(
         color: ${theme.colors.alpha.trueWhite[70]};
         position: relative;
         height: 100%;
-        box-shadow: '5px 0px 5px 0px rgb(0,0,0,0.2)';
-        padding-bottom: 5px;
-
-
 `
 );
 
@@ -78,25 +78,25 @@ function Sidebar() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
+  const open = sidebarOpen || sidebarMobileOpen;
   const sideMenu = (
     <SidebarStyled>
       <Box
         sx={{
-          p: theme.spacing(1),
           display: 'flex',
+          height: '64px',
+          padding: theme.spacing(1,1,1,1)
         }}
       >
         <IconButton 
           aria-label="open sidebar"
-          sx={{ display: { xs: 'none ', md: 'flex', padding: 3}}}
+          sx={{ display: { xs: 'none ', md: 'flex', padding:3,width: '40px', height: '40px'}}}
           onClick={toggleSidebar}
         >
           <img width="40" src="/assets/images/logo/ocean-os.svg"></img>
         </IconButton>
-        <Box 
-          sx={{ display: { xs: 'flex', md: 'none'} }}
-        >
-          <img width="40" src="/assets/images/logo/ocean-os.svg"></img>
+        <Box sx={{ display: { xs: 'flex', md: 'none'} }} >
+          <img width="40"  src="/assets/images/logo/ocean-os.svg"></img>
         </Box>
         <Typography
               variant="h4"
@@ -112,11 +112,22 @@ function Sidebar() {
       <Box
         sx={{
           width: (sidebarOpen || sidebarMobileOpen) ? theme.sidebar.width: `calc(${theme.spacing(7)} + 1px)`,
-          height: `calc(100% - ${theme.header.height})`,
+          height: `calc(100% - 64px)`,
           overflow: 'hidden',
-          boxShadow: 'inset -2px 4px 4px rgba(0, 0, 0, 0.4)',
         }}
       >
+        <ListItemButton
+          key={'newdrop'}
+          component={Link}
+          to={'/home/newdrop'}
+          sx={{ m: theme.spacing(0,1,0,1), backgroundColor: theme.palette.secondary.main, paddingLeft: theme.spacing(1), borderRadius: 1}}
+        >
+          <ListItemIcon>
+            <Add/>
+          </ListItemIcon>
+          { open && <ListItemText primary={'New Drop'}  /> }
+        </ListItemButton>
+
         <Scrollbar>
           <SidebarMenu/>
         </Scrollbar>
@@ -135,6 +146,7 @@ function Sidebar() {
         ModalProps={{
           keepMounted: true, // Better open performance on mobile.
         }}
+        sx={{ backdropFilter: 'blur(3px)'}}
       >
         {sideMenu}
       </Drawer>

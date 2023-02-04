@@ -12,7 +12,6 @@ function PageContent() {
       component="main"
       sx={{
         flexGrow: 1,
-        pt: `${theme.header.height}`,
         ...( sidebarOpen && {ml: { md: theme.sidebar.width }}),
         ...( !sidebarOpen && {ml: { md: theme.spacing(7) }}),
       }}

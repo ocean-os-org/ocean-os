@@ -3,8 +3,10 @@ import { Box, Container, styled } from '@mui/material';
 
 const PageTitleStyled = styled(Box)(
   ({ theme }) => `
-        background-color: ${'#15232D'};
+        background-color: ${theme.header.background};
         margin-bottom: ${theme.spacing(4)};
+        min-height: ${theme.header.height};
+        padding-top: 64px;
 `
 );
 

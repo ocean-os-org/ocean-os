@@ -7,6 +7,12 @@ export const menuItems = [
         selected: true,
     },
     {
+        name: "Tags",
+        url: "/home/tags",
+        icon: "bookmarks",
+        selected: false,
+    },
+    {
         name: "Subscriptions",
         icon: "subscriptions",
         selected: false,
@@ -21,6 +27,69 @@ export const menuItems = [
                 name: "Christine Pike",
                 url: "/dashboards/messenger",
                 avatar: "/assets/images/avatars/1.jpg",
+                selected: false,
+            },        
+        ]
+    },
+    {
+        name: "Public Streams",
+        icon: "stream",
+        selected: false,
+        items: [
+            {
+                name: "Tasks",
+                url: "/dashboards/tasks",
+                icon: "brightness_low",
+                selected: false,
+            },        
+            {
+                name: "Messenger",
+                url: "/dashboards/messenger",
+                icon: "mms",
+                selected: false,
+            },        
+        ]
+    },
+    {
+        name: "Saved Streams",
+        icon: "stream",
+        selected: false,
+        items: [
+            {
+                name: "Tasks",
+                url: "/dashboards/tasks",
+                icon: "brightness_low",
+                selected: false,
+            },        
+            {
+                name: "Messenger",
+                url: "/dashboards/messenger",
+                icon: "mms",
+                selected: false,
+            },        
+        ]
+    },
+    {
+        name: "Contacts",
+        icon: "contacts",
+        selected: false,
+        items: [
+            {
+                name: "Stephanie Box",
+                url: "/dashboards/messenger",
+                avatar: "/assets/images/avatars/2.jpg",
+                selected: false,
+            },        
+            {
+                name: "Christine Pike",
+                url: "/dashboards/messenger",
+                avatar: "/assets/images/avatars/1.jpg",
+                selected: false,
+            },        
+            {
+                name: "John Wick",
+                url: "/dashboards/messenger",
+                avatar: "/assets/images/avatars/3.jpg",
                 selected: false,
             },        
         ]
