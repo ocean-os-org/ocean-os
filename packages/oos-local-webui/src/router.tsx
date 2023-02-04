@@ -6,6 +6,7 @@ import SidebarLayout from './layouts/SidebarLayout';
 import BaseLayout from './layouts/BaseLayout';
 
 import SuspenseLoader from './components/SuspenseLoader';
+import NewDrop from './content/drops/DropForm';
 
 // TODO: Change for the proper types
 const Loader = (Component:LazyExoticComponent<() => JSX.Element>) => (props:any) =>
@@ -148,6 +149,10 @@ const routes: RouteObject[] = [
       {
         path: '',
         element: <Home />
+      },
+      {
+        path: '/home/newdrop',
+        element: <NewDrop />
       }
     ]
   },
