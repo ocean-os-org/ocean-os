@@ -3,7 +3,7 @@ import { useRoutes } from 'react-router-dom';
 
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-
+import frLocale from "date-fns/locale/fr-CH";
 import OOSThemeProvider from './theme/ThemeProvider';
 import DropsProvider from './contexts/DropsContext';
 import router from './router';
@@ -14,7 +14,7 @@ function App() {
   return (
     <OOSThemeProvider>
       <DropsProvider>
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={frLocale}>
             <CssBaseline />
             {content}
         </LocalizationProvider>
