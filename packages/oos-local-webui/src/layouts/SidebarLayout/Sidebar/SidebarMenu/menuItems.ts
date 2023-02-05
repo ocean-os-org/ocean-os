@@ -7,8 +7,8 @@ export const menuItems = [
         selected: true,
     },
     {
-        name: "Tags",
-        url: "/home/tags",
+        name: "Metas",
+        url: "/home/metas",
         icon: "bookmarks",
         selected: false,
     },
