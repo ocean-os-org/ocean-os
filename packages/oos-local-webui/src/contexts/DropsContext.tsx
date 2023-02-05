@@ -33,7 +33,7 @@ export type TDrop = {
 
 export type TMeta = {
     id?: string;
-    key:string;
+    type:string;
     value:string;
 }
 
@@ -76,8 +76,8 @@ function dropsReducer(drops:TDrop[], action:DropAction) {
 }
 
 const initialDrops = [
-  { id:"111",content: "This is a note taken to remember", metas: [ { key: 'type', value:'text' }, { key:'extension', value:"Recurrent"}, { key:'label', value:"Personal Tag"}]},
-  { id:"222",content: [{ item: "Do Dishes", checked: false},{ item: "Make Bed", checked: false},{ item: "Clean Bathroom", checked: false},{ item: "Feed Dog", checked: false}], metas: [ { key: 'type', value:'checklist' }, { key:'person', value:"Christine Pike"}, { key:'group', value:"Project"}]},
-  { id:"333",content: { description:"This is a beautiful image...", src: '/assets/images/placeholders/covers/1.jpg'}, metas: [ {key: 'type', value: 'image' }, {key: 'public', value: 'OceanOS Blog' }]},
-  { id:"444",content: "This is a response from ChatGPT", metas: [ { key:'type', value:"text"}, { key:'dapp', value:"ChatGPT"}]}
+  { id:"111",content: "This is a note taken to remember", metas: [ { type: 'type', value:'text' }, { type:'extension', value:"Recurrent"}, { type:'label', value:"Personal Tag"}]},
+  { id:"222",content: [{ item: "Do Dishes", checked: false},{ item: "Make Bed", checked: false},{ item: "Clean Bathroom", checked: false},{ item: "Feed Dog", checked: false}], metas: [ { type: 'type', value:'checklist' }, { type:'person', value:"Christine Pike"}, { type:'group', value:"Project"}]},
+  { id:"333",content: { description:"This is a beautiful image...", src: '/assets/images/placeholders/covers/1.jpg'}, metas: [ {type: 'type', value: 'image' }, {type: 'public', value: 'OceanOS Blog' }]},
+  { id:"444",content: "This is a response from ChatGPT", metas: [ { type:'type', value:"text"}, { type:'dapp', value:"ChatGPT"}]}
 ];
