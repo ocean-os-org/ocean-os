@@ -6,9 +6,7 @@ import SidebarLayout from './layouts/SidebarLayout';
 import BaseLayout from './layouts/BaseLayout';
 
 import SuspenseLoader from './components/SuspenseLoader';
-import NewDrop from './content/drops/DropForm';
 
-// TODO: Change for the proper types
 const Loader = (Component:LazyExoticComponent<() => JSX.Element>) => (props:any) =>
   (
     <Suspense fallback={<SuspenseLoader />}>
@@ -17,6 +15,10 @@ const Loader = (Component:LazyExoticComponent<() => JSX.Element>) => (props:any)
   );
 
 // Pages
+
+const Metas = Loader(lazy(() => import('./content/metas')));
+
+const NewDrop = Loader(lazy(() => import('./content/drops/DropForm')));
 
 const Overview = Loader(lazy(() => import('./content/overview')));
 
@@ -153,6 +155,10 @@ const routes: RouteObject[] = [
       {
         path: '/home/newdrop',
         element: <NewDrop />
+      },
+      {
+        path: '/home/metas',
+        element: <Metas />
       }
     ]
   },

@@ -7,6 +7,7 @@ import frLocale from "date-fns/locale/fr-CH";
 import OOSThemeProvider from './theme/ThemeProvider';
 import DropsProvider from './contexts/DropsContext';
 import router from './router';
+import MetasProvider from './contexts/MetasContext';
 
 function App() {
   const content = useRoutes(router);
@@ -14,10 +15,12 @@ function App() {
   return (
     <OOSThemeProvider>
       <DropsProvider>
-        <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={frLocale}>
+        <MetasProvider>
+          <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={frLocale}>
             <CssBaseline />
             {content}
-        </LocalizationProvider>
+          </LocalizationProvider>
+        </MetasProvider>
       </DropsProvider>
     </OOSThemeProvider>
   );
