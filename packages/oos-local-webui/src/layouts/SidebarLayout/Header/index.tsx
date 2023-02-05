@@ -4,6 +4,7 @@ import { SidebarContext } from '../../../contexts/SidebarContext';
 import HeaderButtons from './Buttons';
 import HeaderUserbox from './Userbox';
 import OOSAppBar from '../../../components/AppBar';
+import HeaderMenu from './Menu';
 
 
 export function Header() {
@@ -27,6 +28,7 @@ export function Header() {
         >
           <img width="32" src="/assets/images/logo/ocean-os.svg"></img>
         </IconButton>
+        <HeaderMenu/>
         <Box sx={{ flexGrow: 1 }} />
         <HeaderButtons />
         <HeaderUserbox />
