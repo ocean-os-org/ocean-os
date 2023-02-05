@@ -271,9 +271,11 @@ const StreamHeader = () => {
       sx={{ minHeight: '128px', gap: 1, flexDirection: 'column', paddingTop: theme.spacing(2), paddingBottom: theme.spacing(2) }}
     > 
       <Box sx={{ display:'flex', flexDirection:'row', alignItems: 'center', gap: 1}}>
-        <SaveDialog />
-        <Typography variant="body2"  sx={{ marginRight: theme.spacing(1)}}>Home</Typography>
-        <Divider orientation="vertical" sx={{height: '20px'}}/>
+        <Box sx={{display:'flex', alignItems: 'center', justifyContent: 'flex-end', minWidth: 90}}>
+          <SaveDialog />
+          <Typography variant="body2"  sx={{ marginRight: theme.spacing(1)}}>Home</Typography>
+          <Divider orientation="vertical" sx={{height: '20px'}}/>
+        </Box>
         <Autocomplete
           multiple
           limitTags={1}
@@ -288,7 +290,11 @@ const StreamHeader = () => {
         />
       </Box>
       <Box mt={{ display: 'flex', flexDirection:'row',  alignItems: 'center', gap: 10}}>
+        <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'flex-end', minWidth: 90}}>
+
           <Typography variant="body2" sx={{ marginRight: 2}}>Preview</Typography>
+          <Divider orientation="vertical" sx={{height: '20px'}}/>
+        </Box>
     
           <Select
             labelId="demo-select-small"
