@@ -5,7 +5,6 @@ import Drop from '../../components/Drop';
 import { useDrops } from '../../contexts/DropsContext';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import ScrollTop from './ScrollTop';
-import { themeCreator } from '../../theme/base';
 import { Fragment } from 'react';
 
 
@@ -23,7 +22,7 @@ function Home() {
         { drops?.map( (d,i) => 
           <Fragment key={d.id}>
             <Drop drop={d} />
-            { (i % 2 == 0) ? (<Box sx={{height: theme.spacing(1)}}></Box>) : (<Divider sx={{ margin: theme.spacing(1)}}> <Chip size="small" label="31, Janeiro, 2023" /></Divider>) }
+            { (i % 2 == 0) ? (<Box sx={{height: theme.spacing(1)}}></Box>) : (<Divider sx={{ margin: theme.spacing(1)}}> <Chip color="primary" size="small" label="31, Janeiro, 2023" /></Divider>) }
           </Fragment> 
           ) 
         }
