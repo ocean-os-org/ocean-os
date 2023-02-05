@@ -7,6 +7,9 @@ const PageTitleStyled = styled(Box)(
         margin-bottom: ${theme.spacing(4)};
         min-height: ${theme.header.height};
         padding-top: 64px;
+        display: flex;
+        flexDirection: row;
+        align-items: center;
 `
 );
 

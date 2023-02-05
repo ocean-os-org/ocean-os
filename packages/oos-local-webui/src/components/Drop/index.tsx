@@ -58,15 +58,15 @@ type PolyProps<T extends ElementType, Props = {}> = PropsWithChildren<AsProps<T>
 
 const Drop = ({ drop, ...restProps }: DropProps ) => {
     const [expanded, setExpanded] = useState(false);
-    
+    const handleExpandClick = () => {
+      setExpanded(!expanded);
+    };   
 
-    const dropType = (v:TDrop) => v.metas.find( i => i.key == 'type')?.value || ''; 
+    const dropType = (v:TDrop) => v.metas.find( i => i.type == 'type')?.value || ''; 
 
     const isImage = dropType(drop) === 'image';
 
-    const handleExpandClick = () => {
-      setExpanded(!expanded);
-    };
+
 
     const DropType = () => {
         switch(dropType(drop)){
@@ -89,7 +89,7 @@ const Drop = ({ drop, ...restProps }: DropProps ) => {
     const Metas = () => {
       return drop.metas.map( (m,i) => {
         const meta = (m:TMeta) => {
-            switch (m.key) {
+            switch (m.type) {
                 case 'type': return <MetaType type={m.value}/>; 
                 case 'label' : return <Chip size="small" label={m.value} color="secondary" icon={<LocalOfferIcon />} />
                 case 'extension': return <Chip size="small"  color="warning" label={m.value} icon={<ExtensionIcon />}/>; 
