@@ -43,7 +43,7 @@ import { CollectionsBookmark, Commit, Extension, RssFeed, Error, TextSnippet, Fa
 
 import { OOSState, useOOSStore } from "../../store/useOOSStore";
 import { TMeta } from '../../models/interfaces';
-import { Meta } from './Meta';
+import { Meta } from '../../components/Meta/Meta';
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;

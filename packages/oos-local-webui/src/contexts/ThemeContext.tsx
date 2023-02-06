@@ -1,6 +1,6 @@
 import { useState, createContext, PropsWithChildren } from 'react';
 import { ThemeProvider as MuiThemeProvider} from '@mui/material';
-import { themeCreator } from './base';
+import { themeCreator } from '../theme/themeCreator';
 
 export const ThemeContext = createContext(
   (themeName: string): void => {}

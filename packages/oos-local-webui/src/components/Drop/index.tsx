@@ -16,7 +16,7 @@ import CardMedia from "@mui/material/CardMedia";
 
 import { TDrop, TMeta } from "../../models/interfaces";
 import PushPinIcon from "@mui/icons-material/PushPin";
-import { Meta } from "../../content/metas/Meta";
+import { Meta } from "../Meta/Meta";
 
 import DropMenu from "./DropMenu";
 import { DropContentType } from "./DropContentType";

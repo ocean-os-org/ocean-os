@@ -6,7 +6,7 @@ import {
   IconButton,
   Tooltip
 } from '@mui/material';
-import Logo from '../../../../components/LogoSign';
+import Logo from '../../../components/LogoSign';
 
 import { styled } from '@mui/material/styles';
 import FacebookIcon from '@mui/icons-material/Facebook';

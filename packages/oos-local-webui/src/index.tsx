@@ -1,7 +1,8 @@
-import { BrowserRouter } from 'react-router-dom';
-import { createRoot } from 'react-dom/client';
 import { StrictMode } from 'react';
-import App from './App';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+
+import OOS from './OOS';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -12,7 +13,7 @@ createRoot(document.getElementById('root')!)
 .render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <OOS />
     </BrowserRouter>
   </StrictMode>
 )

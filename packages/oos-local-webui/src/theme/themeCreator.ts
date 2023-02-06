@@ -1,12 +1,17 @@
 import React from 'react';
 
 import { Theme } from '@mui/material';
-import { NebulaFighterTheme } from './schemes/NebulaFighterTheme';
-import { OceanOSTheme } from './schemes/OceanOSTheme';
+import { NebulaFighterTheme } from './NebulaFighterTheme';
+import { OceanOSTheme } from './OceanOSTheme';
 
 export function themeCreator(theme: string): Theme {
   return themeMap[theme];
 }
+
+const themeMap: { [key: string]: Theme } = {
+  NebulaFighterTheme,
+  OceanOSTheme
+};
 
 declare module '@mui/material/styles' {
   interface Theme {
@@ -249,7 +254,3 @@ declare module '@mui/material/styles' {
   }
 }
 
-const themeMap: { [key: string]: Theme } = {
-  NebulaFighterTheme,
-  OceanOSTheme
-};
