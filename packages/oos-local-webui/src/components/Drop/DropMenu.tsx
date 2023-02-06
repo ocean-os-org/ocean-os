@@ -3,13 +3,11 @@ import IconButton from "@mui/material/IconButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Typography from "@mui/material/Typography"
 import { useState } from "react";
-import { DropProps } from '../../contexts/DropsContext';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Edit, MoreVert } from "@mui/icons-material";
+import { TDrop } from "../../models/interfaces";
 
-const DropMenu = ({ drop }: DropProps) => {
+const DropMenu = (drop:TDrop) => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
