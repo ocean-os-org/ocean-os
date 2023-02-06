@@ -1,12 +1,12 @@
 import { useState, createContext, PropsWithChildren } from 'react';
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider as MuiThemeProvider} from '@mui/material';
 import { themeCreator } from './base';
 
 export const ThemeContext = createContext(
   (themeName: string): void => {}
 );
 
-const OOSThemeProvider = (props:PropsWithChildren<{}>) => {
+const ThemeProvider = (props:PropsWithChildren<{}>) => {
   const curThemeName = localStorage.getItem('appTheme') || 'OceanOSTheme';
   const [themeName, _setThemeName] = useState(curThemeName);
   const theme = themeCreator(themeName);
@@ -18,9 +18,9 @@ const OOSThemeProvider = (props:PropsWithChildren<{}>) => {
 
   return (
       <ThemeContext.Provider value={setThemeName}>        
-        <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+        <MuiThemeProvider theme={theme}>{props.children}</MuiThemeProvider>
       </ThemeContext.Provider>
   );
 };
 
-export default OOSThemeProvider;
+export default ThemeProvider;

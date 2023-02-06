@@ -30,18 +30,13 @@ const Tasks = Loader(lazy(() => import('./content/dashboards/Tasks')));
 
 // Applications
 
-const Messenger = Loader(
-  lazy(() => import('./content/applications/Messenger'))
-);
-const Transactions = Loader(
-  lazy(() => import('./content/applications/Transactions'))
-);
-const UserProfile = Loader(
-  lazy(() => import('./content/applications/Users/profile'))
-);
-const UserSettings = Loader(
-  lazy(() => import('./content/applications/Users/settings'))
-);
+const Messenger = Loader( lazy(() => import('./content/applications/Messenger')) );
+
+const Transactions = Loader( lazy(() => import('./content/applications/Transactions')) );
+
+const UserProfile = Loader( lazy(() => import('./content/applications/Users/profile')) );
+
+const UserSettings = Loader( lazy(() => import('./content/applications/Users/settings')) );
 
 // Components
 

@@ -6,10 +6,12 @@ import { useDrops } from '../../contexts/DropsContext';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import ScrollTop from './ScrollTop';
 import { Fragment } from 'react';
+import { useOOSStore } from '../../store/useOOSStore';
 
 
 function Home() {
-  const  {drops, dispatch} = useDrops();
+  const drops = useOOSStore((state) => state.drops);
+  //const  {drops, dispatch} = useDrops();
   const theme = useTheme();
 
   return (
