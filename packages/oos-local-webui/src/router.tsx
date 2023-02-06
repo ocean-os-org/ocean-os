@@ -35,15 +35,15 @@ const UserSettings = Loader(lazy(() => import("./pages/applications/Users/settin
 
 // Components
 
-const Buttons = Loader(lazy(() => import("./pages/Components/Buttons")));
-const Modals = Loader(lazy(() => import("./pages/Components/Modals")));
-const Accordions = Loader(lazy(() => import("./pages/Components/Accordions")));
-const Tabs = Loader(lazy(() => import("./pages/Components/Tabs")));
-const Badges = Loader(lazy(() => import("./pages/Components/Badges")));
-const Tooltips = Loader(lazy(() => import("./pages/Components/Tooltips")));
-const Avatars = Loader(lazy(() => import("./pages/Components/Avatars")));
-const Cards = Loader(lazy(() => import("./pages/Components/Cards")));
-const Forms = Loader(lazy(() => import("./pages/Components/Forms")));
+const Buttons = Loader(lazy(() => import("./pages/components/Buttons")));
+const Modals = Loader(lazy(() => import("./pages/components/Modals")));
+const Accordions = Loader(lazy(() => import("./pages/components/Accordions")));
+const Tabs = Loader(lazy(() => import("./pages/components/Tabs")));
+const Badges = Loader(lazy(() => import("./pages/components/Badges")));
+const Tooltips = Loader(lazy(() => import("./pages/components/Tooltips")));
+const Avatars = Loader(lazy(() => import("./pages/components/Avatars")));
+const Cards = Loader(lazy(() => import("./pages/components/Cards")));
+const Forms = Loader(lazy(() => import("./pages/components/Forms")));
 
 // Status
 
