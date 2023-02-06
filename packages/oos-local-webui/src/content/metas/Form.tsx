@@ -40,7 +40,11 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
 import LocalOffer from "@mui/icons-material/LocalOffer";
 import { CollectionsBookmark, Commit, Extension, RssFeed, Error, TextSnippet, FactCheck, Image, More } from "@mui/icons-material";
-import { TMeta } from "../../contexts/DropsContext";
+
+import { OOSState, useOOSStore } from "../../store/useOOSStore";
+import { TMeta } from '../../models/interfaces';
+import { Meta } from './Meta';
+
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
 }
@@ -120,8 +124,10 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 const Form = () => {
   const theme = useTheme();
+  const [metas,metasType] = useOOSStore( (state:OOSState) => [state.metas, state.metaTypes] );
 
   const [value, setValue] = React.useState<Date | null>(toDate(new Date()));
+
 
   const handleChange = (newValue: Date | null) => {
     setValue(newValue);
@@ -149,31 +155,10 @@ const Form = () => {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };   
-  const MetaType = ({ type }:{ type: string }) => {
-    switch(type){
-        case 'text': return <Chip size="small" label="Text"  icon={<TextSnippet />}/>; 
-        case 'checklist': return <Chip size="small" label="Check List"  icon={<FactCheck />}/>; 
-        case 'image': return <Chip size="small" label="Image"  icon={<Image />}/>; 
-        default: return <Chip size="small" label="Unrecognized Type"  icon={<Error />}/>;
-    }
-  }
-
-  const Meta = ( { type, value } : TMeta) => {
-    switch (type) {
-        case 'type' : return MetaType({ type: value});
-        case 'label' : return <Chip size="small" label={value} color="secondary" icon={<LocalOffer />} />
-        case 'extension': return <Chip size="small"  color="warning" label={value} icon={<Extension />}/>; 
-        case 'person': return <Chip size="small"  color="info" label={value} avatar={<Avatar  src="/assets/images/avatars/1.jpg" />} />
-        case 'public': return <Chip size="small"  color="info" label={value} icon={<RssFeed />} />
-        case 'group' : return <Chip size="small" label={value} color="primary" icon={<CollectionsBookmark />} />
-        case 'dapp' : return <Chip size="small" label={value} color="error" icon={<Commit />} />
-        default: return <Chip size="small" label="Unrecognized Meta"  icon={<Error />}/>;
-      }
-}
   return (
     <Card>
     <CardContent>
-      <Meta {...{ type: 'type', value:'text'}} />
+      { metas.map( m => Meta(m) ) }
     </CardContent>
     <CardActions disableSpacing>
         <Box sx={{  
@@ -194,7 +179,7 @@ const Form = () => {
     </CardActions>
     <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent sx={{display: 'flex', gap: '5px', flexWrap: 'wrap'}}>
-            Meta Form 
+            {metasType()} 
         </CardContent>
     </Collapse>
 </Card>

@@ -2,16 +2,15 @@ import { Box, Chip, Container, Divider, Fab, Fade, Toolbar, useScrollTrigger, us
 import PageTitle from '../../components/PageTitle';
 import StreamHeader from './StreamHeader';
 import Drop from '../../components/Drop';
-import { useDrops } from '../../contexts/DropsContext';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import ScrollTop from './ScrollTop';
 import { Fragment } from 'react';
-import { useOOSStore } from '../../store/useOOSStore';
+import { useOOSStore, OOSState } from '../../store/useOOSStore';
 
 
 function Home() {
-  const drops = useOOSStore((state) => state.drops);
-  //const  {drops, dispatch} = useDrops();
+  const drops = useOOSStore((state:OOSState) => state.drops);
+
   const theme = useTheme();
 
   return (
@@ -23,7 +22,7 @@ function Home() {
       <Container maxWidth="lg">
         { drops?.map( (d,i) => 
           <Fragment key={d.id}>
-            <Drop drop={d} />
+            <Drop {...d} />
             { (i % 2 == 0) ? (<Box sx={{height: theme.spacing(1)}}></Box>) : (<Divider sx={{ margin: theme.spacing(1)}}> <Chip color="primary" size="small" label="31, Janeiro, 2023" /></Divider>) }
           </Fragment> 
           ) 

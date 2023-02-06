@@ -21,6 +21,7 @@ import { toDate } from "date-fns";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import { OOSState, useOOSStore } from "../../store/useOOSStore";
 
 const defaultValues = {
   name: "Rui Gil",
@@ -86,6 +87,7 @@ const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 const Form = () => {
+  const [ drops, addDrop ] = useOOSStore( (state:OOSState) => [state.drops,state.addDrop])
   const theme = useTheme();
 
   const [value, setValue] = React.useState<Date | null>(toDate(new Date()));
@@ -110,6 +112,7 @@ const Form = () => {
   };
   const handleSubmit = (event: any) => {
     event.preventDefault();
+    addDrop({ id:'999', content: "test", metas:[ {type:'type', value:'text'} ]})
     console.log(formValues, '💖');
   };
   return (
