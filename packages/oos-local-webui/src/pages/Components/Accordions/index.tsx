@@ -1,6 +1,6 @@
 
-import ComponentDocumentation from '../../../../components/ComponentDoc';
-import PageTitle from '../../../../components/PageTitle';
+import ComponentDocumentation from '../../../components/ComponentDoc';
+import PageTitle from '../../../components/PageTitle';
 import {
   Container,
   Grid,
@@ -14,7 +14,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Footer from '../../../../components/Footer';
+import Footer from '../../../components/Footer';
 
 function Accordions() {
   return (

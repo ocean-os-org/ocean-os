@@ -1,5 +1,5 @@
-import ComponentDocumentation from '../../../../components/ComponentDoc';
-import PageTitle from '../../../../components/PageTitle';
+import ComponentDocumentation from '../../../components/ComponentDoc';
+import PageTitle from '../../../components/PageTitle';
 import {
   Container,
   Grid,
@@ -11,7 +11,7 @@ import {
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
-import Footer from '../../../../components/Footer';
+import Footer from '../../../components/Footer';
 
 function Tooltips() {
   return (

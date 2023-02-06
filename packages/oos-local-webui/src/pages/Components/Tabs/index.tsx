@@ -1,5 +1,5 @@
-import ComponentDocumentation from '../../../../components/ComponentDoc';
-import PageTitle from '../../../../components/PageTitle';
+import ComponentDocumentation from '../../../components/ComponentDoc';
+import PageTitle from '../../../components/PageTitle';
 import {
   Container,
   Grid,
@@ -14,7 +14,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Footer from '../../../../components/Footer';
+import Footer from '../../../components/Footer';
 
 interface TabPanelProps {
   children?: React.ReactNode;

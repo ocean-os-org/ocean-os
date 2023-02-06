@@ -1,5 +1,5 @@
-import ComponentDocumentation from '../../../../components/ComponentDoc';
-import PageTitle from '../../../../components/PageTitle';
+import ComponentDocumentation from '../../../components/ComponentDoc';
+import PageTitle from '../../../components/PageTitle';
 import {
   Container,
   Grid,
@@ -8,7 +8,7 @@ import {
   CardContent,
   Divider
 } from '@mui/material';
-import Footer from '../../../../components/Footer';
+import Footer from '../../../components/Footer';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { deepOrange, deepPurple, green, pink } from '@mui/material/colors';

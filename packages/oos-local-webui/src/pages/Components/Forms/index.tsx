@@ -1,7 +1,7 @@
-import ComponentDocumentation from '../../../../components/ComponentDoc';
+import ComponentDocumentation from '../../../components/ComponentDoc';
 import { ChangeEvent, useState } from 'react';
 
-import PageTitle from '../../../../components/PageTitle';
+import PageTitle from '../../../components/PageTitle';
 import {
   Container,
   Grid,
@@ -10,7 +10,7 @@ import {
   CardContent,
   Divider
 } from '@mui/material';
-import Footer from '../../../../components/Footer';
+import Footer from '../../../components/Footer';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';

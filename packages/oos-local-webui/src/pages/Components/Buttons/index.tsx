@@ -1,5 +1,5 @@
-import ComponentDocumentation from '../../../../components/ComponentDoc';
-import PageTitle from '../../../../components/PageTitle';
+import ComponentDocumentation from '../../../components/ComponentDoc';
+import PageTitle from '../../../components/PageTitle';
 import {
   Button,
   Container,
@@ -10,7 +10,7 @@ import {
   CardContent,
   Divider
 } from '@mui/material';
-import Footer from '../../../../components/Footer';
+import Footer from '../../../components/Footer';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 

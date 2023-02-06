@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import ComponentDocumentation from '../../../../components/ComponentDoc';
-import PageTitle from '../../../../components/PageTitle';
+import ComponentDocumentation from '../../../components/ComponentDoc';
+import PageTitle from '../../../components/PageTitle';
 import {
   Container,
   Grid,
@@ -21,7 +21,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import AddIcon from '@mui/icons-material/Add';
 import Typography from '@mui/material/Typography';
 import { blue } from '@mui/material/colors';
-import Footer from '../../../../components/Footer';
+import Footer from '../../../components/Footer';
 import { ListItemButton } from '@mui/material';
 
 const emails = ['username@gmail.com', 'user02@gmail.com'];

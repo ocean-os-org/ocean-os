@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import ComponentDocumentation from '../../../../components/ComponentDoc';
-import PageTitle from '../../../../components/PageTitle';
+import ComponentDocumentation from '../../../components/ComponentDoc';
+import PageTitle from '../../../components/PageTitle';
 import {
   Container,
   Grid,
@@ -10,7 +10,7 @@ import {
   CardContent,
   Divider
 } from '@mui/material';
-import Footer from '../../../../components/Footer';
+import Footer from '../../../components/Footer';
 import CardActions from '@mui/material/CardActions';
 import { styled } from '@mui/material/styles';
 
