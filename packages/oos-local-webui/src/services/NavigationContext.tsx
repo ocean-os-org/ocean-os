@@ -1,4 +1,4 @@
-import { useState, createContext, PropsWithChildren } from 'react';
+import { createContext, PropsWithChildren } from 'react';
 import { MenuItem } from '../interfaces/interfaces';
 
 type NavigationContext = {
@@ -13,9 +13,7 @@ export const NavigationProvider = ({ children } : PropsWithChildren<{}>) => {
     const items = menuItems;
 
     return (
-        <NavigationContext.Provider
-            value={{ items }}
-        >
+        <NavigationContext.Provider value={{ items }}>
             {children}
         </NavigationContext.Provider>
     );
@@ -37,9 +35,9 @@ const menuItems: MenuItem[] = [
         icon: "subscriptions",
         items: [
             {
-                name: "All",
-                url: "/dashboards/tasks",
-                icon: "brightness_low",
+                name: "Today Quote",
+                url: "/stream/feed",
+                icon: "apps",
             },
             {
                 name: "Christine Pike",
@@ -53,14 +51,14 @@ const menuItems: MenuItem[] = [
         icon: "stream",
         items: [
             {
-                name: "Tasks",
-                url: "/dashboards/tasks",
-                icon: "brightness_low",
+                name: "OceanOS",
+                url: "/stream/oos",
+                icon: "stream",
             },        
             {
-                name: "Messenger",
-                url: "/dashboards/messenger",
-                icon: "mms",
+                name: "Morphopoiesis",
+                url: "/stream/oos",
+                icon: "stream",
             },        
         ]
     },
@@ -69,14 +67,14 @@ const menuItems: MenuItem[] = [
         icon: "stream",
         items: [
             {
-                name: "Tasks",
-                url: "/dashboards/tasks",
-                icon: "brightness_low",
-            },        
+                name: "Personal",
+                url: "/stream/feed",
+                icon: "dynamic_feed",
+            },
             {
-                name: "Messenger",
-                url: "/dashboards/messenger",
-                icon: "mms",
+                name: "Work",
+                url: "/stream/feed",
+                icon: "dynamic_feed"
             },        
         ]
     },
@@ -98,6 +96,27 @@ const menuItems: MenuItem[] = [
                 name: "John Wick",
                 url: "/dashboards/messenger",
                 avatar: "/assets/images/avatars/3.jpg",
+            },        
+        ]
+    },
+    {
+        name: "Apps",
+        icon: "contacts",
+        items: [
+            {
+                name: "Today Quote",
+                url: "/dashboards/messenger",
+                icon: "apps",
+            },        
+            {
+                name: "ChatGPT",
+                url: "/dashboards/messenger",
+                icon: "apps",
+            },        
+            {
+                name: "Stats",
+                url: "/dashboards/messenger",
+                icon: "apps",
             },        
         ]
     },

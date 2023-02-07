@@ -1,40 +1,17 @@
 import React, { useState } from "react";
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Autocomplete,
-  Avatar,
   Box,
-  Button,
   Card,
   CardActions,
   CardContent,
-  CardHeader,
-  Checkbox,
-  Chip,
   Collapse,
-  Divider,
-  FormControl,
-  FormControlLabel,
-  FormHelperText,
-  FormLabel,
-  Grid,
   IconButton,
   IconButtonProps,
-  InputLabel,
-  MenuItem,
-  Radio,
-  RadioGroup,
-  Select,
-  Slider,
   styled,
-  TextField,
   Typography,
   useTheme,
 } from "@mui/material";
 import { toDate } from "date-fns";
-import { DateTimePicker } from "@mui/x-date-pickers";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
@@ -122,16 +99,14 @@ const top100Films = [
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
-const Form = () => {
+type MetaFormProps = {
+  type: string;
+}
+
+const MetaForm = ({ type }:MetaFormProps) => {
   const theme = useTheme();
-  const [metas,metasType] = useOOSStore( (state:OOSState) => [state.metas, state.metaTypes] );
+  const getMetasType = useOOSStore( (state:OOSState) => state.getMetasType );
 
-  const [value, setValue] = React.useState<Date | null>(toDate(new Date()));
-
-
-  const handleChange = (newValue: Date | null) => {
-    setValue(newValue);
-  };
 
   const [formValues, setFormValues] = useState(defaultValues);
   const handleInputChange = (e: any) => {
@@ -156,33 +131,35 @@ const Form = () => {
     setExpanded(!expanded);
   };   
   return (
-    <Card>
-    <CardContent>
-      { metas.map( m => <Meta {...m}/> ) }
-    </CardContent>
-    <CardActions disableSpacing>
-        <Box sx={{  
-            display: 'flex', 
-            justifyContent: 'flex-end', 
-            alignItems: 'center', 
-            flexGrow: 1 
-        }}>
-            <ExpandMore
-                expand={expanded}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show more"
-            >
-                <More />
-            </ExpandMore>
+    <Card sx={{ mb: 1}}>
+      <CardContent>
+        <Typography variant="h4">Metas from type {type}</Typography>
+        <Box sx={{ mt: 1, display: 'flex', flexWrap: 'wrap', gap: 1}}>
+          { getMetasType(type).map( (m,i) => <Meta key={i} {...m}/> ) }
         </Box>
-    </CardActions>
-    <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent sx={{display: 'flex', gap: '5px', flexWrap: 'wrap'}}>
-            {metasType()} 
-        </CardContent>
-    </Collapse>
-</Card>
-);
+      </CardContent>
+      <CardActions disableSpacing>
+          <Box sx={{  
+              display: 'flex', 
+              justifyContent: 'flex-end', 
+              alignItems: 'center', 
+              flexGrow: 1 
+          }}>
+              <ExpandMore
+                  expand={expanded}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+              >
+                  <More />
+              </ExpandMore>
+          </Box>
+      </CardActions>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent sx={{display: 'flex', gap: '5px', flexWrap: 'wrap'}}>
+          </CardContent>
+      </Collapse>
+    </Card>
+  );
 };
-export default Form;
+export default MetaForm;

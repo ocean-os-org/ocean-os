@@ -14,6 +14,7 @@ export interface MetasState {
     metas: TMeta[];
     addMetas: () => void;
     metaTypes: () => string[];
+    getMetasType: (type:string) => TMeta[]
 }
 
 export interface DropsState {

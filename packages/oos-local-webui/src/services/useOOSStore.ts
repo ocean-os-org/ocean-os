@@ -32,7 +32,8 @@ export const dropsState:StateCreator<DropsState> = (set,get) => ({
 export const metasState:StateCreator<MetasState> = (set,get) => ({
     metas: initialMetas,
     addMetas: () => set((state) => ({ metas: [] })),
-    metaTypes: () => [...get().metas.reduce( (acc,v) => acc.add(v.type), new Set<string>)]
+    metaTypes: () => [...get().metas.reduce( (acc,v) => acc.add(v.type), new Set<string>)],
+    getMetasType: (type:string) => [...get().metas.filter( m => m.type === type) ],
 })
 
 
