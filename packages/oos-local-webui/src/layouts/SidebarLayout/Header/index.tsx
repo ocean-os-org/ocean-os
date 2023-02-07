@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Box, IconButton, useTheme, Toolbar } from '@mui/material';
-import { SidebarContext } from '../../../contexts/SidebarContext';
+import { SidebarContext } from '../../../services/SidebarContext';
 import HeaderButtons from './Buttons';
 import HeaderUserbox from './Userbox';
 import OOSAppBar from '../../../components/AppBar';

@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { TDrop } from '../../models/interfaces';
+import { TDrop } from '../../interfaces/interfaces';
 
 export const DropContentType = (drop: TDrop) => {
 

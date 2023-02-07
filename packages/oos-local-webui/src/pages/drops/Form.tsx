@@ -21,7 +21,7 @@ import { toDate } from "date-fns";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import { OOSState, useOOSStore } from "../../store/useOOSStore";
+import { OOSState, useOOSStore } from "../../services/useOOSStore";
 
 const defaultValues = {
   name: "Rui Gil",

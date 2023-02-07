@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import ListItemText from '@mui/material/ListItemText'
 import { Link } from 'react-router-dom';
-import { SidebarContext } from '../../../../contexts/SidebarContext';
+import { SidebarContext } from '../../../../services/SidebarContext';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 

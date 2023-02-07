@@ -1,5 +1,5 @@
 import Typography from "@mui/material/Typography"
-import { TDrop } from "../../../models/interfaces";
+import { TDrop } from "../../../interfaces/interfaces";
 
 
 const DropText = (drop:TDrop) => {

@@ -1,7 +1,7 @@
 import { List, ListItem, IconButton, ListItemButton, ListItemIcon, Checkbox, ListItemText } from "@mui/material";
 import { useState } from "react";
 import CommentIcon from '@mui/icons-material/Comment';
-import { TDrop } from "../../../models/interfaces";
+import { TDrop } from "../../../interfaces/interfaces";
 
 
 const DropCheckList = (drop : TDrop) =>{

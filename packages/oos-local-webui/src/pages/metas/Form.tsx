@@ -41,8 +41,8 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import LocalOffer from "@mui/icons-material/LocalOffer";
 import { CollectionsBookmark, Commit, Extension, RssFeed, Error, TextSnippet, FactCheck, Image, More } from "@mui/icons-material";
 
-import { OOSState, useOOSStore } from "../../store/useOOSStore";
-import { TMeta } from '../../models/interfaces';
+import { OOSState, useOOSStore } from "../../services/useOOSStore";
+import { TMeta } from '../../interfaces/interfaces';
 import { Meta } from '../../components/Meta/Meta';
 
 interface ExpandMoreProps extends IconButtonProps {

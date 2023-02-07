@@ -2,10 +2,10 @@ import { Suspense, lazy, LazyExoticComponent } from "react";
 import { Navigate } from "react-router-dom";
 import { RouteObject } from "react-router";
 
-import SidebarLayout from "./layouts/SidebarLayout";
-import BaseLayout from "./layouts/BaseLayout";
+import SidebarLayout from "../layouts/SidebarLayout";
+import BaseLayout from "../layouts/BaseLayout";
 
-import SuspenseLoader from "./components/SuspenseLoader";
+import SuspenseLoader from "../components/SuspenseLoader";
 
 const Loader =
   (Component: LazyExoticComponent<() => JSX.Element>) => (props: any) =>
@@ -17,40 +17,40 @@ const Loader =
 
 // Pages
 
-const Metas = Loader(lazy(() => import("./pages/metas")));
-const NewDrop = Loader(lazy(() => import("./pages/drops/DropForm")));
-const Overview = Loader(lazy(() => import("./pages/overview")));
-const Home = Loader(lazy(() => import("./pages/home")));
+const Metas = Loader(lazy(() => import("../pages/metas")));
+const NewDrop = Loader(lazy(() => import("../pages/drops/DropForm")));
+const Overview = Loader(lazy(() => import("../pages/overview")));
+const Home = Loader(lazy(() => import("../pages/home")));
 
 // Dashboards
 
-const Tasks = Loader(lazy(() => import("./pages/dashboards/Tasks")));
+const Tasks = Loader(lazy(() => import("../pages/dashboards/Tasks")));
 
 // Applications
 
-const Messenger = Loader(lazy(() => import("./pages/applications/Messenger")));
-const Transactions = Loader(lazy(() => import("./pages/applications/Transactions")));
-const UserProfile = Loader(lazy(() => import("./pages/applications/Users/profile")));
-const UserSettings = Loader(lazy(() => import("./pages/applications/Users/settings")));
+const Messenger = Loader(lazy(() => import("../pages/applications/Messenger")));
+const Transactions = Loader(lazy(() => import("../pages/applications/Transactions")));
+const UserProfile = Loader(lazy(() => import("../pages/applications/Users/profile")));
+const UserSettings = Loader(lazy(() => import("../pages/applications/Users/settings")));
 
 // Components
 
-const Buttons = Loader(lazy(() => import("./pages/components/Buttons")));
-const Modals = Loader(lazy(() => import("./pages/components/Modals")));
-const Accordions = Loader(lazy(() => import("./pages/components/Accordions")));
-const Tabs = Loader(lazy(() => import("./pages/components/Tabs")));
-const Badges = Loader(lazy(() => import("./pages/components/Badges")));
-const Tooltips = Loader(lazy(() => import("./pages/components/Tooltips")));
-const Avatars = Loader(lazy(() => import("./pages/components/Avatars")));
-const Cards = Loader(lazy(() => import("./pages/components/Cards")));
-const Forms = Loader(lazy(() => import("./pages/components/Forms")));
+const Buttons = Loader(lazy(() => import("../pages/components/Buttons")));
+const Modals = Loader(lazy(() => import("../pages/components/Modals")));
+const Accordions = Loader(lazy(() => import("../pages/components/Accordions")));
+const Tabs = Loader(lazy(() => import("../pages/components/Tabs")));
+const Badges = Loader(lazy(() => import("../pages/components/Badges")));
+const Tooltips = Loader(lazy(() => import("../pages/components/Tooltips")));
+const Avatars = Loader(lazy(() => import("../pages/components/Avatars")));
+const Cards = Loader(lazy(() => import("../pages/components/Cards")));
+const Forms = Loader(lazy(() => import("../pages/components/Forms")));
 
 // Status
 
-const Status404 = Loader(lazy(() => import("./pages/Status/Status404")));
-const Status500 = Loader(lazy(() => import("./pages/Status/Status500")));
-const StatusComingSoon = Loader(lazy(() => import("./pages/Status/ComingSoon")));
-const StatusMaintenance = Loader(lazy(() => import("./pages/Status/Maintenance")));
+const Status404 = Loader(lazy(() => import("../pages/Status/Status404")));
+const Status500 = Loader(lazy(() => import("../pages/Status/Status500")));
+const StatusComingSoon = Loader(lazy(() => import("../pages/Status/ComingSoon")));
+const StatusMaintenance = Loader(lazy(() => import("../pages/Status/Maintenance")));
 
 const routes: RouteObject[] = [
   {

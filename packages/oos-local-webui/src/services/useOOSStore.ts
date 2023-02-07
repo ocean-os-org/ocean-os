@@ -1,5 +1,5 @@
 import { create, StateCreator } from 'zustand';
-import { DropsState, MetasState, TDrop, TMeta } from '../models/interfaces';
+import { DropsState, MetasState, TDrop, TMeta } from '../interfaces/interfaces';
 
 const initialDrops = [
     { id:"111",content: "This is a note taken to remember!!", metas: [ { type: 'type', value:'DropText' }, { type:'extension', value:"Recurrent"}, { type:'label', value:"Personal Tag"}]},

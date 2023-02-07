@@ -23,7 +23,7 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import SaveDialog from './SaveDialog';
 import OOSAppBar from '../../components/AppBar';
 import { useContext } from 'react';
-import { SidebarContext } from '../../contexts/SidebarContext';
+import { SidebarContext } from '../../services/SidebarContext';
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
 const top100Films = [
   { title: 'The Shawshank Redemption', year: 1994 },

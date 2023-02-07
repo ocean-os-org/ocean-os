@@ -1,4 +1,4 @@
-import { SidebarProvider } from '../../contexts/SidebarContext';
+import { SidebarProvider } from '../../services/SidebarContext';
 
 import Sidebar from './Sidebar';
 import Header from './Header';

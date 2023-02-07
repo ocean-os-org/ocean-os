@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Box, useTheme } from '@mui/material';
 import { Outlet } from 'react-router';
-import { SidebarContext } from '../../../contexts/SidebarContext';
+import { SidebarContext } from '../../../services/SidebarContext';
 
 function PageContent() {
   const { sidebarOpen } = useContext(SidebarContext);

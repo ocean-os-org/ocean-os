@@ -19,7 +19,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import Scrollbar from '../../../components/Scrollbar';
 
-import { SidebarContext } from '../../../contexts/SidebarContext';
+import { SidebarContext } from '../../../services/SidebarContext';
 import SidebarMenu from './SidebarMenu';
 import { Add } from '@mui/icons-material';
 

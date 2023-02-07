@@ -5,7 +5,7 @@ import Drop from '../../components/Drop';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import ScrollTop from './ScrollTop';
 import { Fragment } from 'react';
-import { useOOSStore, OOSState } from '../../store/useOOSStore';
+import { useOOSStore, OOSState } from '../../services/useOOSStore';
 
 
 function Home() {
