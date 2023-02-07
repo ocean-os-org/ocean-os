@@ -114,7 +114,8 @@ declare module '@mui/material/styles' {
     sidebar: {
       background: React.CSSProperties['color'];
       boxShadow: React.CSSProperties['color'];
-      width: string;
+      opened: string;
+      closed: string;
       textColor: React.CSSProperties['color'];
       dividerBg: React.CSSProperties['color'];
       menuItemColor: React.CSSProperties['color'];
@@ -234,7 +235,8 @@ declare module '@mui/material/styles' {
     sidebar: {
       background: React.CSSProperties['color'];
       boxShadow: React.CSSProperties['color'];
-      width: string;
+      opened: string;
+      closed: string;
       textColor: React.CSSProperties['color'];
       dividerBg: React.CSSProperties['color'];
       menuItemColor: React.CSSProperties['color'];

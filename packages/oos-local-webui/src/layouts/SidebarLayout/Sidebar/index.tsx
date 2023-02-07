@@ -24,7 +24,7 @@ import SidebarMenu from './SidebarMenu';
 import { Add } from '@mui/icons-material';
 
 const openedMixin = (theme: Theme): CSSObject => ({
-  width: theme.sidebar.width,
+  width: theme.sidebar.opened,
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
@@ -42,15 +42,15 @@ const closedMixin = (theme: Theme): CSSObject => ({
   overflowX: 'hidden',
   border: 'none',
   boxShadow: 'inset -2px 0px 4px 0px rgb(0,0,0,0.4)',
-  width: `calc(${theme.spacing(7)}) + 1px`,
+  width: `calc(${theme.sidebar.closed} + 1px)`,
   [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(7)} + 1px)`,
+    width: `calc(${theme.sidebar.closed} + 1px)`,
   },
 });
 
 const MiniDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
-    width: theme.sidebar.width,
+    width: theme.sidebar.opened,
     ...(open && {
       ...openedMixin(theme),
       '& .MuiDrawer-paper': openedMixin(theme),
@@ -65,8 +65,8 @@ const MiniDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'open'
 
 const SidebarStyled = styled(Box)(
   ({ theme }) => `
-        width: ${theme.sidebar.width};
-        min-width: ${theme.sidebar.width};
+        width: ${theme.sidebar.opened};
+        min-width: ${theme.sidebar.opened};
         color: ${theme.colors.alpha.trueWhite[70]};
         position: relative;
         height: 100%;
@@ -111,7 +111,7 @@ function Sidebar() {
       </Box>
       <Box
         sx={{
-          width: (sidebarOpen || sidebarMobileOpen) ? theme.sidebar.width: `calc(${theme.spacing(7)} + 1px)`,
+          width: (sidebarOpen || sidebarMobileOpen) ? theme.sidebar.opened : `calc(${theme.sidebar.closed} + 1px)`,
           height: `calc(100% - 64px)`,
           overflow: 'hidden',
         }}

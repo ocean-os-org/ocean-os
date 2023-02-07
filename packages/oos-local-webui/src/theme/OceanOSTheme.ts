@@ -238,7 +238,8 @@ export const OceanOSTheme = createTheme({
     menuItemIconColorActive: colors.layout.sidebar.menuItemIconColorActive,
     menuItemHeadingColor: colors.layout.sidebar.menuItemHeadingColor,
     boxShadow: '1px 0 0 #272C48',
-    width: '290px'
+    opened: '290px',
+    closed: '56px'
   },
   header: {
     height: '192px',

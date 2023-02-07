@@ -12,8 +12,8 @@ function PageContent() {
       component="main"
       sx={{
         flexGrow: 1,
-        ...( sidebarOpen && {ml: { md: theme.sidebar.width }}),
-        ...( !sidebarOpen && {ml: { md: theme.spacing(7) }}),
+        ...( sidebarOpen && {ml: { md: theme.sidebar.opened }}),
+        ...( !sidebarOpen && {ml: { md: theme.sidebar.closed }}),
       }}
     >
     <Outlet />
@@ -22,7 +22,3 @@ function PageContent() {
 }
 
 export default PageContent;
-
-/*
-
-*/
