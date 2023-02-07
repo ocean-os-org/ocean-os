@@ -112,7 +112,7 @@ const Form = () => {
   };
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    addDrop({ id:'999', content: "test", metas:[ {type:'type', value:'text'} ]})
+    addDrop({ id:'999', content: "test", metas:[ {type:'type', value:'DropText'} ]})
     console.log(formValues, '💖');
   };
   return (

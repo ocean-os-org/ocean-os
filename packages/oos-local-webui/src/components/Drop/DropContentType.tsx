@@ -3,7 +3,7 @@ import { TDrop } from '../../interfaces/interfaces';
 
 export const DropContentType = (drop: TDrop) => {
 
-  const dropType = drop.metas.find((i) => i.type == "type")?.value || "unknown"; 
+  const dropType = drop.metas.find((i) => i.type == "media")?.value || "unknown"; 
 
   const DynamicComponent = lazy(() => import(`./types/${dropType}.tsx`));
     

@@ -20,3 +20,11 @@ export interface DropsState {
     drops: TDrop[];
     addDrop: (drop:TDrop) => void;
 }
+
+export interface MenuItem {
+    name: string;
+    url?: string;
+    icon?: string;
+    avatar?: string;
+    items?: MenuItem[];
+}

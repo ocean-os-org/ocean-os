@@ -158,7 +158,7 @@ const Form = () => {
   return (
     <Card>
     <CardContent>
-      { metas.map( m => Meta(m) ) }
+      { metas.map( m => <Meta {...m}/> ) }
     </CardContent>
     <CardActions disableSpacing>
         <Box sx={{  

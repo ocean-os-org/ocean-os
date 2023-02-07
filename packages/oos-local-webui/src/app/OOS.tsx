@@ -6,6 +6,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import frLocale from "date-fns/locale/fr-CH";
 import ThemeProvider from '../services/ThemeContext';
 import Routes from '../route/Routes';
+import { NavigationProvider } from '../services/NavigationContext';
 
 function OOS() {
   const content = useRoutes(Routes);
@@ -13,8 +14,10 @@ function OOS() {
   return (
     <ThemeProvider>
       <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={frLocale}>
-        <CssBaseline />
-        {content}
+        <NavigationProvider>
+          <CssBaseline />
+          {content}
+        </NavigationProvider>
       </LocalizationProvider>
     </ThemeProvider>
   );

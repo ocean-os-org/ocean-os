@@ -7,9 +7,9 @@ import { TMeta } from '../../interfaces/interfaces';
 export const Meta = ( { type, value } : TMeta) => {
     const MetaMedia = (media: string) => {
         switch(media){
-            case 'text': return <Chip size="small" label="Text"  icon={<TextSnippet />}/>; 
-            case 'checklist': return <Chip size="small" label="Check List"  icon={<FactCheck />}/>; 
-            case 'image': return <Chip size="small" label="Image"  icon={<Image />}/>; 
+            case 'DropText': return <Chip size="small" label="Text"  icon={<TextSnippet />}/>; 
+            case 'DropCheckList': return <Chip size="small" label="Check List"  icon={<FactCheck />}/>; 
+            case 'DropImage': return <Chip size="small" label="Image"  icon={<Image />}/>; 
             default: return <Chip size="small" label="Unrecognized Type"  icon={<Error />}/>;
         }
     }

@@ -1,215 +1,203 @@
+import { useState, createContext, PropsWithChildren } from 'react';
+import { MenuItem } from '../interfaces/interfaces';
 
-export const menuItems = [
+type NavigationContext = {
+  items: MenuItem[];
+};
+
+export const NavigationContext = createContext<NavigationContext>(
+  {} as NavigationContext
+);
+
+export const NavigationProvider = ({ children } : PropsWithChildren<{}>) => {  
+    const items = menuItems;
+
+    return (
+        <NavigationContext.Provider
+            value={{ items }}
+        >
+            {children}
+        </NavigationContext.Provider>
+    );
+};
+
+const menuItems: MenuItem[] = [
     {
         name: "Main",
         url: "/home",
         icon: "home",
-        selected: true,
     },
     {
         name: "Metas",
         url: "/home/metas",
         icon: "bookmarks",
-        selected: false,
     },
     {
         name: "Subscriptions",
         icon: "subscriptions",
-        selected: false,
         items: [
             {
                 name: "All",
                 url: "/dashboards/tasks",
                 icon: "brightness_low",
-                selected: false,
-            },        
+            },
             {
                 name: "Christine Pike",
                 url: "/dashboards/messenger",
                 avatar: "/assets/images/avatars/1.jpg",
-                selected: false,
             },        
         ]
     },
     {
         name: "Public Streams",
         icon: "stream",
-        selected: false,
         items: [
             {
                 name: "Tasks",
                 url: "/dashboards/tasks",
                 icon: "brightness_low",
-                selected: false,
             },        
             {
                 name: "Messenger",
                 url: "/dashboards/messenger",
                 icon: "mms",
-                selected: false,
             },        
         ]
     },
     {
         name: "Saved Streams",
         icon: "stream",
-        selected: false,
         items: [
             {
                 name: "Tasks",
                 url: "/dashboards/tasks",
                 icon: "brightness_low",
-                selected: false,
             },        
             {
                 name: "Messenger",
                 url: "/dashboards/messenger",
                 icon: "mms",
-                selected: false,
             },        
         ]
     },
     {
         name: "Contacts",
         icon: "contacts",
-        selected: false,
         items: [
             {
                 name: "Stephanie Box",
                 url: "/dashboards/messenger",
                 avatar: "/assets/images/avatars/2.jpg",
-                selected: false,
             },        
             {
                 name: "Christine Pike",
                 url: "/dashboards/messenger",
                 avatar: "/assets/images/avatars/1.jpg",
-                selected: false,
             },        
             {
                 name: "John Wick",
                 url: "/dashboards/messenger",
                 avatar: "/assets/images/avatars/3.jpg",
-                selected: false,
             },        
         ]
     },
     {
         name: "Dashboards",
         icon: "drafts",
-        selected: false,
         items: [
             {
                 name: "Tasks",
                 url: "/dashboards/tasks",
                 icon: "brightness_low",
-                selected: false,
             },        
             {
                 name: "Messenger",
                 url: "/dashboards/messenger",
                 icon: "mms",
-                selected: false,
             },        
         ]
     },
     {
         name: "Management",
         icon: "inbox",
-        selected: false,
         items: [
             {
                 name: "Transaction List",
                 url: "/management/transactions",
                 icon: "table_chart",
-                selected: false,
             },        
         ]
     },
     {
         name: "Accounts",
         icon: "inbox",
-        selected: false,
         items: [
             {
                 name: "Profile Details",
                 url: "/management/profile/details",
                 icon: "account_circle",
-                selected: false,
             },        
             {
                 name: "Profile Settings",
                 url: "/management/profile/settings",
                 icon: "display_settings",
-                selected: false,
             },        
         ]
     },
     {
         name: "Components",
         icon: "inbox",
-        selected: false,
         items: [
             {
                 name: "Buttons",
                 url: "/components/buttons",
                 icon: "ballot",
-                selected: false,
             },        
             {
                 name: "Modals",
                 url: "/components/modals",
                 icon: "beach_access",
-                selected: false,
             },        
             {
                 name: "Accordeons",
                 url: "/components/accordions",
                 icon: "emoji_events",
-                selected: false,
             },        
             {
                 name: "Tabs",
                 url: "/components/tabs",
                 icon: "filter_vintage",
-                selected: false,
             },        
             {
                 name: "Badges",
                 url: "/components/badges",
                 icon: "how_to_vote",
-                selected: false,
             },        
             {
                 name: "Tooltips",
                 url: "/components/tooltips",
                 icon: "local_pharmacy",
-                selected: false,
             },        
             {
                 name: "Avatars",
                 url: "/components/avatars",
                 icon: "redeem",
-                selected: false,
             },        
             {
                 name: "Cards",
                 url: "/components/cards",
                 icon: "settings",
-                selected: false,
             },        
             {
                 name: "Forms",
                 url: "/components/forms",
                 icon: "traffic",
-                selected: false,
             },        
         ]
     },
     {
         name: "Extra Pages",
         icon: "inbox",
-        selected: false,
         items: [
             {
                 name: "Error 404",
@@ -232,7 +220,5 @@ export const menuItems = [
                 icon: "workspace_premium",
             },        
         ]
-    },
-
-
+    }
 ]

@@ -43,7 +43,7 @@ const Drop = (drop: TDrop) => {
     setExpanded(!expanded);
   };
 
-  const isImage = drop.metas.find((i) => i.type == "type")?.value === "DropImage";
+  const isImage = drop.metas.find((i) => i.type == "media")?.value === "DropImage";
 
   return (
     <Card>
