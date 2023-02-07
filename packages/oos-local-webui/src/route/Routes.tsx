@@ -52,7 +52,7 @@ const Status500 = Loader(lazy(() => import("../pages/Status/Status500")));
 const StatusComingSoon = Loader(lazy(() => import("../pages/Status/ComingSoon")));
 const StatusMaintenance = Loader(lazy(() => import("../pages/Status/Maintenance")));
 
-const routes: RouteObject[] = [
+const Routes: RouteObject[] = [
   {
     path: "",
     element: <BaseLayout />,
@@ -211,4 +211,4 @@ const routes: RouteObject[] = [
   },
 ];
 
-export default routes;
+export default Routes;

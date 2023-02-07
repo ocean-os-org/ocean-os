@@ -5,10 +5,10 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import frLocale from "date-fns/locale/fr-CH";
 import ThemeProvider from '../services/ThemeContext';
-import router from '../route/router';
+import Routes from '../route/Routes';
 
 function OOS() {
-  const content = useRoutes(router);
+  const content = useRoutes(Routes);
 
   return (
     <ThemeProvider>
