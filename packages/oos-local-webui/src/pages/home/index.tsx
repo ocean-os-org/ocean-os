@@ -21,7 +21,7 @@ function Home() {
       <span id="back-to-top-anchor"/>
       <Container maxWidth="lg">
         { drops?.map( (d,i) => 
-          <Fragment key={d.id}>
+          <Fragment key={i}>
             <Drop {...d} />
             { (i % 2 == 0) ? (<Box sx={{height: theme.spacing(1)}}></Box>) : (<Divider sx={{ margin: theme.spacing(1)}}> <Chip color="primary" size="small" label="31, Janeiro, 2023" /></Divider>) }
           </Fragment> 

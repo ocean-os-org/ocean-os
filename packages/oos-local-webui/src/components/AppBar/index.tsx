@@ -14,7 +14,7 @@ const OOSAppBar = styled(AppBar, { shouldForwardProp: (prop) => prop !== 'open',
     ...(open && {
         marginLeft: theme.sidebar.opened,
         [theme.breakpoints.up('md')]: {
-        width: `calc(100% - ${theme.sidebar.opened})` ,
+            width: `calc(100% - ${theme.sidebar.opened})` ,
         },
         transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
@@ -23,7 +23,7 @@ const OOSAppBar = styled(AppBar, { shouldForwardProp: (prop) => prop !== 'open',
     }),
     ...(!open && {
         [theme.breakpoints.up('md')]: {
-        width: `calc(100% - ${theme.sidebar.closed} - 1px)` ,
+            width: `calc(100% - ${theme.sidebar.closed} - 1px)` ,
         },
         transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,

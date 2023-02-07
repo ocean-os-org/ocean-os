@@ -1,28 +1,28 @@
 import { CollectionsBookmark, Commit, Extension, LocalOffer, RssFeed, Error, TextSnippet, FactCheck, Image } from "@mui/icons-material";
 import Avatar from "@mui/material/Avatar";
-import Chip from "@mui/material/Chip";
+import Chip, { ChipProps } from "@mui/material/Chip";
 import { TMeta } from '../../interfaces/interfaces';
 
 
-export const Meta = ( { type, value } : TMeta) => {
-    const MetaMedia = (media: string) => {
-        switch(media){
-            case 'DropText': return <Chip size="small" label="Text"  icon={<TextSnippet />}/>; 
-            case 'DropCheckList': return <Chip size="small" label="Check List"  icon={<FactCheck />}/>; 
-            case 'DropImage': return <Chip size="small" label="Image"  icon={<Image />}/>; 
-            default: return <Chip size="small" label="Unrecognized Type"  icon={<Error />}/>;
-        }
-    }
-    switch (type) {
-        case 'media' : return MetaMedia(value);
-        case 'label' : return <Chip size="small" label={value} color="secondary" icon={<LocalOffer />} />
-        case 'extension': return <Chip size="small"  color="warning" label={value} icon={<Extension />}/>; 
-        case 'person': return <Chip size="small"  color="info" label={value} avatar={<Avatar  src="/assets/images/avatars/1.jpg" />} />
-        case 'public': return <Chip size="small"  color="info" label={value} icon={<RssFeed />} />
-        case 'group' : return <Chip size="small" label={value} color="primary" icon={<CollectionsBookmark />} />
-        case 'dapp' : return <Chip size="small" label={value} color="error" icon={<Commit />} />
-        default: return <Chip size="small" label="Unrecognized Meta"  icon={<Error />}/>;
-      }
-}
+export const Meta = ( { type, value,...rest } : TMeta & ChipProps) => {
 
-export default Meta;
+    
+    const media: Record<string,JSX.Element> = {
+        'DropText': <Chip size="small" label="Text"  icon={<TextSnippet />}/>, 
+        'DropCheckList': <Chip size="small" label="Check List"  icon={<FactCheck />}/>, 
+        'DropImage': <Chip size="small" label="Image"  icon={<Image />}/>
+    }
+
+    const meta: Record<string,JSX.Element> = {
+        label: <Chip size="small" label={value} color="secondary" onDelete={rest.onDelete} icon={<LocalOffer />} />,
+        extension: <Chip size="small"  color="warning" label={value} onDelete={rest.onDelete} icon={<Extension />}/>, 
+        person: <Chip size="small"  color="info" label={value} onDelete={rest.onDelete} avatar={<Avatar  src="/assets/images/avatars/1.jpg" />} />,
+        public: <Chip size="small"  color="info" label={value} onDelete={rest.onDelete} icon={<RssFeed />} />,
+        group: <Chip size="small" label={value} color="primary" onDelete={rest.onDelete} icon={<CollectionsBookmark />} />,
+        dapp: <Chip size="small" label={value} color="error" onDelete={rest.onDelete} icon={<Commit />} />
+    }
+
+    return type === 'media' ? media[value] : meta[type] || <Chip size="small" label="Unrecognized" icon={<Error />}/>;
+
+
+}
