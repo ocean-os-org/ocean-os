@@ -48,24 +48,24 @@ const MetaForm = ({ type }:MetaFormProps) => {
         </Box>
       </CardContent>
       <CardActions disableSpacing >
-      <Typography variant="h4">{titles[type]}</Typography>
-          <Box sx={{  
-              display: 'flex', 
-              justifyContent: 'flex-end', 
-              alignItems: 'center', 
-              flexGrow: 1 
-          }}>
-          { type !== 'media' &&
-            <MetaExpand
-              expand={expanded}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="show more"
-            >
-              <More />
-            </MetaExpand>
-          }
-          </Box>
+        <Typography variant="h4">{titles[type]}</Typography>
+        <Box sx={{  
+            display: 'flex', 
+            justifyContent: 'flex-end', 
+            alignItems: 'center', 
+            flexGrow: 1 
+        }}>
+        { type !== 'media' &&
+          <MetaExpand
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <More />
+          </MetaExpand>
+        }
+        </Box>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent sx={{display: 'flex', gap: '5px', flexWrap: 'wrap', backgroundColor: theme.header.background}}>
