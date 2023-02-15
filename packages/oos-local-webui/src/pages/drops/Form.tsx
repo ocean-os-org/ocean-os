@@ -87,7 +87,7 @@ const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 const Form = () => {
-  const [ drops, addDrop ] = useOOSStore( (state:OOSState) => [state.drops,state.addDrop])
+  const [ drops, addDrop ] = useOOSStore( (state:OOSState) => [state.drops,state.addDrop] as const)
   const theme = useTheme();
 
   const [value, setValue] = React.useState<Date | null>(toDate(new Date()));
@@ -112,7 +112,7 @@ const Form = () => {
   };
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    addDrop({ id:'999', content: "test", metas:[ {type:'type', value:'DropText'} ]})
+    addDrop({ id:'999', content: "test", metas:[ {type:'media', name:'DropText', content:{}} ]})
     console.log(formValues, '💖');
   };
   return (

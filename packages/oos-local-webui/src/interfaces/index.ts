@@ -1,20 +1,31 @@
 export type TDrop = {
     id: string;
     content: any;
-    metas: TMeta[];
+    metas: TMeta<UMeta>[];
 }
 
-export type TMeta = {
-    id?: string;
-    type:string;
-    value:string;
+export type Label = { }
+
+export type Public = {
+    description: string
+    skin: string
+}
+
+export type UMeta = Label | Public
+
+export type TMeta<T> = {
+    id?: string
+    type: 'label' | 'person' | 'dapp' | 'media' | 'extension' | 'public' | 'group'
+    name: string
+    content: T
 }
 
 export interface MetasState {
-    metas: TMeta[];
-    addMetas: () => void;
+    metas: TMeta<UMeta>[];
+    addMeta: (meta:TMeta<UMeta>) => void;
+    delMeta: (id:string) => void;
     metaTypes: () => string[];
-    getMetasType: (type:string) => TMeta[]
+    getMetasType: (type:string) => TMeta<UMeta>[]
 }
 
 export interface DropsState {

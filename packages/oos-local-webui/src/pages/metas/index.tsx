@@ -12,7 +12,7 @@ export default function Metas() {
 
   //const [value,add] = OOSStore( (state) => [state.value,state.add] as const )
   //const value = OOSStore(  )
-  const [metas,metasType] = useOOSStore( (state:OOSState) => [state.metas,state.metaTypes] as const );
+  const [metas,metasType] = useOOSStore( (state:OOSState) => [state.metas,state.metaTypes] as const  );
 
   const handleClickOpen = () => {
     //add(1)
@@ -21,7 +21,6 @@ export default function Metas() {
   const handleClose = () => {
     setOpen(false);
   };
-  console.log("metas render")
 
   return (
     <>

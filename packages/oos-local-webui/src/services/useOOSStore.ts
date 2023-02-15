@@ -1,26 +1,29 @@
 import { useSyncExternalStore } from 'react';
-import { BehaviorSubject, from, withLatestFrom } from 'rxjs';
-import { DropsState, MetasState, TDrop, TMeta } from '../interfaces';
+import { BehaviorSubject, from, withLatestFrom, Subject, map } from 'rxjs';
+import { DropsState, MetasState, TDrop, TMeta, UMeta } from '../interfaces';
 
 
-const initialDrops = [
-    { id:"111",content: "This is a note taken to remember!!", metas: [ { type: 'media', value:'DropText' }, { type:'extension', value:"Recurrent"}, { type:'label', value:"Personal Tag"}]},
-    { id:"222",content: [{ item: "Do Dishes", checked: false},{ item: "Make Bed", checked: false},{ item: "Clean Bathroom", checked: false},{ item: "Feed Dog", checked: false}], metas: [ { type: 'media', value:'DropCheckList' }, { type:'person', value:"Christine Pike"}, { type:'group', value:"Project"}]},
-    { id:"333",content: { description:"This is a beautiful image...", src: '/assets/images/placeholders/covers/1.jpg'}, metas: [ {type: 'media', value: 'DropImage' }, {type: 'public', value: 'OceanOS Blog' }]},
-    { id:"444",content: "This is a response from ChatGPT", metas: [ { type:'media', value:"DropText"}, { type:'dapp', value:"ChatGPT"}]}
+const initialDrops:TDrop[] = [
+    { id:"111",content: "This is a note taken to remember!!", 
+        metas: [ { type: 'media', name:'DropText',content:{} }, { type:'extension', name:"Recurrent",content:{}}, { type:'label', name:"Personal Tag",content:{}}]},
+    { id:"222",content: [{ item: "Do Dishes", checked: false},{ item: "Make Bed", checked: false},{ item: "Clean Bathroom", checked: false},{ item: "Feed Dog", checked: false}], metas: [ { type: 'media', name:'DropCheckList',content:{} }, { type:'person', name:"Christine Pike",content:{}}, { type:'group', name:"Project",content:{}}]},
+    { id:"333",content: { description:"This is a beautiful image...", src: '/assets/images/placeholders/covers/1.jpg'}, metas: [ {type: 'media', name: 'DropImage',content:{} }, {type: 'public', name: 'OceanOS Blog',content:{} }]},
+    { id:"444",content: "This is a response from ChatGPT", metas: [ { type:'media', name:"DropText",content:{}}, { type:'dapp', name:"ChatGPT",content:{}}]}
 ];
 
 
-const initialMetas = [
-    { type: 'media', value: 'DropText' },
-    { type: 'media', value: 'DropImage' },
-    { type: 'media', value: 'DropCheckList' },
-    { type: 'label', value: 'personal' },
-    { type: 'person', value: 'person' },
-    { type: 'extension', value: 'extension' },
-    { type: 'public', value: 'public' },
-    { type: 'group', value: 'group' },
-    { type: 'dapp', value: 'dapp' },
+const initialMetas:TMeta<UMeta>[] = [
+    { type: 'media', name: 'DropText',content:{} },
+    { type: 'media', name: 'DropImage',content:{} },
+    { type: 'media', name: 'DropCheckList',content:{} },
+    { type: 'label', name: 'personal',content:{} },
+    { type: 'label', name: 'project',content:{} },
+    { type: 'person', name: 'person',content:{} },
+    { type: 'person', name: 'friend',content:{} },
+    { type: 'extension', name: 'extension',content:{} },
+    { type: 'public', name: 'Morpho',content:{ description: 'This is a Great Description', skin: 'morpho' } },
+    { type: 'group', name: 'group',content:{} },
+    { type: 'dapp', name: 'dapp' ,content:{}},
 ]
 
 
@@ -97,7 +100,8 @@ const initState:StateCreator<OOSState> = (set, get) => ({
     drops: initialDrops,
     metas: initialMetas,
     addDrop: (drop:TDrop) => set((state) => ({ drops: [...state.drops, drop] })),
-    addMetas: () => set((state) => ({ metas: [] })),
+    addMeta: (meta:TMeta<UMeta>) => set((state) => ({ metas: [...state.metas, meta] })),
+    delMeta: (id:string) => set((state) => ({ metas: state.metas.filter( m => m.name != id) })),
     metaTypes: () => [...get().metas.reduce( (acc,v) => acc.add(v.type), new Set<string>)],
     getMetasType: (type:string) => [...get().metas.filter( m => m.type === type) ]
 })

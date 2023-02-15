@@ -5,11 +5,9 @@ import DropImage from './types/DropImage';
 import DropText from './types/DropText';
 
 
-
-
 export const DropContentType = (drop: TDrop) => {
 
-  const dropType = drop.metas.find((i) => i.type == "media")?.value || "unknown"; 
+  const dropType = drop.metas.find((i) => i.type == "media")?.name || "unknown"; 
 
   const types:Record<string,JSX.Element> = {
     'DropText': <DropText {...drop} />,

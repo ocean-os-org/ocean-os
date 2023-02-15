@@ -29,7 +29,7 @@ const Drop = (drop: TDrop) => {
     setExpanded(!expanded);
   };
 
-  const isImage = drop.metas.find((i) => i.type == "media")?.value === "DropImage";
+  const isImage = drop.metas.find((i) => i.type == "media")?.name === "DropImage";
   //console.log("drawing drop")
   
   return (

@@ -1,10 +1,10 @@
 import { CollectionsBookmark, Commit, Extension, LocalOffer, RssFeed, Error, TextSnippet, FactCheck, Image } from "@mui/icons-material";
 import Avatar from "@mui/material/Avatar";
 import Chip, { ChipProps } from "@mui/material/Chip";
-import { TMeta } from '../../interfaces';
+import { TMeta, UMeta } from '../../interfaces';
 
 
-export const Meta = ( { type, value,...rest } : TMeta & ChipProps) => {
+export const Meta = ( { type, name,...rest } : TMeta<UMeta> & ChipProps) => {
 
     
     const media: Record<string,JSX.Element> = {
@@ -14,15 +14,15 @@ export const Meta = ( { type, value,...rest } : TMeta & ChipProps) => {
     }
 
     const meta: Record<string,JSX.Element> = {
-        label: <Chip size="small" label={value} color="secondary" onDelete={rest.onDelete} icon={<LocalOffer />} />,
-        extension: <Chip size="small"  color="warning" label={value} onDelete={rest.onDelete} icon={<Extension />}/>, 
-        person: <Chip size="small"  color="info" label={value} onDelete={rest.onDelete} avatar={<Avatar  src="/assets/images/avatars/1.jpg" />} />,
-        public: <Chip size="small"  color="info" label={value} onDelete={rest.onDelete} icon={<RssFeed />} />,
-        group: <Chip size="small" label={value} color="primary" onDelete={rest.onDelete} icon={<CollectionsBookmark />} />,
-        dapp: <Chip size="small" label={value} color="error" onDelete={rest.onDelete} icon={<Commit />} />
+        label: <Chip size="small" label={name} color="secondary" onClick={rest.onClick} icon={<LocalOffer />} />,
+        extension: <Chip size="small"  color="warning" label={name} onClick={rest.onClick} icon={<Extension />}/>, 
+        person: <Chip size="small"  color="info" label={name} onClick={rest.onClick} avatar={<Avatar  src="/assets/images/avatars/1.jpg" />} />,
+        public: <Chip size="small"  color="info" label={name} onClick={rest.onClick} icon={<RssFeed />} />,
+        group: <Chip size="small" label={name} color="primary" onClick={rest.onClick} icon={<CollectionsBookmark />} />,
+        dapp: <Chip size="small" label={name} color="error" onClick={rest.onClick} icon={<Commit />} />
     }
 
-    return type === 'media' ? media[value] : meta[type] || <Chip size="small" label="Unrecognized" icon={<Error />}/>;
+    return type === 'media' ? media[name] : meta[type] || <Chip size="small" label="Unrecognized" icon={<Error />}/>;
 
 
 }
