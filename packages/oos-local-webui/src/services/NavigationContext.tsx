@@ -1,5 +1,5 @@
 import { createContext, PropsWithChildren } from 'react';
-import { MenuItem } from '../interfaces/interfaces';
+import { MenuItem } from '../interfaces';
 
 type NavigationContext = {
   items: MenuItem[];

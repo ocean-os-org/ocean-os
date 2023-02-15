@@ -1,5 +1,5 @@
 import Typography from "@mui/material/Typography"
-import { TDrop } from "../../../interfaces/interfaces";
+import { TDrop } from "../../../interfaces";
 
 
 

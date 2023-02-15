@@ -26,6 +26,8 @@ const MetaForm = ({ type }:MetaFormProps) => {
     setExpanded(!expanded);
   };
 
+  console.log("Meta Form Render")
+
   const titles: Record<string,string> = {
     media: "Media Types",
     label: "Personal Labels",

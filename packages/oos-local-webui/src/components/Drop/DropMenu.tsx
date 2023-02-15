@@ -5,7 +5,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
 import { Edit, MoreVert } from "@mui/icons-material";
-import { TDrop } from "../../interfaces/interfaces";
+import { TDrop } from "../../interfaces";
 
 const DropMenu = (drop:TDrop) => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

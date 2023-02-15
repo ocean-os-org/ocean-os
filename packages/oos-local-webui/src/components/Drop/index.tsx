@@ -13,7 +13,7 @@ import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import CardMedia from "@mui/material/CardMedia";
 
-import { TDrop, TMeta } from "../../interfaces/interfaces";
+import { TDrop, TMeta } from "../../interfaces";
 import PushPinIcon from "@mui/icons-material/PushPin";
 
 import DropMenu from "./DropMenu";

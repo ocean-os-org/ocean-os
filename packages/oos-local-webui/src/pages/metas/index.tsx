@@ -9,15 +9,19 @@ import { OOSState, useOOSStore } from '../../services/useOOSStore';
 export default function Metas() {
   const [open, setOpen] = useState(false);
   const theme = useTheme();
-  const [metasType] = useOOSStore( (state:OOSState) => [state.metaTypes] );
+
+  //const [value,add] = OOSStore( (state) => [state.value,state.add] as const )
+  //const value = OOSStore(  )
+  const [metas,metasType] = useOOSStore( (state:OOSState) => [state.metas,state.metaTypes] as const );
 
   const handleClickOpen = () => {
-    setOpen(true);
+    //add(1)
   };
 
   const handleClose = () => {
     setOpen(false);
   };
+  console.log("metas render")
 
   return (
     <>
@@ -34,7 +38,7 @@ export default function Metas() {
           </Avatar>
           <Box sx={{ p: theme.spacing(2,0,2,0)}}>
             <Typography variant="h3" component="h3" gutterBottom>
-              Manage Metas
+            Manage State
             </Typography>
             <Typography variant="subtitle2">
               Metas are metadata that you add to your drops. They can be simple personal labels, or full applications.
@@ -42,7 +46,7 @@ export default function Metas() {
           </Box>
         </Box>
         <Box>
-          <Button variant="contained" startIcon={<DocumentScanner />}>
+          <Button variant="contained" onClick={handleClickOpen} startIcon={<DocumentScanner />}>
             Manage
           </Button>
         </Box>

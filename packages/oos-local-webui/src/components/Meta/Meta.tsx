@@ -1,7 +1,7 @@
 import { CollectionsBookmark, Commit, Extension, LocalOffer, RssFeed, Error, TextSnippet, FactCheck, Image } from "@mui/icons-material";
 import Avatar from "@mui/material/Avatar";
 import Chip, { ChipProps } from "@mui/material/Chip";
-import { TMeta } from '../../interfaces/interfaces';
+import { TMeta } from '../../interfaces';
 
 
 export const Meta = ( { type, value,...rest } : TMeta & ChipProps) => {

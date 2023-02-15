@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { TDrop } from '../../interfaces/interfaces';
+import { TDrop } from '../../interfaces';
 import DropCheckList from './types/DropCheckList';
 import DropImage from './types/DropImage';
 import DropText from './types/DropText';

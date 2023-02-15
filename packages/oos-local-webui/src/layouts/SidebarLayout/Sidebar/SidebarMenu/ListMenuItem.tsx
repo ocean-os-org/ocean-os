@@ -1,7 +1,7 @@
 import { Avatar, Icon, ListItemButton, ListItemIcon, ListItemText, Tooltip, useTheme } from "@mui/material";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { MenuItem } from "../../../../interfaces/interfaces";
+import { MenuItem } from "../../../../interfaces";
 import { SidebarContext } from "../../../../services/SidebarContext";
 
 type MenuItemProps = {

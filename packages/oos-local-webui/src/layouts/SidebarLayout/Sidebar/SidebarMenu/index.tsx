@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { List } from '@mui/material';
 import ListMenuItem from './ListMenuItem';
 import ListSubMenuItem from './ListSubMenuItem';
-import { MenuItem } from '../../../../interfaces/interfaces';
+import { MenuItem } from '../../../../interfaces';
 import { NavigationContext } from '../../../../services/NavigationContext';
 
 function SidebarMenu() {

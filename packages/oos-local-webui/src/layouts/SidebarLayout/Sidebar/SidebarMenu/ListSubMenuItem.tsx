@@ -2,7 +2,7 @@ import { Collapse, List, ListItemButton, ListItemIcon, ListItemText, Tooltip, us
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { useState, useContext } from "react";
 import { SidebarContext } from "../../../../services/SidebarContext";
-import { MenuItem } from "../../../../interfaces/interfaces";
+import { MenuItem } from "../../../../interfaces";
 
 type SubMenuItemProps = {
     item: MenuItem;
