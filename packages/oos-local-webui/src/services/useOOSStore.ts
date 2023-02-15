@@ -25,26 +25,6 @@ const initialMetas = [
 
 
 export type OOSState = DropsState & MetasState;
-/*
-export const dropsState:StateCreator<DropsState> = (set,get) => ({
-    drops: initialDrops,
-    addDrop: (drop:TDrop) => set((state) => ({ drops: [...state.drops, drop] })),
-})
-
-export const metasState:StateCreator<MetasState> = (set,get) => ({
-    metas: initialMetas,
-    addMetas: () => set((state) => ({ metas: [] })),
-    metaTypes: () => [...get().metas.reduce( (acc,v) => acc.add(v.type), new Set<string>)],
-    getMetasType: (type:string) => [...get().metas.filter( m => m.type === type) ],
-})
-
-
-export const useOOSStore = create<OOSState>()((...a) => ({
-    ...dropsState(...a),
-    ...metasState(...a)
-}))
-
-*/
 
 type SetType<T> = ( fn:(a:T) => Partial<T> ) => void 
 type GetType<T> = () => T
@@ -64,7 +44,7 @@ export const create = <T>(init:StateCreator<T> )  => {
             state$.next( newState ) 
             selectors.forEach( sel => {
                 const oldValue = sel.value
-                const newValue = sel.selector(newState)
+                const newValue = sel.selector(newState) 
                 if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) {
                     selectors.set(sel.selector.toString(), {...sel, value: newValue })
                     sel.listeners.forEach(l => l())
@@ -121,7 +101,5 @@ const initState:StateCreator<OOSState> = (set, get) => ({
     metaTypes: () => [...get().metas.reduce( (acc,v) => acc.add(v.type), new Set<string>)],
     getMetasType: (type:string) => [...get().metas.filter( m => m.type === type) ]
 })
-
-//export const OOSStore = <R = State>( selector = (state:State) => state as R) => Create<State>(initState)(selector)
 
 export const useOOSStore = create<OOSState>(initState)
